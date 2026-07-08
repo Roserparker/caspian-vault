@@ -1,5 +1,9 @@
 # 03 · Caspian Vault 里海金库 · 公司官网（筹备版）
 
+> **🌐 线上地址（永久）**：https://roserparker.github.io/caspian-vault/
+> 仓库：https://github.com/Roserparker/caspian-vault（公开，仅含本文件夹，与 01 策略文档物理隔离）
+> **更新方法**：改本地 index.html → `git add -A && git commit -m "..." && git push` → 约 1 分钟后线上生效。
+
 > **Caspian Vault（暂定名）的品牌与教育展示页**——未来官网的第一版。双击 `index.html` 即可打开（零构建、零依赖、离线可用）。
 > 定位：让投资人五分钟看明白「这家公司做什么」；同时是面向公众的比特币教育页。**全页零募资语言**（506(b) 纪律）。
 
