@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caspian Vault · 里海金库</title>
+<meta name="description" content="Caspian Vault（暂定名）——一家把资产负债表建成内流海的比特币金库公司。品牌与教育展示页，不构成任何证券要约或投资建议。">
+<style>
+:root{
+  --deep:#0e1c28; --deep2:#132a3d; --deepline:#1f3d55;
+  --paper:#f7f5ef; --card:#fffdf8; --ink:#16222b; --ink2:#4a5760; --muted:#8b9299;
+  --hair:#e2ddd0; --grid:#e9e5da;
+  --gold:#b08d3e; --goldbright:#d8b466; --water:#21405f; --waterlt:#2f6b8f;
+  --crit:#b3362b; --good:#2e7d4f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:16px;line-height:1.9}
+.song{font-family:"Songti SC","STSong","SimSun","Noto Serif CJK SC",serif}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+.wide{max-width:1020px;margin:0 auto;padding:0 24px}
+/* ── 水位刻度（签名元素）── */
+#gauge{position:fixed;right:0;top:0;height:100vh;width:26px;z-index:60;pointer-events:none}
+#gauge .tube{position:absolute;right:9px;top:8vh;bottom:8vh;width:3px;background:var(--hair);border-radius:2px;overflow:hidden}
+#gauge .fill{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,var(--waterlt),var(--water));border-radius:2px;transition:height .15s linear}
+#gauge .lbl{position:absolute;right:2px;bottom:3vh;font-size:9px;letter-spacing:.28em;color:var(--muted);writing-mode:vertical-rl}
+#gauge .tick{position:absolute;right:9px;width:8px;height:1px;background:var(--hair)}
+@media(max-width:720px){#gauge{display:none}}
+/* ── 导航 ── */
+nav{position:sticky;top:0;z-index:50;background:rgba(247,245,239,.97);border-bottom:1px solid var(--hair)}
+nav .row{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:11px 24px;font-size:13px}
+nav .logo{font-family:"Songti SC","STSong",serif;font-weight:900;letter-spacing:.08em;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+nav .logo i{font-style:normal;color:var(--gold)}
+nav .links{display:flex;gap:18px;margin-left:auto;flex-wrap:wrap}
+nav a{color:var(--ink2);text-decoration:none;white-space:nowrap}
+nav a:hover{color:var(--ink)}
+@media(max-width:720px){nav .links{gap:12px;font-size:12px}}
+/* ── HERO ── */
+#sea{background:linear-gradient(180deg,#0b1620 0%,var(--deep) 46%,var(--deep2) 100%);color:#e9e4d6;position:relative;overflow:hidden}
+#sea .inner{max-width:1020px;margin:0 auto;padding:72px 24px 0;position:relative;z-index:2;text-align:center}
+.eyebrow{font-size:11.5px;letter-spacing:.34em;color:#8fa3b5;text-transform:uppercase}
+#sea h1{font-family:"Songti SC","STSong","SimSun",serif;font-size:clamp(40px,7.2vw,74px);font-weight:900;letter-spacing:.06em;margin:22px 0 4px;color:#f2ead6}
+#sea .en{font-size:clamp(13px,1.8vw,17px);letter-spacing:.52em;color:var(--goldbright);text-transform:uppercase;margin-bottom:34px}
+#sea .thesis{font-size:clamp(16px,2.3vw,20px);line-height:2.1;color:#cfd8dc;max-width:620px;margin:0 auto}
+#sea .thesis b{color:#f2ead6;font-weight:600}
+#sea .thesis .gold{color:var(--goldbright)}
+#sea .tag{margin:26px auto 0;font-size:12.5px;color:#7e93a5}
+#basin{display:block;width:100%;max-width:1100px;margin:12px auto 0;position:relative;z-index:1}
+.scrollhint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;color:#6d8398;z-index:3}
+/* ── 通用章节 ── */
+section{padding:88px 0 72px}
+.kicker{font-size:11.5px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+h2{font-family:"Songti SC","STSong","SimSun",serif;font-size:clamp(26px,4vw,36px);font-weight:900;letter-spacing:.05em;margin-bottom:26px}
+h3{font-size:17px;margin:34px 0 10px;font-weight:700}
+p{margin-bottom:16px;color:var(--ink2)}
+p b,p strong{color:var(--ink)}
+.target{border-left:4px solid var(--hair);padding:6px 18px;color:var(--muted);font-size:15.5px;margin-bottom:6px}
+.no{font-family:"Songti SC","STSong",serif;font-size:22px;font-weight:900;margin:10px 0 18px}
+.pull{font-family:"Songti SC","STSong",serif;font-size:clamp(19px,2.8vw,25px);font-weight:700;line-height:1.9;letter-spacing:.03em;color:var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--hair);padding:26px 4px;margin:40px 0;text-align:center}
+.pull small{display:block;font-family:-apple-system,"PingFang SC",sans-serif;font-size:11.5px;letter-spacing:.22em;color:var(--muted);margin-top:12px;font-weight:400}
+.note{font-size:12.5px;color:var(--muted);line-height:1.8}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* ── 卡片与演示 ── */
+.demo{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:26px 26px 22px;margin:26px 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.demo .cap{font-size:12px;letter-spacing:.2em;color:var(--muted);margin-bottom:16px}
+button.act{font:inherit;font-size:14px;padding:9px 20px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:4px;cursor:pointer;letter-spacing:.06em}
+button.act.ghost{background:transparent;color:var(--ink)}
+button.act:focus-visible{outline:2px solid var(--waterlt);outline-offset:2px}
+button.act:disabled{opacity:.45;cursor:default}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+/* 尺子演示 */
+#sofaBox svg{width:100%;height:auto;display:block}
+#rulerRead{font-size:34px;font-weight:700}
+#rulerRead small{font-size:14px;color:var(--muted);font-weight:400}
+.readrow{display:flex;align-items:baseline;gap:26px;flex-wrap:wrap;margin-top:6px}
+.readrow .yr{font-size:15px;color:var(--muted)}
+/* 21M 曲线 */
+#supplyBox svg{width:100%;height:auto}
+/* 村账本 */
+#village{display:grid;grid-template-columns:repeat(9,1fr);gap:8px;margin:10px 0 4px}
+.book{aspect-ratio:3/4;border:1.5px solid var(--hair);border-radius:4px;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:var(--ink2);transition:all .35s;position:relative}
+.book .mono{font-size:12px}
+.book.bad{border-color:var(--crit);color:var(--crit);background:#fdf3f1;transform:rotate(-2deg)}
+.book.veto{border-color:var(--water);box-shadow:0 0 0 2px color-mix(in srgb,var(--waterlt) 30%,transparent)}
+@media(max-width:640px){#village{grid-template-columns:repeat(3,1fr)}}
+.verdictline{min-height:28px;font-size:14px;margin-top:10px}
+.verdictline b.okv{color:var(--good)} .verdictline b.badv{color:var(--crit)}
+/* 链条 */
+#chainRow{display:flex;gap:0;align-items:center;overflow-x:auto;padding:12px 2px;margin-top:8px}
+.blk{min-width:118px;border:1.5px solid var(--deepline);border-radius:6px;background:var(--deep);color:#dfe7ea;padding:10px 12px;font-size:11.5px;transition:all .4s}
+.blk .h{font-size:10px;color:var(--goldbright);word-break:break-all}
+.blk .p{font-size:10px;color:#8fa3b5;word-break:break-all}
+.blk.broken{border-color:var(--crit);background:#3a1712;color:#f1c9c2}
+.blk.broken .h,.blk.broken .p{color:#e88a7a}
+.linkarm{width:34px;height:2px;background:var(--deepline);flex:none;position:relative;transition:background .4s}
+.linkarm.broken{background:var(--crit)}
+.linkarm.broken::after{content:"✕";position:absolute;top:-9px;left:11px;color:var(--crit);font-size:11px}
+/* 时间线 */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0}
+.tl .stop{border-top:2px solid var(--ink);padding-top:12px}
+.tl .stop .yr{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--gold)}
+.tl .stop .t{font-size:14px;font-weight:600;margin:4px 0}
+.tl .stop .d{font-size:12.5px;color:var(--muted);line-height:1.7}
+@media(max-width:720px){.tl{grid-template-columns:1fr 1fr}}
+/* 公司区 */
+#vault{background:var(--deep);color:#dfe2d9}
+#vault .kicker{color:var(--goldbright)}
+#vault h2{color:#f2ead6}
+#vault p{color:#b9c4c9}
+#vault p b{color:#f0e9d8}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:34px 0}
+.pillar{border:1px solid var(--deepline);border-radius:6px;padding:20px 18px;background:linear-gradient(180deg,#12283a,#0f2231)}
+.pillar .ic{font-size:20px}
+.pillar h4{font-size:15.5px;margin:10px 0 6px;color:#f0e9d8}
+.pillar p{font-size:13px;line-height:1.8;color:#9fb0ba;margin:0}
+@media(max-width:820px){.pillars{grid-template-columns:1fr 1fr}}
+.dial{display:flex;gap:34px;align-items:center;flex-wrap:wrap;margin:36px 0;padding:26px;border:1px solid var(--deepline);border-radius:8px;background:#102434}
+.dial .num{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:clamp(34px,5vw,52px);font-weight:700;color:var(--goldbright)}
+.dial .num small{font-size:14px;color:#8fa3b5;font-weight:400}
+.dial .expl{flex:1;min-width:240px;font-size:14px;color:#b9c4c9;line-height:1.9}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:26px 0;counter-reset:r}
+.rules li{list-style:none;counter-increment:r;font-size:14.5px;color:#c6cfd3;padding-left:34px;position:relative;line-height:1.8}
+.rules li::before{content:counter(r,cjk-ideographic);position:absolute;left:0;top:0;font-family:"Songti SC","STSong",serif;color:var(--goldbright);font-weight:900}
+@media(max-width:720px){.rules{grid-template-columns:1fr}}
+.redcard{border:1.5px solid #7c4a42;border-left-width:6px;border-radius:4px;padding:14px 18px;font-size:13.5px;color:#d8b6ae;background:#241318;margin-top:30px;line-height:2}
+/* 飞轮 */
+#wheelBox{display:flex;justify-content:center;margin:10px 0 6px}
+#wheelBox svg{width:min(360px,86vw);height:auto}
+@media (prefers-reduced-motion: no-preference){
+  .spin{transform-origin:190px 190px;animation:rot 40s linear infinite}
+  @keyframes rot{to{transform:rotate(360deg)}}
+}
+/* 诚实条款 */
+#honest .box{border:2px solid var(--ink);border-radius:6px;padding:34px 30px;background:var(--card)}
+#honest .big{font-family:"Songti SC","STSong",serif;font-size:clamp(20px,3vw,27px);font-weight:900;line-height:2;letter-spacing:.02em}
+.ddbars{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:30px 0 8px}
+.dd .bar{height:120px;position:relative;background:var(--grid);border-radius:3px;overflow:hidden}
+.dd .bar i{position:absolute;left:0;right:0;bottom:0;background:var(--water);border-radius:3px 3px 0 0}
+.dd .v{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:15px;font-weight:700;margin-top:8px}
+.dd .y{font-size:12px;color:var(--muted)}
+/* 路线图 */
+.road{border-left:2px solid var(--hair);margin:30px 0 10px;padding-left:0}
+.road .node{position:relative;padding:0 0 30px 30px}
+.road .node::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--muted)}
+.road .node.here::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 5px color-mix(in srgb,var(--gold) 22%,transparent)}
+.road .node.done::before{background:var(--water);border-color:var(--water)}
+.road .t{font-weight:700;font-size:15.5px}
+.road .t .flag{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-left:10px}
+.road .d{font-size:13.5px;color:var(--ink2)}
+/* footer */
+footer{background:var(--deep);color:#7e93a5;padding:56px 0 70px;font-size:12.5px;line-height:2.1}
+footer .brand{font-family:"Songti SC","STSong",serif;color:#e9e0c9;font-size:18px;font-weight:900;letter-spacing:.1em;margin-bottom:14px}
+footer a{color:#a9b8c4}
+footer .fine{border-top:1px solid var(--deepline);margin-top:22px;padding-top:18px;color:#5f7488}
+</style>
+</head>
+<body>
+
+<div id="gauge" aria-hidden="true">
+  <div class="tube"><div class="fill" id="gfill"></div></div>
+  <div class="lbl">水位 · 只进不出</div>
+</div>
+
+<nav>
+  <div class="row">
+    <a class="logo" href="#sea">CASPIAN <i>VAULT</i> · 里海金库</a>
+    <div class="links">
+      <a href="#money">先理解钱</a><a href="#btc">为什么是比特币</a><a href="#chain">区块链三分钟</a><a href="#vault">我们做什么</a><a href="#honest">诚实条款</a><a href="#road">路线图</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO：内流海 ═══ -->
+<header id="sea">
+  <div class="inner">
+    <div class="eyebrow">Brand &amp; Education · 品牌与教育展示 · 非要约邀请</div>
+    <h1>里海金库</h1>
+    <div class="en">Caspian Vault</div>
+    <p class="thesis">里海，是地球上最大的<b>内流海</b>：<br>一百三十条河流终年注入，海水<b>永不外流</b>。<br>我们正在筹建一家公司，把它的资产负债表，<br><span class="gold">建成一座里海。</span></p>
+    <div class="tag mono">Delaware · 筹建中 · Caspian Vault 为暂定名</div>
+  </div>
+  <svg id="basin" viewBox="0 0 1100 380" role="img" aria-label="河流注入内流海的示意动画">
+    <defs>
+      <linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2f6b8f"/><stop offset="1" stop-color="#16344c"/>
+      </linearGradient>
+    </defs>
+    <!-- 远山/盆地轮廓 -->
+    <path d="M0,240 L120,150 L230,215 L330,120 L430,205 L550,150 L1100,150 L1100,380 L0,380 Z" fill="#0c1a26"/>
+    <path d="M550,150 L660,100 L780,190 L900,130 L1010,200 L1100,160 L1100,380 L550,380 Z" fill="#0a1722"/>
+    <!-- 三条河（金线） -->
+    <path class="river" d="M150,152 C190,200 170,240 260,262 C330,278 350,290 420,300" />
+    <path class="river" d="M660,104 C640,170 700,200 660,240 C630,270 600,288 560,299" />
+    <path class="river" d="M990,196 C930,230 900,250 830,268 C770,283 730,292 690,300" />
+    <!-- 海面 -->
+    <g id="seaWater">
+      <path id="waveP" d="M0,306 Q90,300 180,306 T360,306 T540,306 T720,306 T900,306 T1080,306 L1100,306 L1100,380 L0,380 Z" fill="url(#waterG)"/>
+    </g>
+    <!-- 月 -->
+    <circle cx="948" cy="58" r="17" fill="#e9e0c9" opacity=".85"/>
+    <circle cx="941" cy="52" r="15" fill="#0e1c28"/>
+  </svg>
+  <div class="scrollhint">▼ 下 潜</div>
+</header>
+<style>
+.river{fill:none;stroke:var(--goldbright);stroke-width:2;stroke-linecap:round;opacity:.85;stroke-dasharray:8 10}
+@media (prefers-reduced-motion: no-preference){
+  .river{animation:flow 2.6s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-72}}
+}
+</style>
+
+<!-- ═══ 一 · 先理解钱 ═══ -->
+<section id="money">
+  <div class="wrap">
+    <div class="kicker reveal">Chapter 01 · 先理解钱</div>
+    <h2 class="reveal">在花钱和存钱之前，先理解钱</h2>
+    <p class="target reveal">「钱就是钱。房子涨了，就是我赚了。」</p>
+    <p class="no reveal">不对。</p>
+    <p class="reveal">先做一个小实验。假设「米」这个单位每年都在悄悄变短——你家那张沙发没有变，可尺子上的读数年年在涨。你会说沙发长大了吗？不会。<b>沙发没变，是尺子缩了。</b></p>
+    <p class="reveal">法币就是那把尺子。用它量出来的「涨」，很多时候不是资产在长大，是<b>计价单位在缩水</b>。</p>
+
+    <div class="demo reveal" id="sofaBox">
+      <div class="cap">互动 · 同一张沙发，两把尺子</div>
+      <svg viewBox="0 0 760 150" aria-label="沙发与尺子演示">
+        <!-- 沙发（永远不变） -->
+        <g>
+          <rect x="230" y="34" width="300" height="52" rx="12" fill="#c9b891"/>
+          <rect x="214" y="24" width="40" height="72" rx="10" fill="#b3a179"/>
+          <rect x="506" y="24" width="40" height="72" rx="10" fill="#b3a179"/>
+          <rect x="240" y="20" width="280" height="28" rx="10" fill="#d6c7a2"/>
+          <rect x="238" y="96" width="12" height="18" fill="#8e7d58"/><rect x="510" y="96" width="12" height="18" fill="#8e7d58"/>
+        </g>
+        <!-- 尺子 -->
+        <g id="rulerG">
+          <line x1="80" y1="128" x2="680" y2="128" stroke="#16222b" stroke-width="2"/>
+          <g id="ticks"></g>
+        </g>
+      </svg>
+      <div class="readrow">
+        <div id="rulerRead" class="mono">2.00 <small>米（2015 年的尺）</small></div>
+        <div class="yr mono" id="rulerYear">2015</div>
+      </div>
+      <div class="btnrow">
+        <button class="act" id="btnShrink">让十年过去 ▶</button>
+        <button class="act ghost" id="btnHard" disabled>换一把不缩水的尺子</button>
+      </div>
+      <p class="note" style="margin-top:14px" id="rulerNote">尺子每年缩一点，读数每年涨一点。沙发，从头到尾没有动。</p>
+    </div>
+
+    <p class="reveal">这不是修辞。按官方口径「温和的 2% 通胀」复利三十年，同一张钞票的购买力只剩下 <b class="mono">55%</b>；而过去一百年里最强势的那种货币，累计丢掉了约 <b class="mono">99%</b> 的购买力。</p>
+    <p class="reveal">尺子为什么会缩？因为钱的本质是<b>账本</b>——你存在银行里的钱，在银行的账本上是一笔<b>负债</b>；而记账的那一方，拥有往账本里凭空添数字的权力。谁在记账，谁就掌握你的钱。</p>
+    <div class="pull reveal">这就是伟大的印钞机之力。<small>——《债务驱动的世界》，站长专栏</small></div>
+  </div>
+</section>
+
+<!-- ═══ 二 · 为什么是比特币 ═══ -->
+<section id="btc" style="background:var(--card);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="kicker reveal">Chapter 02 · 为什么是比特币</div>
+    <h2 class="reveal">难得，本身就是价值</h2>
+    <p class="target reveal">「比特币就是空气，一串代码，想印多少印多少。」</p>
+    <p class="no reveal">不对。恰恰相反。</p>
+    <p class="reveal">判断任何资产，先算一笔账：<b>再造一份，要花多少真钱？</b>沙子遍地都是，所以一文不值；黄金难挖，如今从矿里再取一克，成本大约 <b class="mono">60 美元</b>——这个「难得」，就是它五千年身价的底座。</p>
+    <p class="reveal">比特币把「难得」写进了数学。今天再铸造一枚，全网需要真实烧掉约 <b class="mono" id="kwh">0</b> 度电——伪造它的成本，不是法律条文，是<b>物理定律</b>。而它的总量，被一行代码封死：</p>
+
+    <div class="demo reveal" id="supplyBox">
+      <div class="cap">比特币供应曲线 · 总量恒定 21,000,000 枚</div>
+      <svg viewBox="0 0 760 250" aria-label="比特币供应量阶梯曲线">
+        <line x1="54" y1="24" x2="54" y2="212" stroke="#d8d3c6" stroke-width="1"/>
+        <line x1="54" y1="212" x2="730" y2="212" stroke="#d8d3c6" stroke-width="1"/>
+        <line x1="54" y1="34" x2="730" y2="34" stroke="#b08d3e" stroke-width="1" stroke-dasharray="4 5"/>
+        <text x="60" y="28" font-size="11" fill="#b08d3e" font-family="ui-monospace,Menlo">21,000,000 枚 —— 到此为止，一枚不多</text>
+        <path id="supplyPath" fill="none" stroke="#21405f" stroke-width="2.6"
+          d="M54,212 C120,120 170,90 226,72 C282,58 330,50 398,44 C460,40 520,38 600,36.5 C660,35.8 700,35.4 730,35.2"/>
+        <g font-size="10.5" fill="#8b9299" font-family="ui-monospace,Menlo" text-anchor="middle">
+          <line x1="226" y1="212" x2="226" y2="206" stroke="#8b9299"/><text x="226" y="228">2012 减半</text>
+          <line x1="330" y1="212" x2="330" y2="206" stroke="#8b9299"/><text x="330" y="228">2016 减半</text>
+          <line x1="440" y1="212" x2="440" y2="206" stroke="#8b9299"/><text x="440" y="228">2020 减半</text>
+          <line x1="545" y1="212" x2="545" y2="206" stroke="#8b9299"/><text x="545" y="228">2024 减半</text>
+        </g>
+        <text x="730" y="246" font-size="10.5" fill="#8b9299" text-anchor="end" font-family="ui-monospace,Menlo">…… 2140 年，最后一「聪」发行完毕</text>
+      </svg>
+      <p class="note">每四年，新币产量自动减半——生产越来越难，直到 2140 年彻底停铸。没有董事会能开会加印，没有央行能「量化宽松」它。</p>
+    </div>
+
+    <p class="reveal">法币的历史剧本我们都读过：罗马帝国往银币里掺铜，币值归零；元朝的宝钞，印到亡国；1971 年美元与黄金脱钩，纯信用货币的实验至今刚过五十年；2024 年，美国国债的利息支出第一次超过了军费。这个故事并不罕见——罕见的是<b>另一种结局第一次成为可能</b>。</p>
+    <div class="tl reveal">
+      <div class="stop"><div class="yr">罗马</div><div class="t">银币掺铜</div><div class="d">币值缓慢归零，帝国晚期信号</div></div>
+      <div class="stop"><div class="yr">元朝</div><div class="t">宝钞超印</div><div class="d">纸币实验以民生凋敝收场</div></div>
+      <div class="stop"><div class="yr">1971</div><div class="t">美元脱金</div><div class="d">纯信用货币时代开启</div></div>
+      <div class="stop"><div class="yr">2024</div><div class="t">利息超军费</div><div class="d">美国国债利息支出首超国防预算</div></div>
+    </div>
+    <div class="pull reveal">而中立的钱，纵观人类历史——第一次出现。<small>——《内在价值》，站长专栏</small></div>
+  </div>
+</section>
+
+<!-- ═══ 三 · 区块链三分钟 ═══ -->
+<section id="chain">
+  <div class="wrap">
+    <div class="kicker reveal">Chapter 03 · 区块链三分钟</div>
+    <h2 class="reveal">一本全村人手一册的账</h2>
+    <p class="reveal">银行的账本只有一本，锁在银行里，改不改、怎么改，你说了不算。区块链换了一个思路：<b>把同一本账，发给全村每个人，人手一册</b>。想做假账？你得同时骗过大多数人。</p>
+
+    <div class="demo reveal">
+      <div class="cap">互动一 · 试着改一笔账</div>
+      <div id="village" aria-label="九本相同的账本"></div>
+      <div class="verdictline" id="villageVerdict">九本账，内容一模一样。</div>
+      <div class="btnrow"><button class="act" id="btnTamper1">把 3 号账本的余额偷偷 +9,999 ▶</button></div>
+    </div>
+
+    <p class="reveal">这还只是第一道锁。每隔十分钟，全网把新发生的交易打包成一个「区块」，并给它算出一个指纹（哈希）；<b>下一个区块，把上一个的指纹刻在自己身上</b>——一环扣一环，成为「链」。改动任何一页旧账，它的指纹立刻变化，后面所有环节当场断裂：</p>
+
+    <div class="demo reveal">
+      <div class="cap">互动二 · 试着改一个旧区块</div>
+      <div id="chainRow" aria-label="区块链条演示"></div>
+      <div class="verdictline" id="chainVerdict">五个区块，环环相扣。</div>
+      <div class="btnrow"><button class="act" id="btnTamper2">篡改 2 号区块里的一笔交易 ▶</button></div>
+      <p class="note" style="margin-top:12px">想让假账重新「圆」上，就得把断掉的每一环全部重算——需要烧掉与全网算力等量的电。前面那 93 万度电，守护的就是这本账。</p>
+    </div>
+
+    <p class="reveal">没有行长，没有总部，没有下班时间。它 24 小时运转了十六年，处理了万亿美元级的转账，<b>账本从未被改写过一次</b>。这就是我们敢把「金库」建在它上面的全部理由——不是信任谁，而是不需要信任谁。</p>
+  </div>
+</section>
+
+<!-- ═══ 四 · 我们做什么 ═══ -->
+<section id="vault">
+  <div class="wide">
+    <div class="kicker reveal">Chapter 04 · Caspian Vault</div>
+    <h2 class="reveal">我们做什么：替你把「拥有」这件事做对</h2>
+    <p class="reveal" style="max-width:720px">读到这里，你可能已经认同：这个资产值得认真对待。但对很多看得懂它的人来说，真正的难题从来不是「懂不懂」，而是——<b>怎么安全地拥有</b>。私钥丢了就是永别；交易所可能倒闭；人不在了，家人打不开钱包；身份和税务，处处是坑。</p>
+    <p class="reveal"><b>Caspian Vault 只做一件事：</b>以一家美国公司的形式，合规地买入比特币、机构级冷藏、第三方审计、写进可继承的法律结构——你持有的是公司的股份，公司替你扛下面四根柱子：</p>
+
+    <div class="pillars reveal">
+      <div class="pillar"><div class="ic">🔐</div><h4>托管</h4><p>机构级合格托管 + 多签冷储。私钥保管这件最容易出事的事，交给制度而不是记性。</p></div>
+      <div class="pillar"><div class="ic">🌳</div><h4>传承</h4><p>股份写得进遗嘱、信托与家族架构——传下去的是一份产权，不是一串没人知道的密码。</p></div>
+      <div class="pillar"><div class="ic">🛂</div><h4>身份与合规</h4><p>受身份或地域所限、难以直接持币的人，获得一条路径清晰、文件齐全的合规通道。</p></div>
+      <div class="pillar"><div class="ic">📜</div><h4>税务清晰</h4><p>公司「持有不卖」，把应税时点合法地向后推（递延，而非免税）；持股的税务路径比持币清晰。</p></div>
+    </div>
+
+    <div class="dial reveal">
+      <div>
+        <div class="num" id="bpsNum">10,000 <small>sats / 股（示意）</small></div>
+        <div style="font-size:12px;color:#8fa3b5;letter-spacing:.18em;margin-top:4px">每股含币量 · 唯一仪表</div>
+      </div>
+      <div class="expl">这家公司只有一块仪表盘：<b>每股含币量</b>——你的每一股背后，站着多少聪比特币。我们的纪律写在章程里：当增发不能让这个数字上升时，<b>就不增发</b>。它只许升，不许降。每月公告，链上可验。</div>
+    </div>
+
+    <h3 class="reveal" style="color:#f0e9d8">飞轮，与刹车</h3>
+    <div id="wheelBox" class="reveal">
+      <svg viewBox="0 0 380 380" aria-label="每股含币量飞轮示意图">
+        <g class="spin">
+          <path d="M190,60 A130,130 0 0 1 316,166" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M320,214 A130,130 0 0 1 214,318" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M166,316 A130,130 0 0 1 62,214" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M60,166 A130,130 0 0 1 164,62" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
+        </g>
+        <defs><marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b08d3e"/></marker></defs>
+        <g font-size="13" fill="#dfe2d9" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">
+          <text x="190" y="42">审慎募资</text>
+          <text x="342" y="194">买入比特币</text>
+          <text x="190" y="346">每股含币量 ↑</text>
+          <text x="38" y="194">信任加深</text>
+        </g>
+        <g text-anchor="middle">
+          <text x="190" y="184" font-size="15" fill="#f0e9d8" font-family="'Songti SC','STSong',serif" font-weight="900">每股含币量</text>
+          <text x="190" y="208" font-size="11" fill="#8fa3b5">只许升 · 不许降</text>
+        </g>
+      </svg>
+    </div>
+    <p class="reveal" style="text-align:center;font-size:13.5px;color:#8fa3b5">飞轮谁都会画，刹车才值钱。下面五条，是写给自己的刹车：</p>
+
+    <ol class="rules reveal">
+      <li><b>95 / 5 仓位</b>——约 95% 比特币，5% 现金储备；不做全仓英雄。</li>
+      <li><b>零强平杠杆</b>——章程禁止任何附带追加保证金、可被强制平仓的融资。没人能逼这家公司在底部卖币。</li>
+      <li><b>24 个月粮草</b>——任何时点，留足两年运营开支的法币储备。</li>
+      <li><b>纯持有</b>——一枚币不外借、一张期权不卖出、一手期货不触碰。收益噱头换来的每一个点，都以你最在乎的「绝不丢币」为代价。</li>
+      <li><b>玻璃金库</b>——月度公告持仓与每股含币量，持币地址公开，链上随时可验。透明，胜过聪明。</li>
+    </ol>
+
+    <div class="redcard reveal">
+      <b>三条红线（对自己立的法）：</b>不向中国大陆境内任何人提供服务或进行任何形式的推介；不向任何人承诺或暗示任何回报；任何有关公司证券的沟通，仅在既有关系中、与经核实的合格投资人私下进行——本页不构成其中任何一种。
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 五 · 诚实条款 ═══ -->
+<section id="honest">
+  <div class="wrap">
+    <div class="kicker reveal">Chapter 05 · 诚实条款</div>
+    <h2 class="reveal">先把最坏的话说在最前面</h2>
+    <div class="box reveal">
+      <p class="big">如果比特币归零，与它相关的一切投入将全部损失。<br>任何告诉你「不会亏」的人，都在对你撒谎——<br>包括未来的我们，如果我们哪天说了这句话。</p>
+    </div>
+    <p class="reveal" style="margin-top:30px">它的波动同样凶猛。历史上，比特币经历过四次超过 75% 的回撤——每一次都有人以为它死了，每一次持有不满一个完整周期的人都伤痕累累：</p>
+    <div class="ddbars reveal">
+      <div class="dd"><div class="bar"><i style="height:93%"></i></div><div class="v">−93%</div><div class="y">2011</div></div>
+      <div class="dd"><div class="bar"><i style="height:85%"></i></div><div class="v">−85%</div><div class="y">2013–15</div></div>
+      <div class="dd"><div class="bar"><i style="height:84%"></i></div><div class="v">−84%</div><div class="y">2017–18</div></div>
+      <div class="dd"><div class="bar"><i style="height:77%"></i></div><div class="v">−77%</div><div class="y">2021–22</div></div>
+    </div>
+    <p class="reveal">所以我们的立场从第一天就写死：这个东西，<b>只适合用「即使全部损失也不影响生活」的钱、以五年起步的时间</b>去认识。我们把自家条款放进模拟器里，用这四次暴跌反复碾压测试过——测试报告，未来会和月度公告一样公开。</p>
+    <p class="note reveal">本页全部内容为教育与品牌展示，不构成投资建议、法律或税务意见，亦不构成任何证券的要约、要约邀请或推介。Caspian Vault 为筹建中实体的暂定名称，尚未发行任何证券。对中国大陆居民不提供任何服务。</p>
+  </div>
+</section>
+
+<!-- ═══ 六 · 路线图 ═══ -->
+<section id="road" style="background:var(--card);border-top:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="kicker reveal">Chapter 06 · 路线图</div>
+    <h2 class="reveal">慢，就是快</h2>
+    <div class="road reveal">
+      <div class="node done"><div class="t">公开写作与教育</div><div class="d">五篇专栏、互动实验室与小游戏已上线——先把认知的地基打给所有人，免费。</div></div>
+      <div class="node here"><div class="t">Delaware 起步壳 <span class="flag">● 你在这里</span></div><div class="d">美国公司筹建中：章程纪律（含上面那五条刹车）、托管与审计框架、退出条款压力测试。</div></div>
+      <div class="node"><div class="t">创始记录期</div><div class="d">创始人自有资金先行入库；月度公告从第一枚币开始，让每股含币量曲线自己说话。</div></div>
+      <div class="node"><div class="t">极小范围的同行者</div><div class="d">仅通过熟人引荐、面向经核实的合格投资人私下进行——没有公开募集，永远没有倒计时。</div></div>
+      <div class="node"><div class="t">亚洲架构（远期）</div><div class="d">当规模与信任都长够了，再谈更大的结构。跟着信任走，不跟着野心走。</div></div>
+    </div>
+    <div class="pull reveal">百米巨浪，已经出现在了海平面上。<br>我们选择先造船，再等潮。<small>——《诺亚方舟》，站长专栏</small></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">CASPIAN VAULT · 里海金库</div>
+    <div>河流只注入，海水不外流。</div>
+    <div style="margin-top:10px">联系：本页不设公开联系方式——我们以熟人引荐的方式认识每一位朋友。<br>想先看懂比特币？欢迎从站长的公益科普专栏「胡侃比特」读起（五篇文章 + 互动实验室，永久免费）。</div>
+    <div class="fine">
+      Caspian Vault（暂定名）· Delaware 实体筹建中 · 本页面为品牌与教育展示，不构成任何司法辖区内的证券要约、要约邀请、招揽或投资建议；未注册亦未发行任何证券；不向中国大陆居民提供服务。比特币价格波动剧烈，历史表现不代表未来；请仅以可承受全部损失的资金认识这一资产。© 2026 Caspian Vault (name pending). All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ── 滚动水位 ── */
+const gfill=$("gfill");
+function gauge(){
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+  gfill.style.height=(p*100).toFixed(1)+"%";
+}
+addEventListener("scroll",gauge,{passive:true});gauge();
+
+/* ── 海面微澜 ── */
+(function(){
+  if(reduced)return;
+  const wp=$("waveP");let t=0;
+  function wave(){
+    t+=0.014;
+    let d="M0,"+(306+Math.sin(t)*2);
+    for(let x=90;x<=1080;x+=90){
+      const y=306+Math.sin(t+x/140)*3;
+      d+=` Q${x-45},${y-4} ${x},${y}`;
+    }
+    d+=" L1100,380 L0,380 Z";
+    wp.setAttribute("d",d);
+    requestAnimationFrame(wave);
+  }
+  wave();
+})();
+
+/* ── reveal（滚动驱动，锚点快跳也不漏）── */
+const reveals=[...document.querySelectorAll(".reveal")];
+function checkReveals(){
+  const vh=innerHeight;
+  for(const el of reveals){
+    if(el.classList.contains("on"))continue;
+    const r=el.getBoundingClientRect();
+    if(r.top<vh*0.92&&r.bottom>-20)el.classList.add("on");
+  }
+}
+let rafPend=false;
+addEventListener("scroll",()=>{if(rafPend)return;rafPend=true;requestAnimationFrame(()=>{rafPend=false;checkReveals();gauge();});},{passive:true});
+addEventListener("resize",checkReveals);
+checkReveals();setTimeout(checkReveals,300);
+setInterval(()=>{checkReveals();gauge();},400); // 保险丝：兜住一切不派发 scroll 事件的滚动
+
+/* ── 尺子演示 ── */
+const ticksG=$("ticks");
+const UNIT0=33.2; let unit=UNIT0; // 沙发 332px = 真实 2.00 米 ⇒ 1 刻度(0.2米)=33.2px
+let year=2015, shrunk=0, timer=null;
+function drawTicks(u){
+  let s="";
+  const total=Math.floor(600/u);
+  for(let i=0;i<=total;i++){
+    const x=80+i*u;
+    if(x>682)break;
+    const big=i%5===0;
+    s+=`<line x1="${x}" y1="128" x2="${x}" y2="${big?112:119}" stroke="#16222b" stroke-width="${big?1.6:1}"/>`;
+    if(big)s+=`<text x="${x}" y="146" font-size="10" fill="#8b9299" text-anchor="middle" font-family="ui-monospace,Menlo">${(i*0.2).toFixed(1)}</text>`;
+  }
+  ticksG.innerHTML=s;
+}
+function readout(){
+  // 沙发宽 332px（含扶手 214→546）。真实 2 米。刻度间距 unit 对应 0.2 米。
+  const meters=332/(unit*5);
+  $("rulerRead").innerHTML=meters.toFixed(2)+' <small>米（'+year+' 年的尺）</small>';
+  $("rulerYear").textContent=year;
+}
+drawTicks(unit);readout();
+$("btnShrink").addEventListener("click",()=>{
+  if(timer)return;
+  $("btnShrink").disabled=true;
+  timer=setInterval(()=>{
+    year++;shrunk++;
+    unit*=0.94;                       // 尺子每年缩 6%（十年后读数 ≈ 3.71 米）
+    drawTicks(unit);readout();
+    if(shrunk>=10){clearInterval(timer);timer=null;$("btnHard").disabled=false;
+      $("rulerNote").innerHTML="十年过去：沙发还是那张沙发，读数却从 2.00 涨到了 "+ (332/(unit/0.2)).toFixed(2) +"。<b>你没有变富，是尺子变短了。</b>";}
+  }, reduced?0:420);
+});
+$("btnHard").addEventListener("click",()=>{
+  unit=UNIT0;drawTicks(unit);
+  $("rulerRead").innerHTML='2.00 <small>米（不缩水的尺）</small>';
+  $("rulerNote").innerHTML="换一把总量恒定的尺子再量：沙发从来都是 2.00 米。<b>先换尺子，再谈涨跌。</b>";
+  $("btnHard").disabled=true;$("btnShrink").disabled=false;shrunk=0;year=2015;$("rulerYear").textContent="2015→";
+});
+
+/* ── 93 万度电 count-up ── */
+(function(){
+  const el=$("kwh");let done=false;
+  const io2=new IntersectionObserver(es=>{
+    if(!es[0].isIntersecting||done)return;done=true;
+    if(reduced){el.textContent="930,000";return;}
+    const t0=performance.now();
+    (function step(t){const p=Math.min(1,(t-t0)/1400);
+      el.textContent=Math.round(930000*(p*p*(3-2*p))).toLocaleString();
+      if(p<1)requestAnimationFrame(step);})(t0);
+  },{threshold:.5});
+  io2.observe(el);
+})();
+
+/* ── 21M 曲线描画 ── */
+(function(){
+  const p=$("supplyPath");const L=p.getTotalLength();
+  p.style.strokeDasharray=L;p.style.strokeDashoffset=reduced?0:L;
+  const io3=new IntersectionObserver(es=>{
+    if(!es[0].isIntersecting)return;
+    p.style.transition="stroke-dashoffset 2.2s ease";p.style.strokeDashoffset=0;io3.disconnect();
+  },{threshold:.4});
+  io3.observe(p);
+})();
+
+/* ── 村账本 ── */
+const village=$("village");
+for(let i=1;i<=9;i++){
+  const b=document.createElement("div");b.className="book";b.id="bk"+i;
+  b.innerHTML=`<div>账本 ${i}</div><div class="mono" id="bal${i}">余额 100</div>`;
+  village.appendChild(b);
+}
+$("btnTamper1").addEventListener("click",()=>{
+  const btn=$("btnTamper1");btn.disabled=true;
+  const bk3=$("bk3");bk3.classList.add("bad");$("bal3").textContent="余额 10,099";
+  $("villageVerdict").innerHTML='3 号账本：「我的余额是 10,099！」';
+  setTimeout(()=>{
+    for(let i=1;i<=9;i++)if(i!==3)$("bk"+i).classList.add("veto");
+    $("villageVerdict").innerHTML='其余八本齐声核对：「<b class="badv">不对，是 100。</b>」—— <b class="okv">8 : 1，假账当场作废。</b>';
+  },reduced?0:900);
+  setTimeout(()=>{
+    bk3.classList.remove("bad");$("bal3").textContent="余额 100";
+    for(let i=1;i<=9;i++)$("bk"+i).classList.remove("veto");
+    $("villageVerdict").innerHTML='账本恢复一致。想骗过这个村子，你得同时收买大多数人——而这个「村」，有全球上万个节点。';
+    btn.disabled=false;
+  },reduced?400:3400);
+});
+
+/* ── 链条 ── */
+const chainRow=$("chainRow");
+const HASHES=["a91f…c2","7d04…9e","f3b8…61","28c5…d7","905a…4b"];
+for(let i=0;i<5;i++){
+  if(i>0){const arm=document.createElement("div");arm.className="linkarm";arm.id="arm"+i;chainRow.appendChild(arm);}
+  const b=document.createElement("div");b.className="blk";b.id="blk"+i;
+  b.innerHTML=`<div><b>区块 ${i+1}</b></div><div class="p">前指纹 ${i===0?"创世":HASHES[i-1]}</div><div>交易 ×${120+i*7}</div><div class="h">指纹 ${HASHES[i]}</div>`;
+  chainRow.appendChild(b);
+}
+$("btnTamper2").addEventListener("click",()=>{
+  const btn=$("btnTamper2");btn.disabled=true;
+  const b2=$("blk1");b2.classList.add("broken");
+  b2.querySelector(".h").textContent="指纹 ????…!!";
+  $("chainVerdict").innerHTML='2 号区块被改——它的指纹瞬间变了。';
+  [2,3,4].forEach((i,k)=>setTimeout(()=>{
+    $("arm"+i)?.classList.add("broken");$("blk"+i).classList.add("broken");
+    if(i===4)$("chainVerdict").innerHTML='<b class="badv">后面所有区块当场断裂。</b>想瞒天过海？把断掉的每一环全部重算——那需要与全网等量的电力。';
+  },reduced?0:(k+1)*650));
+  setTimeout(()=>{
+    for(let i=0;i<5;i++){$("blk"+i).classList.remove("broken");
+      $("blk"+i).querySelector(".h").textContent="指纹 "+HASHES[i];}
+    for(let i=1;i<5;i++)$("arm"+i)?.classList.remove("broken");
+    $("chainVerdict").textContent="诚实的链，比造假便宜得多——这就是它十六年不被改写的原因。";
+    btn.disabled=false;
+  },reduced?600:4600);
+});
+</script>
+</body>
+</html>
