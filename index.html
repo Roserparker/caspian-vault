@@ -12,32 +12,42 @@
 <meta property="og:description" content="被大地环抱的海：只进，不出。一家正在筹建的比特币金库公司。">
 <meta property="og:url" content="https://caspianvault.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='5' y='5' width='54' height='54' rx='13' fill='%230e1c28' stroke='%231f3d55'/%3E%3Cpath d='M32 13 C40 14 43 20 40 27 C44 33 43 42 37 48 C34 52 30 53 32 53 C34 53 30 52 27 48 C21 42 20 33 24 27 C21 20 24 14 32 13 Z' fill='none' stroke='%23d8b466' stroke-width='2'/%3E%3Ctext x='32' y='39' font-size='19' text-anchor='middle' fill='%23d8b466' font-family='Georgia,serif'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;600&display=swap"></noscript>
 <style>
 :root{
-  --deep:#0e1c28; --deep2:#132a3d; --deepcard:#102434; --deepline:#1f3d55;
-  --paper:#f7f5ef; --paper2:#efece3; --card:#fffdf8; --ink:#1a232b; --ink2:#4a5760; --muted:#8b9299;
-  --hair:#e2ddd0; --grid:#e9e5da;
-  --gold:#b08d3e; --goldbright:#d8b466; --goldwash:rgba(216,180,102,.14);
-  --water:#21405f; --waterlt:#2f6b8f; --crit:#b3362b; --good:#2e7d4f;
-  --serif:"Songti SC","STSong","Noto Serif SC","SimSun",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  /* ── v4 钢青令牌（唯一真源） ── */
+  --steel-black:#070B0E; --deep-teal:#0E1A20; --steel:#31586B; --titan:#9FC6D4;
+  --silver:#D9DEE2; --mist:#7D8894; --btc:#E8813A; --btc-dim:#8A5A34;
+  --ease-velvet:cubic-bezier(.22,.61,.2,1);
+  --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","HarmonyOS Sans SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --ease-breath:cubic-bezier(.25,.46,.45,.94);
+  /* ── v3 旧名过渡别名（T9 清除）：全部映射到冷色，暖金即刻退场 ── */
+  --deep:#0E1A20; --deep2:#0C161D; --deepcard:#0A141B; --deepline:#1C3440;
+  --paper:#070B0E; --paper2:#0A141B; --card:#0E1A20; --ink:#EAEDEF; --ink2:#A8B4BC; --muted:#7D8894;
+  --hair:#1C3440; --grid:#122028;
+  --gold:#9FC6D4; --goldbright:#9FC6D4; --goldwash:rgba(159,198,212,.10);
+  --water:#31586B; --waterlt:#9FC6D4;
+  --ease-breath:cubic-bezier(.22,.61,.2,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;overflow-x:hidden}
-body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:2.05;
+html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--steel-black);color:var(--silver);font-family:var(--sans);font-size:17px;line-height:1.9;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;pointer-events:none;opacity:.45;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
-.mono{font-family:var(--mono)}
+body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:-1;
+  background:#03070C;opacity:calc(var(--dive,0)*.55)}
+.mono,.knum{font-family:var(--mono)}
+.knum{color:var(--titan);font-weight:400}
+.serif{font-family:var(--serif);font-weight:600}
+.plate{background:var(--deep-teal);border:1px solid rgba(49,88,107,.3);border-radius:2px;padding:26px 28px}
+.hairline{border-top:1px solid rgba(49,88,107,.35)}
 .wrap{max-width:860px;margin:0 auto;padding:0 24px}
 .wide{max-width:1020px;margin:0 auto;padding:0 24px}
 a{color:inherit}
-::selection{background:var(--goldwash);color:var(--ink)}
-:focus-visible{outline:2px solid var(--waterlt);outline-offset:3px}
-.rule{border:none;height:5px;margin:3.4rem auto;max-width:200px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+::selection{background:#16303C;color:#fff}
+:focus-visible{outline:2px solid var(--titan);outline-offset:3px}
 .click-ping{position:fixed;width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid var(--gold);
   border-radius:50%;pointer-events:none;z-index:9999;opacity:.45;transform:scale(.18);
   animation:ping-out .55s var(--ease-breath) forwards}
@@ -49,15 +59,16 @@ a{color:inherit}
 #gauge .lbl{position:absolute;right:2px;bottom:3vh;font-family:var(--sans);font-size:9px;letter-spacing:.28em;color:var(--muted);writing-mode:vertical-rl}
 @media(max-width:760px){#gauge{display:none}}
 /* ── 导航 ── */
-nav.top{position:-webkit-sticky;position:sticky;top:0;z-index:50;background:rgba(247,245,239,.97);border-bottom:1px solid var(--hair)}
+nav.top{position:-webkit-sticky;position:sticky;top:0;z-index:50;background:rgba(7,11,14,.9);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(49,88,107,.35)}
 nav.top .row{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 24px;font-family:var(--sans);font-size:13px}
 nav.top .logo{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:900;letter-spacing:.06em;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
 nav.top .logo svg{display:block;flex:none}
 nav.top .links{display:flex;gap:15px;margin-left:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
 nav.top .links::-webkit-scrollbar{display:none}
-nav.top a{color:var(--ink2);text-decoration:none;white-space:nowrap;padding-bottom:2px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;flex:none}
-nav.top a:hover{color:var(--ink);border-bottom-color:var(--gold)}
-nav.top a.ext{color:var(--gold)}
+nav.top a{color:var(--mist);text-decoration:none;white-space:nowrap;padding-bottom:2px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;flex:none}
+nav.top a:hover{color:var(--titan);border-bottom-color:var(--steel)}
+nav.top a.ext{color:var(--titan)}
 @media(max-width:1000px){
   nav.top .row{flex-wrap:wrap;gap:6px 18px;padding:9px 18px}
   nav.top .links{margin-left:0;flex-basis:100%;font-size:12.5px;gap:14px;padding-bottom:2px}
@@ -94,9 +105,9 @@ nav.top a.ext{color:var(--gold)}
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 /* ── 章节骨架 ── */
 section{padding:88px 0 72px}
-.kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
-h2{font-family:var(--serif);font-size:clamp(27px,4vw,38px);font-weight:900;letter-spacing:.06em;margin-bottom:24px;line-height:1.5}
-h3{font-family:var(--serif);font-size:18.5px;margin:38px 0 12px;font-weight:700;letter-spacing:.04em}
+.kicker,.chap-k{font-family:var(--mono);font-size:11px;letter-spacing:.4em;color:var(--mist);margin-bottom:12px}
+h2{font-family:var(--serif);font-size:clamp(26px,3.6vw,34px);font-weight:600;letter-spacing:.08em;margin-bottom:24px;line-height:1.55;color:#EAEDEF}
+h3{font-family:var(--serif);font-size:18.5px;margin:38px 0 12px;font-weight:600;letter-spacing:.06em;color:#EAEDEF}
 p{margin-bottom:16px;color:var(--ink2)}
 p b,p strong{color:var(--ink)}
 .lead{font-size:clamp(17px,2.3vw,20px);line-height:2;color:var(--ink);max-width:680px}
