@@ -168,6 +168,18 @@ input[type=range]{accent-color:var(--steel)}
 .gx-motto strong{color:#EAEDEF}
 .client{max-width:640px;margin:2.4rem auto 0;text-align:center;font-family:var(--serif);font-size:1rem;line-height:2.1;color:var(--silver)}
 .client b{color:#EAEDEF}
+/* 每股含币量仪表盘 */
+.gauge{width:340px;max-width:100%;flex:none}
+.gauge .ndl{transform:rotate(0deg);transform-origin:180px 200px;transition:transform 1.9s var(--ease-velvet) .35s}
+.metric.on .gauge .ndl{transform:rotate(120deg)}
+.gauge .glock{transition:stroke-dashoffset 1.9s var(--ease-velvet) .35s}
+.metric.on .gauge .glock{stroke-dashoffset:0}
+.mspark{display:block;width:216px;max-width:100%;margin-top:14px}
+.mspark-cap{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mist);margin-top:4px}
+@media(prefers-reduced-motion:reduce){
+  .gauge .ndl{transform:rotate(120deg);transition:none}
+  .gauge .glock{stroke-dashoffset:0;transition:none}
+}
 /* 安全三道门 */
 .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0 8px}
 @media(max-width:820px){.doors{grid-template-columns:1fr}}
@@ -733,8 +745,36 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     <p class="note reveal" style="margin-bottom:34px">第四道门是玻璃做的——持仓地址公开、链上随时可验（见下方五条刹车）。以上为目标托管架构的<b>教学式说明</b>，非技术白皮书；落地细节以正式文件与审计报告为准。</p>
 
     <div class="metric reveal">
-      <div class="num">10,000 <small>sats / 股（示意）</small></div>
-      <div class="expl">这家公司只有一块仪表：<b>每股含币量</b>。章程写死：<b>只许升，不许降。</b>月度公告，链上可验。</div>
+      <svg class="gauge" viewBox="0 0 360 236" role="img" aria-label="每股含币量仪表（示意）：指针只升不降，当前 10,000 sats/股">
+        <defs>
+          <linearGradient id="gLock" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#8A5A34"/><stop offset="1" stop-color="#E8813A"/>
+          </linearGradient>
+        </defs>
+        <path d="M40,200 A140,140 0 0 1 320,200" fill="none" stroke="rgba(49,88,107,.4)" stroke-width="7" pathLength="180"/>
+        <path class="glock" d="M40,200 A140,140 0 0 1 320,200" fill="none" stroke="url(#gLock)" stroke-width="7" stroke-linecap="round" pathLength="180" stroke-dasharray="120 999" stroke-dashoffset="120"/>
+        <path d="M54,200 A126,126 0 0 1 306,200" fill="none" stroke="rgba(49,88,107,.25)" stroke-width="1"/>
+        <g stroke="rgba(159,198,212,.4)" stroke-width="1"><line x1="38.8" y1="185.2" x2="46.7" y2="186.0"/><line x1="41.1" y1="170.5" x2="48.9" y2="172.1"/><line x1="44.9" y1="156.1" x2="52.6" y2="158.6"/><line x1="50.3" y1="142.2" x2="57.6" y2="145.5"/><line x1="65.1" y1="116.5" x2="71.6" y2="121.2"/><line x1="74.5" y1="105.0" x2="80.4" y2="110.3"/><line x1="85.0" y1="94.5" x2="90.3" y2="100.4"/><line x1="96.5" y1="85.1" x2="101.2" y2="91.6"/><line x1="122.2" y1="70.3" x2="125.5" y2="77.6"/><line x1="136.1" y1="64.9" x2="138.6" y2="72.6"/><line x1="150.5" y1="61.1" x2="152.1" y2="68.9"/><line x1="165.2" y1="58.8" x2="166.0" y2="66.7"/><line x1="194.8" y1="58.8" x2="194.0" y2="66.7"/><line x1="209.5" y1="61.1" x2="207.9" y2="68.9"/><line x1="223.9" y1="64.9" x2="221.4" y2="72.6"/><line x1="237.8" y1="70.3" x2="234.5" y2="77.6"/><line x1="263.5" y1="85.1" x2="258.8" y2="91.6"/><line x1="275.0" y1="94.5" x2="269.7" y2="100.4"/><line x1="285.5" y1="105.0" x2="279.6" y2="110.3"/><line x1="294.9" y1="116.5" x2="288.4" y2="121.2"/><line x1="309.7" y1="142.2" x2="302.4" y2="145.5"/><line x1="315.1" y1="156.1" x2="307.4" y2="158.6"/><line x1="318.9" y1="170.5" x2="311.1" y2="172.1"/><line x1="321.2" y1="185.2" x2="313.3" y2="186.0"/></g>
+        <g stroke="#9FC6D4" stroke-width="1.6" opacity=".8"><line x1="38.0" y1="200.0" x2="52.0" y2="200.0"/><line x1="57.0" y1="129.0" x2="69.1" y2="136.0"/><line x1="109.0" y1="77.0" x2="116.0" y2="89.1"/><line x1="180.0" y1="58.0" x2="180.0" y2="72.0"/><line x1="251.0" y1="77.0" x2="244.0" y2="89.1"/><line x1="303.0" y1="129.0" x2="290.9" y2="136.0"/><line x1="322.0" y1="200.0" x2="308.0" y2="200.0"/></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#7D8894"><text x="66.0" y="203.0" text-anchor="middle">0</text><text x="81.3" y="146.0" text-anchor="middle">2.5k</text><text x="123.0" y="104.3" text-anchor="middle">5k</text><text x="180.0" y="89.0" text-anchor="middle">7.5k</text><text x="237.0" y="104.3" text-anchor="middle">10k</text><text x="278.7" y="146.0" text-anchor="middle">12.5k</text><text x="294.0" y="203.0" text-anchor="middle">15k</text></g>
+        <line x1="255" y1="70" x2="259" y2="63" stroke="#E8813A" stroke-width="2"/>
+        <text x="267" y="56" font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#9AA4AD">历史最高＝当前（棘轮）</text>
+        <g class="ndl">
+          <path d="M58,200 L178,195.4 L198,200 L178,204.6 Z" fill="#E8813A"/>
+        </g>
+        <circle cx="180" cy="200" r="8" fill="#0A141B" stroke="#E8813A" stroke-width="2"/>
+        <circle cx="180" cy="200" r="2.4" fill="#E8813A"/>
+        <text x="180" y="163" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="30" font-weight="700" fill="#E8813A">10,000</text>
+        <text x="180" y="180" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#7D8894" letter-spacing="2">sats / 股 · 示意</text>
+        <text x="180" y="228" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#9AA4AD" letter-spacing="3">每股含币量 · 章程：只许升，不许降</text>
+      </svg>
+      <div class="expl">这家公司只有一块仪表：<b>每股含币量</b>。表盘上的橙色弧是<b>棘轮</b>——到过的高度永久锁定，章程写死：<b>只许升，不许降。</b>月度公告，链上可验。
+        <svg class="mspark" viewBox="-4 -4 228 44" aria-label="月度公告轨迹（示意）：逐月上升的阶梯">
+          <path d="M0.0,31.3 L19.6,31.3 L19.6,29.2 L39.3,29.2 L39.3,25.8 L58.9,25.8 L58.9,23.8 L78.5,23.8 L78.5,20.4 L98.2,20.4 L98.2,19.0 L117.8,19.0 L117.8,17.0 L137.5,17.0 L137.5,14.2 L157.1,14.2 L157.1,12.2 L176.7,12.2 L176.7,10.1 L196.4,10.1 L196.4,8.1 L216.0,8.1 L216.0,6.7" fill="none" stroke="#B0793F" stroke-width="1.6"/>
+          <circle cx="216.0" cy="6.7" r="2.6" fill="#E8813A"/>
+        </svg>
+        <span class="mspark-cap">月度公告轨迹（示意）——每月只会持平或走高</span>
+      </div>
     </div>
 
     <h3 class="reveal">飞轮谁都会画，刹车才值钱</h3>
