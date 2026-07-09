@@ -168,6 +168,10 @@ input[type=range]{accent-color:var(--steel)}
 .gx-motto strong{color:#EAEDEF}
 .client{max-width:640px;margin:2.4rem auto 0;text-align:center;font-family:var(--serif);font-size:1rem;line-height:2.1;color:var(--silver)}
 .client b{color:#EAEDEF}
+/* 安全三道门 */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0 8px}
+@media(max-width:820px){.doors{grid-template-columns:1fr}}
+.door-spec{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--mist);border-top:1px solid rgba(49,88,107,.3);margin-top:14px;padding-top:10px}
 /* 第一章图录铭牌 */
 .c1-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:2.2rem}
 @media(max-width:768px){.c1-grid{grid-template-columns:1fr}}
@@ -704,6 +708,30 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
       </div>
     </div>
 
+    <h3 class="reveal">安全怎么做到：三道门</h3>
+    <p class="reveal">比特币没有客服热线，也没有挂失窗口——<b>它只认钥匙，不认人</b>。被偷无法追回，转走无法撤销。所以在这门生意里，安全不是卖点之一，<b>是产品本身</b>。我们的库房有三道门：</p>
+    <div class="doors reveal">
+      <div class="plate">
+        <div class="chap-k">门一 · 断网</div>
+        <h4 class="serif" style="margin:0 0 8px;font-size:17px;color:#EAEDEF">钥匙一生不碰网</h4>
+        <p style="font-size:13.5px;line-height:1.95;margin:0">私钥在一台<b>从未联网的机器</b>上出生、保管、签名。黑客的所有本事都需要一根网线——我们不给。就像这片海：<b>安全不靠藏，靠不接任何一根管道。</b></p>
+        <div class="door-spec">密钥生成 · 存储 · 签名全程离线（air-gapped 冷储存）</div>
+      </div>
+      <div class="plate">
+        <div class="chap-k">门二 · 多签</div>
+        <h4 class="serif" style="margin:0 0 8px;font-size:17px;color:#EAEDEF">一把锁，多把钥匙，分居多地</h4>
+        <p style="font-size:13.5px;line-height:1.95;margin:0">动任何一枚币，需要<b>分存异地的多把钥匙同时到场</b>——像银行金库的双人开锁，只是更严。任何单个人（包括创始人）、单个地点、单次意外，都动不了库。</p>
+        <div class="door-spec">M-of-N 阈值签名（multisig）· 无单点故障</div>
+      </div>
+      <div class="plate">
+        <div class="chap-k">门三 · 机构托管</div>
+        <h4 class="serif" style="margin:0 0 8px;font-size:17px;color:#EAEDEF">不让任何人管所有钥匙</h4>
+        <p style="font-size:13.5px;line-height:1.95;margin:0">行业最严标准的<b>持牌合格托管商</b>参与保管——有保险、有独立审计、有监管盯着。公司自己，也绝不做「一个人管住一切」的单点。</p>
+        <div class="door-spec">持牌合格托管 · 保险 · 独立审计</div>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-bottom:34px">第四道门是玻璃做的——持仓地址公开、链上随时可验（见下方五条刹车）。以上为目标托管架构的<b>教学式说明</b>，非技术白皮书；落地细节以正式文件与审计报告为准。</p>
+
     <div class="metric reveal">
       <div class="num">10,000 <small>sats / 股（示意）</small></div>
       <div class="expl">这家公司只有一块仪表：<b>每股含币量</b>。章程写死：<b>只许升，不许降。</b>月度公告，链上可验。</div>
@@ -740,21 +768,27 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     </div>
     <p class="reveal" style="margin-top:30px">它的波动凶猛——但把十五年放上同一条时间轴，能看到三件事同时发生：<b>上涨的年份多于下跌的年份（11 涨 4 跌），周期最大回撤逐次收窄，入场的机构与国家在变多。</b></p>
     <div class="demo reveal">
-      <div class="cap">十五年 · 年度涨跌与接受度（柱高对数压缩，以数值为准 · 教学近似 · 2026-07 口径）</div>
-      <svg id="cycSvg" viewBox="0 0 760 340" aria-label="十五年年度涨跌：十一年上涨、四年下跌；接受度事件逐年增多；周期最大回撤逐次收窄">
+      <div class="cap">十五年 · 年度涨跌与接受度（点击或左右滑动看每一年 · 柱高对数压缩，以数值为准 · 教学近似 · 2026-07 口径）</div>
+      <div class="halving-read" style="margin:0 0 14px">
+        <div class="cell"><div class="k">年份</div><div class="v" id="cyYr">2024</div></div>
+        <div class="cell"><div class="k">当年涨跌</div><div class="v" id="cyRet">+121%</div></div>
+        <div class="cell"><div class="k">这一年</div><div class="v" id="cyEv" style="font-size:13.5px;font-family:var(--sans);font-weight:400;line-height:1.7">美国现货 ETF 获批 · 第四次减半 · 华尔街正式入场</div></div>
+      </div>
+      <svg id="cycSvg" viewBox="0 0 760 366" aria-label="十五年年度涨跌：十一年上涨、四年下跌；点击查看每年事件" style="cursor:pointer;touch-action:pan-y">
         <g font-family="ui-monospace,Menlo,monospace" font-size="10">
           <rect x="62" y="8" width="9" height="9" fill="#B0793F"/><text x="76" y="16" fill="#C9B296">上涨年（11 年）</text>
           <rect x="192" y="8" width="9" height="9" fill="#6E4526"/><text x="206" y="16" fill="#9AA4AD">下跌年（4 年）</text>
           <line x1="330" y1="12" x2="342" y2="12" stroke="#A99BD6" stroke-width="2"/><text x="348" y="16" fill="#B9AEDD">轴上紫刻=接受度事件年</text>
         </g>
-        <line x1="56" y1="220" x2="730" y2="220" stroke="rgba(49,88,107,.55)" stroke-width="1.4"/>
-        <line x1="344" y1="217" x2="344" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="481" y1="217" x2="481" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="527" y1="217" x2="527" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="664" y1="217" x2="664" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="710" y1="217" x2="710" y2="223" stroke="#A99BD6" stroke-width="2"/>
-        <g><rect x="55" y="130" width="30" height="90" fill="#B0793F" opacity=".9"/><rect x="101" y="173" width="30" height="47" fill="#B0793F" opacity=".9"/><rect x="146" y="101" width="30" height="119" fill="#B0793F" opacity=".9"/><rect x="192" y="220" width="30" height="26" fill="#6E4526"/><rect x="238" y="201" width="30" height="19" fill="#B0793F" opacity=".9"/><rect x="284" y="181" width="30" height="39" fill="#B0793F" opacity=".9"/><rect x="329" y="132" width="30" height="88" fill="#B0793F" opacity=".9"/><rect x="375" y="220" width="30" height="30" fill="#6E4526"/><rect x="421" y="186" width="30" height="34" fill="#B0793F" opacity=".9"/><rect x="466" y="163" width="30" height="57" fill="#B0793F" opacity=".9"/><rect x="512" y="193" width="30" height="27" fill="#B0793F" opacity=".9"/><rect x="558" y="220" width="30" height="28" fill="#6E4526"/><rect x="603" y="177" width="30" height="43" fill="#B0793F" opacity=".9"/><rect x="649" y="181" width="30" height="39" fill="#B0793F" opacity=".9"/><rect x="695" y="220" width="30" height="4" fill="#6E4526"/></g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#E0C9A6"><text x="70" y="124" text-anchor="middle">+1470%</text><text x="116" y="167" text-anchor="middle">+186%</text><text x="161" y="95" text-anchor="middle">+5500%</text><text x="207" y="259" text-anchor="middle" fill="#C9B296">−58%</text><text x="253" y="195" text-anchor="middle">+35%</text><text x="298" y="175" text-anchor="middle">+125%</text><text x="344" y="126" text-anchor="middle">+1330%</text><text x="390" y="263" text-anchor="middle" fill="#C9B296">−73%</text><text x="436" y="180" text-anchor="middle">+94%</text><text x="481" y="157" text-anchor="middle">+305%</text><text x="527" y="187" text-anchor="middle">+60%</text><text x="573" y="261" text-anchor="middle" fill="#C9B296">−64%</text><text x="618" y="171" text-anchor="middle">+155%</text><text x="664" y="175" text-anchor="middle">+121%</text><text x="710" y="237" text-anchor="middle" fill="#C9B296">≈−2%</text></g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7D8894"><text x="70" y="262" text-anchor="middle">11</text><text x="116" y="262" text-anchor="middle">12</text><text x="161" y="262" text-anchor="middle">13</text><text x="207" y="262" text-anchor="middle">14</text><text x="253" y="262" text-anchor="middle">15</text><text x="298" y="262" text-anchor="middle">16</text><text x="344" y="262" text-anchor="middle">17</text><text x="390" y="262" text-anchor="middle">18</text><text x="436" y="262" text-anchor="middle">19</text><text x="481" y="262" text-anchor="middle">20</text><text x="527" y="262" text-anchor="middle">21</text><text x="573" y="262" text-anchor="middle">22</text><text x="618" y="262" text-anchor="middle">23</text><text x="664" y="262" text-anchor="middle">24</text><text x="710" y="262" text-anchor="middle">25</text></g>
+        <rect id="cycSel" x="54" y="24" width="46" height="266" fill="rgba(159,198,212,.08)" rx="3"/>
+        <line x1="56" y1="204" x2="730" y2="204" stroke="rgba(49,88,107,.55)" stroke-width="1.4"/>
+        <line x1="344" y1="201" x2="344" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="481" y1="201" x2="481" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="527" y1="201" x2="527" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="664" y1="201" x2="664" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="710" y1="201" x2="710" y2="207" stroke="#A99BD6" stroke-width="2"/>
+        <g id="cycBars"><rect class="cyb" data-yr="2011" x="54" y="106" width="32" height="98" fill="#B0793F"/><rect class="cyb" data-yr="2012" x="100" y="153" width="32" height="51" fill="#B0793F"/><rect class="cyb" data-yr="2013" x="145" y="74" width="32" height="130" fill="#B0793F"/><rect class="cyb" data-yr="2014" x="191" y="204" width="32" height="29" fill="#6E4526"/><rect class="cyb" data-yr="2015" x="237" y="183" width="32" height="21" fill="#B0793F"/><rect class="cyb" data-yr="2016" x="282" y="161" width="32" height="43" fill="#B0793F"/><rect class="cyb" data-yr="2017" x="328" y="108" width="32" height="96" fill="#B0793F"/><rect class="cyb" data-yr="2018" x="374" y="204" width="32" height="33" fill="#6E4526"/><rect class="cyb" data-yr="2019" x="420" y="167" width="32" height="37" fill="#B0793F"/><rect class="cyb" data-yr="2020" x="465" y="142" width="32" height="62" fill="#B0793F"/><rect class="cyb" data-yr="2021" x="511" y="175" width="32" height="29" fill="#B0793F"/><rect class="cyb" data-yr="2022" x="557" y="204" width="32" height="30" fill="#6E4526"/><rect class="cyb" data-yr="2023" x="602" y="157" width="32" height="47" fill="#B0793F"/><rect class="cyb" data-yr="2024" x="648" y="162" width="32" height="42" fill="#B0793F"/><rect class="cyb" data-yr="2025" x="694" y="204" width="32" height="4" fill="#6E4526"/></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#E0C9A6"><text x="70" y="99" text-anchor="middle">+1470%</text><text x="116" y="146" text-anchor="middle">+186%</text><text x="161" y="67" text-anchor="middle">+5500%</text><text x="207" y="248" text-anchor="middle" fill="#C9B296">−58%</text><text x="253" y="176" text-anchor="middle">+35%</text><text x="298" y="154" text-anchor="middle">+125%</text><text x="344" y="101" text-anchor="middle">+1330%</text><text x="390" y="252" text-anchor="middle" fill="#C9B296">−73%</text><text x="436" y="160" text-anchor="middle">+94%</text><text x="481" y="135" text-anchor="middle">+305%</text><text x="527" y="168" text-anchor="middle">+60%</text><text x="573" y="249" text-anchor="middle" fill="#C9B296">−64%</text><text x="618" y="150" text-anchor="middle">+155%</text><text x="664" y="155" text-anchor="middle">+121%</text><text x="710" y="223" text-anchor="middle" fill="#C9B296">≈−2%</text></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#7D8894"><text x="70" y="278" text-anchor="middle">11</text><text x="116" y="278" text-anchor="middle">12</text><text x="161" y="278" text-anchor="middle">13</text><text x="207" y="278" text-anchor="middle">14</text><text x="253" y="278" text-anchor="middle">15</text><text x="298" y="278" text-anchor="middle">16</text><text x="344" y="278" text-anchor="middle">17</text><text x="390" y="278" text-anchor="middle">18</text><text x="436" y="278" text-anchor="middle">19</text><text x="481" y="278" text-anchor="middle">20</text><text x="527" y="278" text-anchor="middle">21</text><text x="573" y="278" text-anchor="middle">22</text><text x="618" y="278" text-anchor="middle">23</text><text x="664" y="278" text-anchor="middle">24</text><text x="710" y="278" text-anchor="middle">25</text></g>
         <g font-family="ui-monospace,Menlo,monospace" text-anchor="middle">
-          <text x="393" y="291" font-size="9.5" fill="#B9AEDD">2017 期货上市 · 2020 上市公司入表 · 2021 主权国家 · 2024 现货 ETF/华尔街 · 2025 美国/德州战略储备 · 2026 SEC/CFTC 商品定性</text>
-          <text x="393" y="315" font-size="10" fill="#9AA4AD">周期最大回撤逐次收窄：−93% → −85% → −84% → −77% → ≈−33%（本轮至今）</text>
+          <text x="393" y="316" font-size="9.5" fill="#B9AEDD">2017 期货上市 · 2020 上市公司入表 · 2021 主权国家 · 2024 现货 ETF/华尔街 · 2025 美国/德州战略储备 · 2026 SEC/CFTC 商品定性</text>
+          <text x="393" y="340" font-size="10" fill="#9AA4AD">周期最大回撤逐次收窄：−93% → −85% → −84% → −77% → ≈−33%（本轮至今）</text>
         </g>
       </svg>
       <p class="note" style="margin-top:12px">以上是<b>可核验的过去</b>，不是对未来的承诺——早期年份的巨大涨幅属低基数效应，不代表任何未来收益；下一次回撤仍可能凶猛，「归零即全损」也从未从上面那只黑框里删去。（教学近似 · 本轮周期尚未走完）</p>
@@ -837,6 +871,39 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
     document.body.appendChild(s);}
   const evt=window.PointerEvent?"pointerdown":"mousedown";
   document.addEventListener(evt,ev=>{if(ev.button)return;spawnSonar(ev.clientX,ev.clientY);},{passive:true});
+})();
+
+
+/* ── 十五年图：点选/滑动看每一年 ── */
+(function(){
+  const svg=$("cycSvg");if(!svg)return;
+  const DATA={2011:["+1470%","早期实验时代 · 第一次泡沫与崩落"],2012:["+186%","第一次减半"],
+    2013:["+5500%","首个主流化牛市 · 登上全球新闻"],2014:["−58%","Mt.Gox 交易所倒闭 · 行业至暗时刻"],
+    2015:["+35%","熊市筑底 · 开发者默默建设"],2016:["+125%","第二次减半"],
+    2017:["+1330%","CME 期货上市 · 散户狂潮"],2018:["−73%","泡沫出清 · 又一次被宣判死亡"],
+    2019:["+94%","机构级衍生品与托管起步"],2020:["+305%","上市公司开始入表 · 全球大放水"],
+    2021:["+60%","萨尔瓦多法币化 · 特斯拉入表"],2022:["−64%","加息周期 · FTX 爆雷（行业出清）"],
+    2023:["+155%","贝莱德申请 ETF · 预期升温"],2024:["+121%","美国现货 ETF 获批 · 第四次减半 · 华尔街正式入场"],
+    2025:["≈−2%","美国战略比特币储备 · 德州入库 · 金库公司潮（本轮至今回撤 ≈−33%）"]};
+  const sel=$("cycSel"),yEl=$("cyYr"),rEl=$("cyRet"),eEl=$("cyEv");
+  function pick(yr){
+    yr=Math.max(2011,Math.min(2025,yr));
+    const d=DATA[yr];if(!d)return;
+    yEl.textContent=yr;rEl.textContent=d[0];eEl.textContent=d[1];
+    rEl.style.color=d[0].indexOf("−")===0||d[0].indexOf("≈−")===0?"#C9B296":"var(--btc)";
+    sel.setAttribute("x",(70+(yr-2011)*45.7-23).toFixed(0));
+    svg.querySelectorAll(".cyb").forEach(b=>{b.style.opacity=(+b.getAttribute("data-yr")===yr)?"1":".62";});
+  }
+  function yrFromEvent(ev){
+    const r=svg.getBoundingClientRect();
+    const sx=(ev.clientX-r.left)*(760/r.width);
+    return Math.round((sx-70)/45.7)+2011;
+  }
+  let down=false;
+  svg.addEventListener("pointerdown",ev=>{down=true;pick(yrFromEvent(ev));},{passive:true});
+  svg.addEventListener("pointermove",ev=>{if(down)pick(yrFromEvent(ev));},{passive:true});
+  addEventListener("pointerup",()=>{down=false;},{passive:true});
+  pick(2024);
 })();
 
 /* ── 世纪购买力曲线 ── */
