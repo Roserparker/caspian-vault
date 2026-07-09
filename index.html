@@ -347,88 +347,121 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       <p class="hero-thesis">里海是一片<b>被大地环抱的海</b>：一百多条河注入，却没有一个出海口。<br>我们把公司的资产负债表，建成这样一座里海——<b>价值存进来，就安放在最深处。</b></p>
       <div class="hero-tag">Delaware C-Corp · 筹建中 · Caspian Vault 为暂定名</div>
     </div>
-    <svg id="wangyuan" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" role="img" aria-label="望渊图：群山环抱，藏金于渊">
+    <svg id="wangyuan" viewBox="0 0 1200 540" preserveAspectRatio="xMidYMid meet" role="img" aria-label="纸本里海图：群山环抱，墨海藏金">
       <defs>
-        <linearGradient id="wySky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#070B0E" stop-opacity="0"/><stop offset="1" stop-color="#0A1622"/>
+        <filter id="ppTorn" x="-6%" y="-6%" width="112%" height="112%">
+          <feTurbulence type="fractalNoise" baseFrequency=".011" numOctaves="2" seed="11" result="t"/>
+          <feDisplacementMap in="SourceGraphic" in2="t" scale="6"/>
+        </filter>
+        <filter id="ppGrain">
+          <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.32 0 0 0 0 0.30 0 0 0 0 0.27 0 0 0 .06 0"/>
+          <feComposite operator="over" in2="SourceGraphic"/>
+        </filter>
+        <filter id="ppMist" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="11"/></filter>
+        <linearGradient id="ppPaper" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#F2EDE3"/><stop offset="1" stop-color="#E8E1D2"/>
         </linearGradient>
-        <linearGradient id="wyVoid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#123043"/><stop offset=".5" stop-color="#0A1C29"/><stop offset="1" stop-color="#03070C"/>
+        <linearGradient id="gMl" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6A737D"/><stop offset="1" stop-color="#4B555F"/>
         </linearGradient>
-        <linearGradient id="wyMist" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7D8894" stop-opacity="0"/><stop offset=".5" stop-color="#7D8894" stop-opacity=".085"/><stop offset="1" stop-color="#7D8894" stop-opacity="0"/>
+        <linearGradient id="gMd" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3B454F"/><stop offset="1" stop-color="#28323B"/>
         </linearGradient>
-        <radialGradient id="wyGold" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#E8B45A" stop-opacity=".22"/><stop offset=".55" stop-color="#E8963A" stop-opacity=".07"/><stop offset="1" stop-color="#E8963A" stop-opacity="0"/>
+        <linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#31434F"/><stop offset=".5" stop-color="#233440"/><stop offset="1" stop-color="#15232D"/>
+        </linearGradient>
+        <radialGradient id="ppVign" cx=".5" cy=".5" r=".72">
+          <stop offset=".62" stop-color="#5A5648" stop-opacity="0"/><stop offset="1" stop-color="#5A5648" stop-opacity=".13"/>
+        </radialGradient>
+        <radialGradient id="ppHalo" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#E8813A" stop-opacity=".3"/><stop offset=".6" stop-color="#E8813A" stop-opacity=".08"/><stop offset="1" stop-color="#E8813A" stop-opacity="0"/>
         </radialGradient>
       </defs>
-      <rect width="1200" height="430" fill="url(#wySky)"/>
-      <linearGradient id="wyFadeL" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#070B0E"/><stop offset="1" stop-color="#070B0E" stop-opacity="0"/>
-      </linearGradient>
-      <linearGradient id="wyFadeR" x1="1" y1="0" x2="0" y2="0">
-        <stop offset="0" stop-color="#070B0E"/><stop offset="1" stop-color="#070B0E" stop-opacity="0"/>
-      </linearGradient>
-      <!-- 渊：两山之间沉下去的海 -->
-      <path fill="url(#wyVoid)" d="M508,150 L692,150 L662,430 L538,430 Z"/>
-      <!-- 海面波痕（渊口） -->
-      <g stroke="#9FC6D4" fill="none" stroke-linecap="round">
-        <path d="M522,160 Q562,155 600,160 T678,160" stroke-width="1.1" opacity=".4"/>
-        <path d="M538,171 Q572,167 604,171 T664,171" stroke-width=".9" opacity=".26"/>
-        <path d="M554,182 Q586,179 614,182 T648,182" stroke-width=".8" opacity=".15"/>
+      <!-- 装裱：暗页上的画心 -->
+      <rect x="66" y="30" width="1074" height="478" fill="#02060A" opacity=".55" transform="translate(7,9)"/>
+      <g filter="url(#ppGrain)"><rect x="60" y="24" width="1074" height="478" fill="url(#ppPaper)"/></g>
+      <g fill="#8A8172" opacity=".35">
+        <circle cx="176" cy="86" r="1.1"/><circle cx="948" cy="64" r=".9"/><circle cx="1064" cy="392" r="1.2"/>
+        <circle cx="128" cy="420" r=".8"/><circle cx="806" cy="474" r="1"/><circle cx="392" cy="58" r=".7"/>
       </g>
-      <!-- 四重山影（远→近，石青→石绿→墨青），自两侧环抱 -->
-      <g class="wy wy4" opacity=".78">
-        <path fill="#16344A" d="M0,168 C40,160 76,140 104,112 C124,92 142,66 164,60 C188,54 206,82 226,98 C250,118 282,108 314,120 C362,138 444,154 520,164 L520,430 L0,430 Z"/>
-        <path fill="#16344A" d="M1200,158 C1150,150 1112,128 1082,100 C1064,84 1048,60 1028,56 C1004,52 988,84 966,102 C944,120 910,112 878,124 C832,140 750,156 680,164 L680,430 L1200,430 Z"/>
+      <!-- ── 北：连绵主山脉（一整条，多峰斧劈，撕纸边） ── -->
+      <g filter="url(#ppTorn)">
+        <g class="wy wy4">
+          <path fill="url(#gMl)" d="M132,242 L210,196 L268,120 L316,168 L370,84 L432,150 L488,108 L548,180 L610,132 L678,190 L738,110 L798,168 L852,132 L916,196 L976,158 L1042,222 L1076,242 L1076,268 L132,268 Z"/>
+          <path fill="url(#gMd)" opacity=".92" d="M370,84 L432,150 L488,108 L548,180 L520,268 L392,268 Z"/>
+          <path fill="url(#gMd)" opacity=".85" d="M738,110 L798,168 L852,132 L916,196 L884,268 L764,268 Z"/>
+          <path fill="url(#gMd)" opacity=".7" d="M268,120 L316,168 L296,268 L236,268 Z"/>
+        </g>
+        <!-- 西/东翼山（环抱之势，半透明叠层） -->
+        <g class="wy wy3" opacity=".9">
+          <path fill="url(#gMl)" d="M132,398 L196,322 L244,360 L296,296 L348,372 L392,346 L436,404 L132,404 Z"/>
+          <path fill="url(#gMd)" opacity=".8" d="M296,296 L348,372 L330,404 L262,404 Z"/>
+        </g>
+        <g class="wy wy3" opacity=".9">
+          <path fill="url(#gMl)" d="M764,404 L816,334 L862,368 L912,300 L964,376 L1006,350 L1046,402 L764,402 Z"/>
+          <path fill="url(#gMd)" opacity=".8" d="M912,300 L964,376 L946,402 L878,402 Z"/>
+        </g>
+        <!-- 南：低伏山脉（伊朗岸，一整条） -->
+        <g class="wy wy2" opacity=".95">
+          <path fill="url(#gMl)" d="M132,478 L228,428 L306,456 L396,414 L486,458 L570,430 L664,462 L748,422 L836,460 L920,432 L1010,464 L1076,444 L1076,486 L132,486 Z"/>
+          <path fill="url(#gMd)" opacity=".8" d="M396,414 L486,458 L462,486 L360,486 Z"/>
+          <path fill="url(#gMd)" opacity=".7" d="M748,422 L836,460 L812,486 L716,486 Z"/>
+        </g>
       </g>
-      <rect class="wy wyM1" x="0" y="168" width="1200" height="46" fill="url(#wyMist)"/>
-      <g class="wy wy3" opacity=".9">
-        <path fill="#1C4551" d="M0,252 C48,244 88,224 116,200 C136,186 154,162 176,158 C200,154 218,180 240,194 C264,210 298,204 330,214 C384,232 462,256 535,286 L535,430 L0,430 Z"/>
-        <path fill="#1C4551" d="M1200,246 C1148,238 1110,220 1082,198 C1064,184 1050,164 1028,161 C1004,158 988,184 964,198 C940,212 908,206 876,216 C822,233 742,258 665,286 L665,430 L1200,430 Z"/>
-      </g>
-      <rect class="wy wyM2" x="0" y="286" width="1200" height="44" fill="url(#wyMist)"/>
-      <g class="wy wy2">
-        <path fill="#1B4A3C" d="M0,332 C44,326 84,310 110,292 C128,280 146,260 166,257 C188,254 204,276 224,288 C248,303 280,298 310,308 C368,327 456,358 550,402 L550,430 L0,430 Z"/>
-        <path fill="#1B4A3C" d="M1200,328 C1154,322 1116,308 1090,290 C1072,278 1056,258 1036,255 C1014,252 998,274 978,286 C954,301 922,296 892,306 C834,325 744,358 650,402 L650,430 L1200,430 Z"/>
-      </g>
+      <!-- ── 墨海：风格化里海（宽北盆-收腰-圆南盆；KBG=东侧浅湾） ── -->
+      <path fill="none" stroke="#2B3E4B" stroke-width="10" opacity=".12" filter="url(#ppMist)"
+        d="M600,214 C654,214 692,236 696,268 C699,292 682,308 672,324 C665,336 665,348 672,360 C684,378 692,396 688,416 C682,446 648,460 606,460 C564,460 530,446 524,416 C520,396 528,378 540,360 C547,348 547,336 540,324 C530,308 513,292 516,268 C520,236 548,214 600,214 Z"/>
       <g class="wy wy1">
-        <path fill="#0D2430" d="M0,384 C60,374 122,368 182,376 C242,384 302,398 362,412 C408,422 456,428 496,430 L0,430 Z"/>
-        <path fill="#0D2430" d="M1200,380 C1140,370 1080,366 1020,374 C960,382 900,398 840,412 C792,422 744,428 706,430 L1200,430 Z"/>
-        <path fill="none" stroke="#E2BA6B" stroke-width=".8" opacity=".34" d="M0,384 C60,374 122,368 182,376 C242,384 302,398 362,412 C408,422 456,428 496,430"/>
-        <path fill="none" stroke="#E2BA6B" stroke-width=".8" opacity=".34" d="M1200,380 C1140,370 1080,366 1020,374 C960,382 900,398 840,412 C792,422 744,428 706,430"/>
+        <path fill="url(#gSea)" stroke="#18242E" stroke-width="1.6"
+          d="M600,214 C654,214 692,236 696,268 C699,292 682,308 672,324 C665,336 665,348 672,360 C684,378 692,396 688,416 C682,446 648,460 606,460 C564,460 530,446 524,416 C520,396 528,378 540,360 C547,348 547,336 540,324 C530,308 513,292 516,268 C520,236 548,214 600,214 Z"/>
+        <!-- 南盆深芯（渐变叠深） -->
+        <path fill="#14212B" opacity=".85" d="M602,394 C624,394 640,408 640,424 C640,442 624,452 604,452 C584,452 570,442 570,424 C570,408 584,394 602,394 Z"/>
+        <!-- KBG 浅湾（东侧凹） -->
+        <path fill="#31434F" opacity=".55" d="M688,316 C702,312 712,316 714,324 C716,332 708,338 698,338 C690,338 686,330 688,316 Z"/>
       </g>
-      <!-- 聚流：两缕金线自山麓入渊 -->
-      <path class="wy wyS" fill="none" stroke="#E2BA6B" stroke-width="1" opacity=".2" d="M184,262 C330,272 452,288 560,314"/>
-      <path class="wy wyS" fill="none" stroke="#E2BA6B" stroke-width="1" opacity=".2" d="M1016,258 C878,268 756,286 640,314"/>
-      <!-- 深度标注 -->
-      <g font-family="ui-monospace,Menlo,monospace" fill="#9FC6D4" text-anchor="start" opacity=".55">
-        <text x="700" y="164" font-size="10">海面 0 米</text>
-        <text x="672" y="282" font-size="10" opacity=".8">−520 米</text>
+      <!-- 河流：墨线注入 -->
+      <g class="wy wy1" fill="none" stroke="#3A4854" stroke-linecap="round" opacity=".85">
+        <path stroke-width="1.8" d="M520,246 C546,238 566,228 580,218"/>
+        <path stroke-width="1.5" d="M672,240 C660,246 648,254 640,262"/>
+        <path stroke-width="1.6" d="M420,376 C468,368 512,360 545,352"/>
+        <path stroke-width="1.5" d="M800,372 C756,364 706,356 672,350"/>
       </g>
-      <text x="648" y="398" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#E2BA6B" opacity=".6">−1025 米</text>
-      <!-- 渊底藏金 -->
-      <ellipse class="wyGlow" cx="600" cy="396" rx="66" ry="30" fill="url(#wyGold)">
+      <!-- 岸雾（山脚/湖缘） -->
+      <g filter="url(#ppMist)" fill="#EFE9DC">
+        <ellipse class="wy wyM1" cx="320" cy="272" rx="190" ry="24" opacity=".6"/>
+        <ellipse class="wy wyM1" cx="906" cy="272" rx="180" ry="24" opacity=".55"/>
+        <ellipse class="wy wyM2" cx="600" cy="480" rx="300" ry="26" opacity=".8"/>
+        <ellipse class="wy wyM2" cx="240" cy="416" rx="120" ry="20" opacity=".5"/>
+        <ellipse class="wy wyM2" cx="950" cy="418" rx="120" ry="20" opacity=".5"/>
+      </g>
+      <rect x="60" y="24" width="1074" height="478" fill="url(#ppVign)" pointer-events="none"/>
+      <!-- 沉金：虚线（无箭头）+落金点 → 南盆深芯 ₿ -->
+      <line class="wy wyS" x1="600" y1="228" x2="600" y2="388" stroke="#D96F28" stroke-width="1.4" stroke-dasharray="3 7" opacity=".5"/>
+      <ellipse class="wyGlow" cx="602" cy="422" rx="40" ry="21" fill="url(#ppHalo)">
         <animate attributeName="opacity" values=".55;1;.55" keyTimes="0;.42;1" dur="8s" repeatCount="indefinite"/>
       </ellipse>
-      <g class="wy wyB" font-family="Georgia,serif" fill="#E8B45A" text-anchor="middle">
-        <text x="573" y="404" font-size="10" opacity=".38">₿</text>
-        <text x="600" y="404" font-size="21" opacity=".92">₿</text>
-        <text x="628" y="404" font-size="10" opacity=".34">₿</text>
+      <g class="wy wyB" font-family="Georgia,serif" fill="#E08334" text-anchor="middle">
+        <text x="581" y="428" font-size="10" opacity=".55">₿</text>
+        <text x="602" y="427" font-size="19" font-weight="bold">₿</text>
+        <text x="623" y="428" font-size="10" opacity=".5">₿</text>
       </g>
-      <text class="wy wyB" x="600" y="422" font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#E2BA6B" opacity=".5" text-anchor="middle">藏金于渊 · 教学示意</text>
-      <!-- 落金：价值自海面沉入渊底 -->
-      <circle class="drop" cx="600" r="2.2" fill="#E8B45A" opacity="0">
-        <animate attributeName="cy" values="168;388;388" keyTimes="0;.34;1" dur="8s" begin="3.4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0;.9;.9;0;0" keyTimes="0;.05;.3;.36;1" dur="8s" begin="3.4s" repeatCount="indefinite"/>
+      <circle class="drop" cx="600" r="2.4" fill="#E08334" opacity="0">
+        <animate attributeName="cy" values="232;408;408" keyTimes="0;.34;1" dur="8s" begin="3.2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;.95;.95;0;0" keyTimes="0;.05;.3;.36;1" dur="8s" begin="3.2s" repeatCount="indefinite"/>
       </circle>
-      <rect x="0" y="0" width="90" height="430" fill="url(#wyFadeL)"/>
-      <rect x="1110" y="0" width="90" height="430" fill="url(#wyFadeR)"/>
-      <!-- 题跋印（鎏金） -->
-      <g class="wy wySeal" opacity=".62">
-        <rect x="1128" y="352" width="34" height="34" fill="none" stroke="#E2BA6B" stroke-width="1"/>
-        <rect x="1131.5" y="355.5" width="27" height="27" fill="none" stroke="#E2BA6B" stroke-width=".45" opacity=".6"/>
-        <text x="1145" y="375" font-family="Georgia,serif" font-size="15" fill="#E2BA6B" text-anchor="middle">₿</text>
+      <!-- 深度小注（纸墨色） -->
+      <text class="wy wyS" x="714" y="232" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#6B6656">海面 0 米</text>
+      <text class="wy wyS" x="652" y="444" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#8A7A5A">−1025 米</text>
+      <!-- 题跋（墨）与 ₿ 印（橙） -->
+      <g class="wy wySeal">
+        <text x="98" y="466" font-family="ui-monospace,Menlo,monospace" font-size="11" fill="#5A5648" letter-spacing="3">里海 · 五国之交 · 群山环抱 · 教学示意</text>
+        <text x="98" y="484" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#8A8172" letter-spacing="2">聚流成海 · 藏金于渊</text>
+        <g opacity=".92">
+          <rect x="1076" y="440" width="36" height="36" fill="none" stroke="#D96F28" stroke-width="1.4"/>
+          <rect x="1080" y="444" width="28" height="28" fill="none" stroke="#D96F28" stroke-width=".5" opacity=".6"/>
+          <text x="1094" y="464" font-family="Georgia,serif" font-size="16" fill="#D96F28" text-anchor="middle" font-weight="bold">₿</text>
+        </g>
       </g>
     </svg>
   </div>
