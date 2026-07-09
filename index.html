@@ -738,53 +738,26 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     <div class="box reveal">
       <p class="big">如果比特币归零，与它相关的一切投入将全部损失。<br>任何告诉你「不会亏」的人，都在对你撒谎——<br>包括未来的我们，如果我们哪天说了这句话。</p>
     </div>
-    <p class="reveal" style="margin-top:30px">它的波动凶猛——每个周期都有一次让多数人以为它死了的回撤。把五个周期放上<b>同一条时间轴</b>，有两件事同时发生：<b>回撤在收窄，入场的机构与国家在变多。</b></p>
+    <p class="reveal" style="margin-top:30px">它的波动凶猛——但把十五年放上同一条时间轴，能看到三件事同时发生：<b>上涨的年份多于下跌的年份（11 涨 4 跌），周期最大回撤逐次收窄，入场的机构与国家在变多。</b></p>
     <div class="demo reveal">
-      <div class="cap">五个周期 · 回撤深度与接受度事件同轴（教学近似 · 2026-07 口径）</div>
-      <svg id="cycSvg" viewBox="0 0 760 340" aria-label="五个周期的最大回撤逐次收窄，接受度事件逐年增多">
-        <!-- 图例 -->
+      <div class="cap">十五年 · 年度涨跌与接受度（柱高对数压缩，以数值为准 · 教学近似 · 2026-07 口径）</div>
+      <svg id="cycSvg" viewBox="0 0 760 340" aria-label="十五年年度涨跌：十一年上涨、四年下跌；接受度事件逐年增多；周期最大回撤逐次收窄">
         <g font-family="ui-monospace,Menlo,monospace" font-size="10">
-          <circle cx="66" cy="14" r="2.6" fill="#A99BD6"/><text x="76" y="18" fill="#A99BD6" opacity=".9">接受度事件（轴上）</text>
-          <rect x="62" y="26" width="9" height="9" fill="#8A5A34"/><text x="76" y="34" fill="#9AA4AD">周期最大回撤（轴下，越浅=越小）</text>
+          <rect x="62" y="8" width="9" height="9" fill="#B0793F"/><text x="76" y="16" fill="#C9B296">上涨年（11 年）</text>
+          <rect x="192" y="8" width="9" height="9" fill="#6E4526"/><text x="206" y="16" fill="#9AA4AD">下跌年（4 年）</text>
+          <line x1="330" y1="12" x2="342" y2="12" stroke="#A99BD6" stroke-width="2"/><text x="348" y="16" fill="#B9AEDD">轴上紫刻=接受度事件年</text>
         </g>
-        <!-- 时间轴 -->
-        <line x1="56" y1="110" x2="730" y2="110" stroke="rgba(49,88,107,.55)" stroke-width="1.4"/>
-        <!-- 接受度事件（标杆随时间越立越高） -->
-        <g stroke="#A99BD6" stroke-width=".9" opacity=".4">
-          <line x1="360" y1="110" x2="360" y2="94"/><line x1="475" y1="110" x2="475" y2="80"/>
-          <line x1="503" y1="110" x2="503" y2="66"/><line x1="605" y1="110" x2="605" y2="52"/>
-          <line x1="655" y1="110" x2="655" y2="36"/><line x1="692" y1="110" x2="692" y2="22"/>
-        </g>
-        <g fill="#A99BD6">
-          <circle cx="360" cy="94" r="2.6"/><circle cx="475" cy="80" r="2.6"/><circle cx="503" cy="66" r="2.6"/>
-          <circle cx="605" cy="52" r="2.6"/><circle cx="655" cy="36" r="2.6"/><circle cx="692" cy="22" r="2.6"/>
-        </g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#B9AEDD">
-          <text x="360" y="87" text-anchor="middle">CME 期货上市</text>
-          <text x="470" y="73" text-anchor="end">上市公司入表</text>
-          <text x="509" y="59">萨尔瓦多法币化</text>
-          <text x="605" y="45" text-anchor="middle">现货 ETF · 华尔街入场</text>
-          <text x="655" y="29" text-anchor="middle">美国 · 德州战略储备</text>
-          <text x="726" y="15" text-anchor="end">SEC/CFTC：数字商品</text>
-        </g>
-        <!-- 回撤深度柱（挂在轴下，越来越浅） -->
-        <g fill="#8A5A34" opacity=".85">
-          <rect x="60" y="110" width="40" height="186"/>
-          <rect x="181" y="110" width="40" height="170"/>
-          <rect x="332" y="110" width="40" height="168"/>
-          <rect x="493" y="110" width="40" height="154"/>
-          <rect x="640" y="110" width="40" height="66"/>
-        </g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="13" font-weight="700" fill="#D9DEE2" text-anchor="middle">
-          <text x="80" y="312">−93%</text><text x="201" y="296">−85%</text><text x="352" y="294">−84%</text>
-          <text x="513" y="280">−77%</text><text x="660" y="192">≈−33%</text>
-        </g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#7D8894" text-anchor="middle">
-          <text x="80" y="327">2011</text><text x="201" y="311">2013–15</text><text x="352" y="309">2017–18</text>
-          <text x="513" y="295">2021–22</text><text x="660" y="207">2025–26 · 至今</text>
+        <line x1="56" y1="220" x2="730" y2="220" stroke="rgba(49,88,107,.55)" stroke-width="1.4"/>
+        <line x1="344" y1="217" x2="344" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="481" y1="217" x2="481" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="527" y1="217" x2="527" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="664" y1="217" x2="664" y2="223" stroke="#A99BD6" stroke-width="2"/><line x1="710" y1="217" x2="710" y2="223" stroke="#A99BD6" stroke-width="2"/>
+        <g><rect x="55" y="130" width="30" height="90" fill="#B0793F" opacity=".9"/><rect x="101" y="173" width="30" height="47" fill="#B0793F" opacity=".9"/><rect x="146" y="101" width="30" height="119" fill="#B0793F" opacity=".9"/><rect x="192" y="220" width="30" height="26" fill="#6E4526"/><rect x="238" y="201" width="30" height="19" fill="#B0793F" opacity=".9"/><rect x="284" y="181" width="30" height="39" fill="#B0793F" opacity=".9"/><rect x="329" y="132" width="30" height="88" fill="#B0793F" opacity=".9"/><rect x="375" y="220" width="30" height="30" fill="#6E4526"/><rect x="421" y="186" width="30" height="34" fill="#B0793F" opacity=".9"/><rect x="466" y="163" width="30" height="57" fill="#B0793F" opacity=".9"/><rect x="512" y="193" width="30" height="27" fill="#B0793F" opacity=".9"/><rect x="558" y="220" width="30" height="28" fill="#6E4526"/><rect x="603" y="177" width="30" height="43" fill="#B0793F" opacity=".9"/><rect x="649" y="181" width="30" height="39" fill="#B0793F" opacity=".9"/><rect x="695" y="220" width="30" height="4" fill="#6E4526"/></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#E0C9A6"><text x="70" y="124" text-anchor="middle">+1470%</text><text x="116" y="167" text-anchor="middle">+186%</text><text x="161" y="95" text-anchor="middle">+5500%</text><text x="207" y="259" text-anchor="middle" fill="#C9B296">−58%</text><text x="253" y="195" text-anchor="middle">+35%</text><text x="298" y="175" text-anchor="middle">+125%</text><text x="344" y="126" text-anchor="middle">+1330%</text><text x="390" y="263" text-anchor="middle" fill="#C9B296">−73%</text><text x="436" y="180" text-anchor="middle">+94%</text><text x="481" y="157" text-anchor="middle">+305%</text><text x="527" y="187" text-anchor="middle">+60%</text><text x="573" y="261" text-anchor="middle" fill="#C9B296">−64%</text><text x="618" y="171" text-anchor="middle">+155%</text><text x="664" y="175" text-anchor="middle">+121%</text><text x="710" y="237" text-anchor="middle" fill="#C9B296">≈−2%</text></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="9" fill="#7D8894"><text x="70" y="262" text-anchor="middle">11</text><text x="116" y="262" text-anchor="middle">12</text><text x="161" y="262" text-anchor="middle">13</text><text x="207" y="262" text-anchor="middle">14</text><text x="253" y="262" text-anchor="middle">15</text><text x="298" y="262" text-anchor="middle">16</text><text x="344" y="262" text-anchor="middle">17</text><text x="390" y="262" text-anchor="middle">18</text><text x="436" y="262" text-anchor="middle">19</text><text x="481" y="262" text-anchor="middle">20</text><text x="527" y="262" text-anchor="middle">21</text><text x="573" y="262" text-anchor="middle">22</text><text x="618" y="262" text-anchor="middle">23</text><text x="664" y="262" text-anchor="middle">24</text><text x="710" y="262" text-anchor="middle">25</text></g>
+        <g font-family="ui-monospace,Menlo,monospace" text-anchor="middle">
+          <text x="393" y="291" font-size="9.5" fill="#B9AEDD">2017 期货上市 · 2020 上市公司入表 · 2021 主权国家 · 2024 现货 ETF/华尔街 · 2025 美国/德州战略储备 · 2026 SEC/CFTC 商品定性</text>
+          <text x="393" y="315" font-size="10" fill="#9AA4AD">周期最大回撤逐次收窄：−93% → −85% → −84% → −77% → ≈−33%（本轮至今）</text>
         </g>
       </svg>
-      <p class="note" style="margin-top:12px">以上是<b>可核验的过去</b>，不是对未来的承诺——下一次回撤仍可能凶猛，「归零即全损」也从未从上面那只黑框里删去。（事件为公开记录；回撤为教学近似，本轮周期尚未走完）</p>
+      <p class="note" style="margin-top:12px">以上是<b>可核验的过去</b>，不是对未来的承诺——早期年份的巨大涨幅属低基数效应，不代表任何未来收益；下一次回撤仍可能凶猛，「归零即全损」也从未从上面那只黑框里删去。（教学近似 · 本轮周期尚未走完）</p>
     </div>
     <p class="reveal">立场从第一天写死：<b>只用「亏光也不影响生活」的钱、以五年起步的时间</b>持有。</p>
     <details class="fold reveal"><summary>细读</summary><div class="fx"><p>我们把自家条款放进模拟器，用这四次暴跌反复碾压测试——报告未来会与月度公告一起公开。</p></div></details>
