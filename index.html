@@ -163,9 +163,17 @@ input[type=range]{accent-color:var(--water)}
 .gx-plate .gx-meta{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;color:#7e93a5;margin:0 0 1rem}
 .gx-plate .gx-desc{font-family:var(--serif);font-size:.95rem;color:#b9c4c9;line-height:2.05;margin:0;text-align:justify}
 .gx-plate .gx-desc strong{color:#f0e9d8}
-.gx-motto{text-align:center;color:var(--goldbright);font-family:var(--serif);font-size:1.05rem;letter-spacing:.06em;margin:2.4rem 0 0;line-height:2.3}
-.client{max-width:640px;margin:2.4rem auto 0;text-align:center;font-family:var(--serif);font-size:1rem;line-height:2.1;color:#b9c4c9}
-.client b{color:#f0e9d8}
+.gx-motto{text-align:center;color:var(--titan);font-family:var(--serif);font-size:1.05rem;letter-spacing:.06em;margin:2.6rem 0 0;line-height:2.3}
+.gx-motto strong{color:#EAEDEF}
+.client{max-width:640px;margin:2.4rem auto 0;text-align:center;font-family:var(--serif);font-size:1rem;line-height:2.1;color:var(--silver)}
+.client b{color:#EAEDEF}
+/* 第一章图录铭牌 */
+.c1-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:2.2rem}
+@media(max-width:768px){.c1-grid{grid-template-columns:1fr}}
+.c1-h{margin:0 0 8px;font-size:1.25rem}
+.c1-meta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mist);margin-bottom:14px}
+.c1-desc{font-family:var(--sans);font-size:14.5px;line-height:2.05;color:var(--silver);margin:0;text-align:justify}
+.c1-desc strong{color:#EAEDEF}
 /* ── 为什么比特币：曲线 + 一百万 ── */
 #curveBox svg{width:100%;height:auto;display:block}
 .curve-read{display:flex;gap:26px;align-items:baseline;flex-wrap:wrap;margin-top:8px;font-family:var(--mono)}
@@ -398,42 +406,26 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 <!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
 <section id="corridor">
   <div class="wrap">
-    <div class="kicker reveal" style="text-align:center">Chapter 01 · 这是什么</div>
+    <div class="kicker reveal" style="text-align:center">第一章 · 这是什么</div>
     <h2 class="reveal" style="text-align:center">我们为什么叫里海</h2>
     <p class="gx-foreword reveal">里海有很多头衔——最大、最深、最古老。但真正让我们非它不可的，只有一个：<strong>独立</strong>。它是一座天生的金库。</p>
 
-    <div class="gx-exhibit reveal">
-      <p class="gx-no">其一 · 独立</p>
-      <div class="gx-art"><svg viewBox="0 0 240 150" width="320" height="200" aria-label="闭环水系示意">
-        <ellipse class="stroke" cx="120" cy="96" rx="64" ry="32"/>
-        <path class="stroke dim" d="M40,18 C60,40 80,52 96,68 M120,12 L120,60 M200,22 C180,44 160,56 146,68"/>
-        <path class="stroke" d="M116,22 L120,12 L124,22 M92,62 L96,68 L101,60 M141,62 L146,68 L138,60" stroke-width="1.2"/>
-        <text x="120" y="101" font-size="10" text-anchor="middle" fill="#d8b466">Nothing flows out</text>
-      </svg></div>
-      <div class="gx-plate">
-        <p class="gx-title">一片不依赖任何人的海</p>
-        <p class="gx-meta">没有出海口 · 不与大洋连通 · 不受潮汐支配</p>
-        <p class="gx-desc">里海不与任何大洋相通，也没有一个流向外海的出口。它不理会全球海平面，不受潮汐与洋流摆布——一个<strong>不依赖外部、自成一体</strong>的完整系统。这正是比特币「自托管」的镜像：不经过银行、不依赖第三方清算。<strong>安全不靠藏，靠的是不接任何一根管道。</strong></p>
+    <div class="c1-grid">
+      <div class="plate reveal">
+        <div class="chap-k">其一 · 独立</div>
+        <h3 class="serif c1-h">一片不依赖任何人的海</h3>
+        <p class="c1-meta">没有出海口 · 不与大洋连通 · 不受潮汐支配</p>
+        <p class="c1-desc">里海不与任何大洋相通，也没有一个流向外海的出口。它不理会全球海平面，不受潮汐与洋流摆布——一个<strong>不依赖外部、自成一体</strong>的完整系统。这正是比特币「自托管」的镜像：不经过银行、不依赖第三方清算。<strong>安全不靠藏，靠的是不接任何一根管道。</strong></p>
+      </div>
+      <div class="plate reveal">
+        <div class="chap-k">其二 · 恒久</div>
+        <h3 class="serif c1-h">被时间原样封存的海</h3>
+        <p class="c1-meta">被大地围合 · 存得住，也存得久</p>
+        <p class="c1-desc">它被地质运动彻底围合，原样保存至今。一片海能被这样安静地存放，靠的不是运气，是结构。<strong>对一家以长期保管为业的公司，我们没能找到比它更好的图腾。</strong></p>
       </div>
     </div>
 
-    <div class="gx-exhibit reveal">
-      <p class="gx-no">其二 · 恒久</p>
-      <div class="gx-art"><svg viewBox="0 0 240 130" width="320" height="173" aria-label="被围合的古海">
-        <path class="stroke dim" d="M10,30 L230,30" stroke-dasharray="4 6"/>
-        <path class="stroke" d="M10,58 C50,54 80,64 120,60 C160,56 200,64 230,58"/>
-        <path class="stroke" d="M30,58 C40,80 50,96 70,104 C100,116 140,116 170,104 C190,96 200,80 210,58"/>
-        <path class="stroke dim" d="M60,84 L180,84 M76,98 L164,98" stroke-width="1"/>
-        <text x="120" y="22" font-size="10" text-anchor="middle" fill="#7e93a5">被大地彻底围合</text>
-      </svg></div>
-      <div class="gx-plate">
-        <p class="gx-title">被时间原样封存的海</p>
-        <p class="gx-meta">被大地围合 · 存得住，也存得久</p>
-        <p class="gx-desc">它被地质运动彻底围合，原样保存至今。一片海能被这样安静地存放，靠的不是运气，是结构。<strong>对一家以长期保管为业的公司，我们没能找到比它更好的图腾。</strong></p>
-      </div>
-    </div>
-
-    <p class="gx-motto reveal">独立、恒久——所以 Caspian 只做一件事：<br><strong style="color:#f0e9d8">安全地存储，守护你手里 BTC 的价值。</strong></p>
+    <p class="gx-motto reveal">独立、恒久——所以 Caspian 只做一件事：<br><strong>安全地存储，守护你手里 BTC 的价值。</strong></p>
     <p class="client reveal">我们要服务的，是这样一群人：<b>看得懂比特币的价值，却无法、或不愿亲自持有它</b>——受身份与渠道所限难以合法直接买入，或不想亲手打理交易、私钥与冷存储。<br>你负责看懂；<b>安全拥有这件事，交给里海。</b></p>
   </div>
 </section>
