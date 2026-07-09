@@ -54,13 +54,6 @@ a{color:inherit}
 .dr-line i{position:absolute;left:-2px;top:0;width:5px;height:5px;border-radius:50%;background:var(--titan)}
 .dr-t{writing-mode:vertical-rl;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--mist)}
 @media(max-width:768px){#depthRail{display:none}}
-/* ── 海床币阵（教学示意） ── */
-#seabed{background:linear-gradient(#05090E,#03070C);padding:14px 0 34px;position:relative}
-.sb-inner{max-width:960px;margin:0 auto;padding:0 22px}
-.sb-field{height:180px;position:relative;overflow:hidden}
-.sb-b{position:absolute;font-family:Georgia,serif;color:var(--btc);user-select:none;line-height:1}
-.sb-cap{text-align:center;font-family:var(--sans);font-size:12.5px;line-height:1.9;color:var(--mist);letter-spacing:.12em;margin-top:10px}
-.sb-cap span{display:block;font-family:var(--mono);font-size:10.5px;opacity:.75;letter-spacing:.22em;margin-top:2px}
 /* ── 导航 ── */
 nav.top{position:-webkit-sticky;position:sticky;top:0;z-index:50;background:rgba(7,11,14,.9);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(49,88,107,.35)}
@@ -83,17 +76,17 @@ nav.top a.ext{color:var(--titan)}
 /* ══════ HERO：里海（真实测深图 · 图录左右构图） ══════ */
 #sea{background:radial-gradient(ellipse 130% 100% at 76% 18%,#0C1E2A 0%,var(--steel-black) 56%,#05090E 100%);
   color:var(--silver);position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
-.hero-grid{max-width:1080px;margin:0 auto;padding:96px 24px 46px;display:flex;align-items:center;gap:44px;position:relative;z-index:2;width:100%;box-sizing:border-box}
+.hero-grid{max-width:1100px;margin:0 auto;padding:96px 24px 46px;display:flex;align-items:center;gap:36px;position:relative;z-index:2;width:100%;box-sizing:border-box}
 #sea .inner{flex:1;min-width:0;max-width:520px;text-align:left}
-.basin-wrap{flex:0 0 42%;display:flex;justify-content:center;pointer-events:none}
-#basinMap{width:100%;max-width:390px;height:auto;display:block}
+.basin-wrap{flex:0 0 46%;display:flex;justify-content:center;pointer-events:none}
+#basinMap{width:100%;max-width:452px;height:auto;display:block}
 .hero-eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.42em;color:var(--mist)}
 .hero-h1{font-family:var(--serif);font-size:clamp(40px,6vw,58px);font-weight:600;letter-spacing:.2em;margin:22px 0 14px;color:#EAEDEF}
 .hero-slogan{font-size:clamp(17.5px,2.6vw,24px);letter-spacing:.28em;color:var(--titan);margin:0 0 28px}
 .hero-thesis{font-size:15.5px;line-height:2.15;color:var(--silver);margin:0}
 .hero-thesis b{color:#EAEDEF;font-weight:600}
 .hero-tag{margin-top:30px;font-family:var(--mono);font-size:11px;color:var(--mist);letter-spacing:.18em}
-.depth-t{font-family:var(--mono);font-size:10px;fill:#9FC6D4;fill-opacity:.55;text-anchor:middle;letter-spacing:.18em}
+.depth-t{font-family:var(--mono);font-size:10px;fill:#9FC6D4;fill-opacity:.72;text-anchor:middle;letter-spacing:.18em}
 .scrollhint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;letter-spacing:.34em;color:var(--mist);z-index:3}
 /* 编排 · 帧1：水体自暗中显形（0–1.3s，无任何线条先动） */
 #coast,#kbg{opacity:0;animation:seaIn 1.3s var(--ease-velvet) .1s forwards}
@@ -108,6 +101,10 @@ nav.top a.ext{color:var(--titan)}
 /* 常驻：岸线极缓呼吸（20s） */
 @keyframes seaBreathe{0%,100%{stroke-opacity:.55}50%{stroke-opacity:.78}}
 #coast{animation:seaIn 1.3s var(--ease-velvet) .1s forwards,seaBreathe 20s ease-in-out 3.4s infinite}
+/* 帧3：₿ 群在河流之后于渊底显影，随后极缓呼吸 */
+#goldHoard{opacity:0;animation:hoardIn 1.6s var(--ease-velvet) 2.6s forwards,hoardBreathe 9s ease-in-out 5s infinite}
+@keyframes hoardIn{to{opacity:1}}
+@keyframes hoardBreathe{0%,100%{opacity:1}50%{opacity:.82}}
 /* 文字：与海交叠的柔和升起 */
 .hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{opacity:0;animation:up .95s var(--ease-velvet) forwards}
 .hero-eyebrow{animation-delay:.3s}.hero-h1{animation-delay:.45s}.hero-slogan{animation-delay:.65s}
@@ -117,7 +114,7 @@ nav.top a.ext{color:var(--titan)}
   .hero-grid{flex-direction:column;gap:10px;padding-top:84px;text-align:center}
   #sea .inner{text-align:center;max-width:560px}
   .basin-wrap{order:-1;flex:none;width:100%}
-  #basinMap{max-width:none;width:auto;max-height:42svh;margin:0 auto}
+  #basinMap{max-width:none;width:auto;max-height:48svh;margin:0 auto}
 }
 #why{--acc:var(--acc2);background:radial-gradient(ellipse 92% 42% at 50% 0%,rgba(133,168,224,.055),transparent 60%)}
 #honest{--acc:var(--acc4);background:radial-gradient(ellipse 92% 42% at 50% 0%,rgba(169,155,214,.055),transparent 60%)}
@@ -277,7 +274,8 @@ footer .fine{border-top:1px solid rgba(49,88,107,.35);margin-top:22px;padding-to
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transition:none}
   .sonar{display:none}
-  #coast,#kbg,.hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{animation:none;opacity:1;transform:none}
+  #coast,#kbg,#goldHoard,.hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{animation:none;opacity:1;transform:none}
+  .sink{visibility:hidden}
   .rv{animation:none;opacity:.5;stroke-dashoffset:0}
 }
 @media(max-width:900px){
@@ -343,19 +341,22 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       <svg id="basinMap" viewBox="0 0 460 640" role="img" aria-label="里海测深图：万川归之，藏金于渊">
         <defs>
           <linearGradient id="bathy" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#17384A"/>
-            <stop offset=".38" stop-color="#0F2635"/>
+            <stop offset="0" stop-color="#1B4258"/>
+            <stop offset=".38" stop-color="#123043"/>
             <stop offset=".72" stop-color="#0A1A26"/>
             <stop offset="1" stop-color="#071018"/>
           </linearGradient>
           <radialGradient id="deepGlow" cx=".5" cy=".82" r=".5">
             <stop offset="0" stop-color="#040A10"/><stop offset="1" stop-color="#040A10" stop-opacity="0"/>
           </radialGradient>
+          <radialGradient id="goldDeep" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#E8813A" stop-opacity=".16"/><stop offset=".6" stop-color="#E8813A" stop-opacity=".05"/><stop offset="1" stop-color="#E8813A" stop-opacity="0"/>
+          </radialGradient>
         </defs>
         <!-- 主水体（顺时针自伏尔加口起）：锯齿状三角洲北缘→乌拉尔口→东岸串珠凸起→
              卡拉博加兹湾坝岸→土库曼巴什湾→东南斜岸→伊朗弧岸→西岸北上→阿普歇伦指形半岛→
              杰尔宾特/马哈奇卡拉直岸→捷列克口→回伏尔加口 -->
-        <path id="coast" fill="url(#bathy)" stroke="#9FC6D4" stroke-width="1.1" stroke-opacity=".55" d="
+        <path id="coast" fill="url(#bathy)" stroke="#9FC6D4" stroke-width="1.2" stroke-opacity=".7" d="
           M150,50
           C154,44 160,48 166,44 C172,40 178,46 186,42 C194,38 200,44 208,42
           C224,42 244,46 256,54
@@ -373,7 +374,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
           C140,330 136,318 134,304 C131,284 128,262 126,240 C124,215 124,196 130,176
           C134,162 128,152 132,138 C136,120 142,104 144,88 C146,74 146,60 150,50 Z"/>
         <!-- 卡拉博加兹湾：近闭潟湖，窄颈系于坝岸 -->
-        <path id="kbg" fill="#0E2230" stroke="#9FC6D4" stroke-width=".9" stroke-opacity=".45" d="
+        <path id="kbg" fill="#122B3C" stroke="#9FC6D4" stroke-width=".9" stroke-opacity=".55" d="
           M294,246 C298,250 301,258 302,268 C304,286 316,298 336,300
           C356,302 375,292 380,272 C384,252 374,235 352,230
           C334,226 312,232 300,242 C297,244 295,245 294,246 Z"/>
@@ -381,9 +382,34 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <path fill="none" stroke="#9FC6D4" stroke-width=".7" stroke-opacity=".3" d="M212,268 C238,264 256,280 258,304 C260,330 246,346 224,350 C200,354 182,340 180,318 C178,294 190,272 212,268 Z"/>
         <path fill="none" stroke="#9FC6D4" stroke-width=".55" stroke-opacity=".22" d="M222,432 C252,428 274,450 276,482 C278,514 258,540 228,544 C198,548 176,524 174,494 C172,462 194,436 222,432 Z"/>
         <ellipse cx="226" cy="496" rx="76" ry="82" fill="url(#deepGlow)"/>
+        <!-- 藏金于渊：₿ 群卧于南盆最深处（聚流成海的终点） -->
+        <ellipse cx="227" cy="506" rx="64" ry="42" fill="url(#goldDeep)"/>
+        <g id="goldHoard" font-family="Georgia,serif" fill="#E8813A" text-anchor="middle">
+          <text x="200" y="464" font-size="7" opacity=".16">₿</text><text x="222" y="462" font-size="7" opacity=".2">₿</text><text x="244" y="465" font-size="7" opacity=".16">₿</text>
+          <text x="190" y="482" font-size="8.5" opacity=".3">₿</text><text x="212" y="480" font-size="8.5" opacity=".34">₿</text><text x="234" y="481" font-size="8.5" opacity=".32">₿</text><text x="256" y="483" font-size="8.5" opacity=".28">₿</text>
+          <text x="198" y="500" font-size="10" opacity=".46">₿</text><text x="220" y="499" font-size="10" opacity=".5">₿</text><text x="242" y="500" font-size="10" opacity=".48">₿</text><text x="261" y="502" font-size="10" opacity=".4">₿</text>
+          <text x="206" y="521" font-size="12" opacity=".68">₿</text><text x="228" y="520" font-size="12.5" opacity=".85">₿</text><text x="250" y="521" font-size="12" opacity=".66">₿</text>
+          <text x="227" y="538" font-size="9" opacity=".32">₿</text>
+        </g>
         <text x="196" y="112" class="depth-t">北盆 · 浅</text>
         <text x="219" y="312" class="depth-t">中盆 −788 米</text>
-        <text x="225" y="492" class="depth-t">南盆 −1025 米</text>
+        <text x="226" y="444" class="depth-t">南盆 −1025 米</text>
+        <text x="227" y="562" class="depth-t" style="font-size:8.5px">藏金于渊 · 教学示意</text>
+        <!-- 沉降光点：河水送来的价值，沉进最深处（reduced-motion 时隐藏） -->
+        <g id="sinkDots">
+          <circle class="sink" r="1.6" fill="#E8963A" opacity="0">
+            <animateMotion dur="6s" begin="3s" repeatCount="indefinite" path="M158,46 C150,150 160,300 200,420 C210,455 218,480 224,496"/>
+            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.08;.82;1" dur="6s" begin="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="sink" r="1.4" fill="#E8963A" opacity="0">
+            <animateMotion dur="4.5s" begin="6.5s" repeatCount="indefinite" path="M126,418 C160,440 195,470 220,498"/>
+            <animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.1;.8;1" dur="4.5s" begin="6.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="sink" r="1.4" fill="#E8963A" opacity="0">
+            <animateMotion dur="4.5s" begin="9.5s" repeatCount="indefinite" path="M314,418 C290,440 255,470 232,498"/>
+            <animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.1;.8;1" dur="4.5s" begin="9.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
         <!-- 河流细光丝：伏尔加/乌拉尔/捷列克/库拉/阿特列克（只进，无箭头） -->
         <path class="rv" d="M156,8 C160,22 156,34 158,46"/>
         <path class="rv" d="M262,12 C258,26 256,38 256,50"/>
@@ -396,13 +422,6 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
   <div class="scrollhint">▼ 入 渊</div>
 </header>
 
-<!-- ═══ 海床：储备一枚一枚码放整齐（教学示意） ═══ -->
-<section id="seabed" aria-label="海床币阵（教学示意）">
-  <div class="sb-inner">
-    <div class="sb-field" id="sbField" aria-hidden="true"></div>
-    <p class="sb-cap">海床上的储备，一枚一枚，码放整齐。<span>教学示意 · 非实际持仓数</span></p>
-  </div>
-</section>
 
 <!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
 <section id="corridor">
@@ -642,22 +661,6 @@ function gauge(){const h=document.documentElement;
   drNum.textContent="−"+Math.round(p*1025)+" 米";
   document.body.style.setProperty("--dive",p.toFixed(3));}
 
-/* ── 海床币阵：五排透视，前亮后暗（教学示意） ── */
-(function(){
-  const f=$("sbField");if(!f)return;
-  const rows=[{y:18,s:9,o:.10,n:22,b:1.2},{y:52,s:11,o:.16,n:18,b:.8},
-              {y:88,s:13,o:.26,n:15,b:.4},{y:124,s:16,o:.42,n:12,b:0},
-              {y:158,s:19,o:.72,n:10,b:0}];
-  rows.forEach(r=>{
-    for(let i=0;i<r.n;i++){
-      const e=document.createElement("span");e.className="sb-b";e.textContent="₿";
-      const jx=Math.sin(i*7.3+r.y)*0.8;
-      e.style.cssText="left:"+(4+(92/(r.n-1))*i+jx)+"%;top:"+r.y+"px;font-size:"+r.s+
-        "px;opacity:"+r.o+(r.b?";filter:blur("+r.b+"px)":"");
-      f.appendChild(e);
-    }
-  });
-})();
 
 /* ── reveal（滚动驱动 + 保险丝） ── */
 const reveals=[...document.querySelectorAll(".reveal")];
