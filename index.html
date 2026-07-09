@@ -197,11 +197,11 @@ input[type=range]{accent-color:var(--water)}
 /* ── 代码块：不可超发写死在协议里 ── */
 .codeblock{margin:26px 0}
 .cb-cap{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}
-pre.cb{background:#0c1a26;border:1px solid var(--deepline);border-radius:8px;padding:20px 22px;overflow-x:auto;
-  font-family:var(--mono);font-size:13px;line-height:1.95;color:#c6d2da;-webkit-overflow-scrolling:touch}
-pre.cb .c{color:#5f7789}
-pre.cb .k{color:var(--goldbright)}
-pre.cb .hot{color:#f0e9d8;font-weight:700}
+pre.cb{background:#0A141B;border:1px solid rgba(49,88,107,.35);border-radius:2px;padding:20px 22px;overflow-x:auto;
+  font-family:var(--mono);font-size:12.5px;line-height:1.95;color:#B9CAD4;-webkit-overflow-scrolling:touch}
+pre.cb .c{color:#5F7789}
+pre.cb .k{color:var(--titan)}
+pre.cb .hot{color:var(--btc);font-weight:700}
 .cb-note{font-family:var(--sans);font-size:13.5px;line-height:1.95;color:var(--ink2);margin-top:14px}
 .cb-note b{color:var(--ink)}
 .cb-note .mono{color:var(--water)}
@@ -433,20 +433,20 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 <!-- ═══ 二 · 为什么比特币（投资论点） ═══ -->
 <section id="why">
   <div class="wrap">
-    <div class="kicker reveal">Chapter 02 · 为什么比特币</div>
+    <div class="kicker reveal">第二章 · 为什么比特币</div>
     <h2 class="reveal">你的钱，正在被悄悄稀释</h2>
     <p class="lead reveal">钱的本质是一本<b>账本</b>，而记账的那一方，握有往账本里添数字的权力。当账本可以被单方面加长，你的现金就在无声地缩水。比特币是人类第一次拥有一种——<b>谁也加印不了的钱</b>。为什么值得长期持有，三张图说清楚。</p>
 
     <div class="demo reveal" id="curveBox">
       <div class="cap">其一 · 美元购买力 1913 – 2026（官方 CPI，1913 = $100 · 对数刻度）</div>
       <svg id="ppSvg" viewBox="0 0 760 300" aria-label="美元购买力世纪曲线">
-        <line x1="56" y1="20" x2="56" y2="252" stroke="#d8d3c6"/>
-        <line x1="56" y1="252" x2="730" y2="252" stroke="#d8d3c6"/>
+        <line x1="56" y1="20" x2="56" y2="252" stroke="rgba(49,88,107,.5)"/>
+        <line x1="56" y1="252" x2="730" y2="252" stroke="rgba(49,88,107,.5)"/>
         <g id="ppGrid" style="font-family:var(--mono)"></g>
-        <path id="ppPath" fill="none" stroke="#21405f" stroke-width="2.4"/>
-        <g id="ppMarks" font-size="10.5" fill="#8b9299"></g>
-        <line id="ppCursor" y1="20" y2="252" stroke="#b08d3e" stroke-width="1" opacity="0"/>
-        <circle id="ppDot" r="4.5" fill="#b08d3e" opacity="0"/>
+        <path id="ppPath" fill="none" stroke="#9FC6D4" stroke-width="1.6"/>
+        <g id="ppMarks" font-size="10.5" fill="#7D8894"></g>
+        <line id="ppCursor" y1="20" y2="252" stroke="#9FC6D4" stroke-width="1" opacity="0"/>
+        <circle id="ppDot" r="4" fill="#9FC6D4" opacity="0"/>
       </svg>
       <div style="margin-top:6px"><input type="range" id="ppYear" min="1913" max="2026" value="2026" step="1" style="width:100%" aria-label="选择年份"></div>
       <div class="curve-read">
@@ -473,15 +473,15 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
     <div class="demo reveal">
       <div class="cap">其二 · 减半时刻表：拖动年份，看发行机器怎么自己踩刹车</div>
       <svg id="supSvg" viewBox="0 0 760 240" aria-label="比特币供应曲线与减半阶梯">
-        <line x1="56" y1="18" x2="56" y2="196" stroke="#d8d3c6"/>
-        <line x1="56" y1="196" x2="730" y2="196" stroke="#d8d3c6"/>
-        <line x1="56" y1="28" x2="730" y2="28" stroke="#b08d3e" stroke-dasharray="4 5"/>
-        <text x="62" y="22" font-size="11" fill="#b08d3e" style="font-family:var(--mono)">21,000,000 —— 到此为止，一枚不多</text>
-        <path id="supPath" fill="none" stroke="#21405f" stroke-width="2.4"/>
-        <g id="supMarks" font-size="10.5" fill="#8b9299" style="font-family:var(--mono)"></g>
-        <line id="supCursor" y1="18" y2="196" stroke="#b08d3e" opacity="0"/>
-        <circle id="supDot" r="4.5" fill="#b08d3e" opacity="0"/>
-        <text x="730" y="232" font-size="10.5" fill="#8b9299" text-anchor="end">2140 年，最后一聪 · 此后发行永久归零</text>
+        <line x1="56" y1="18" x2="56" y2="196" stroke="rgba(49,88,107,.5)"/>
+        <line x1="56" y1="196" x2="730" y2="196" stroke="rgba(49,88,107,.5)"/>
+        <line x1="56" y1="28" x2="730" y2="28" stroke="#E8813A" stroke-dasharray="4 5" opacity=".8"/>
+        <text x="62" y="22" font-size="11" fill="#E8813A" style="font-family:var(--mono)">21,000,000 —— 到此为止，一枚不多</text>
+        <path id="supPath" fill="none" stroke="#E8813A" stroke-width="1.8"/>
+        <g id="supMarks" font-size="10.5" fill="#7D8894" style="font-family:var(--mono)"></g>
+        <line id="supCursor" y1="18" y2="196" stroke="#9FC6D4" opacity="0"/>
+        <circle id="supDot" r="4" fill="#E8813A" opacity="0"/>
+        <text x="730" y="232" font-size="10.5" fill="#7D8894" text-anchor="end">2140 年，最后一聪 · 此后发行永久归零</text>
       </svg>
       <div style="margin-top:6px"><input type="range" id="supYear" min="2009" max="2140" value="2026" step="1" style="width:100%" aria-label="选择年份"></div>
       <div class="halving-read">
@@ -489,7 +489,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <div class="cell"><div class="k">每页账的新币奖励</div><div class="v" id="hRw">3.125 ₿</div></div>
         <div class="cell"><div class="k">已发行 / 年增发率</div><div class="v" id="hPc">95% · 0.8%</div></div>
       </div>
-      <p class="note" style="margin-top:12px">2026 年：约 <b class="mono">95%</b> 已发行完毕，年增发率约 <b class="mono">0.8%</b>——<b>已低于黄金的年开采率</b>。（教学近似值 · 2026-07 口径）</p>
+      <p class="note" style="margin-top:12px">2026 年：约 <b class="mono">95%</b> 已发行完毕，年增发率约 <b class="mono">0.8%</b>——<b>已低于黄金的年开采率</b>。法币的曲线向下，比特币的阶梯恒定——对比即论点。（教学近似值 · 2026-07 口径）</p>
     </div>
 
     <div class="codeblock reveal">
@@ -663,12 +663,13 @@ function checkReveals(){const vh=innerHeight;
   for(const el of reveals){if(el.classList.contains("on"))continue;
     const r=el.getBoundingClientRect();
     if(r.top<vh*0.92&&r.bottom>-20)el.classList.add("on");}}
-let rafPend=false;
-addEventListener("scroll",()=>{if(rafPend)return;rafPend=true;requestAnimationFrame(()=>{rafPend=false;checkReveals();gauge();});},{passive:true});
-addEventListener("resize",checkReveals);
-checkReveals();setTimeout(checkReveals,300);
 const TICKS=[];
-setInterval(()=>{if(document.hidden)return;checkReveals();gauge();for(let i=0;i<TICKS.length;i++)TICKS[i]();},400);
+function runTicks(){for(let i=0;i<TICKS.length;i++)TICKS[i]();}
+let rafPend=false;
+addEventListener("scroll",()=>{if(rafPend)return;rafPend=true;requestAnimationFrame(()=>{rafPend=false;checkReveals();gauge();runTicks();});},{passive:true});
+addEventListener("resize",checkReveals);
+checkReveals();setTimeout(()=>{checkReveals();runTicks();},300);
+setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},400);
 
 /* ── 点击涟漪 ── */
 (function(){
@@ -700,10 +701,10 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();for(let i=0;i<
   const path=$("ppPath");path.setAttribute("d",d);
   const grid=$("ppGrid");
   [100,50,25,10,5,3].forEach(v=>{
-    grid.innerHTML+=`<line x1="${X0}" x2="${X1}" y1="${Y(v)}" y2="${Y(v)}" stroke="#eee9dd"/><text x="${X0-6}" y="${Y(v)+3.5}" font-size="10" fill="#8b9299" text-anchor="end">$${v}</text>`;});
+    grid.innerHTML+=`<line x1="${X0}" x2="${X1}" y1="${Y(v)}" y2="${Y(v)}" stroke="rgba(49,88,107,.22)"/><text x="${X0-6}" y="${Y(v)+3.5}" font-size="10" fill="#7D8894" text-anchor="end">$${v}</text>`;});
   const marks=$("ppMarks");
   [[1913,"美联储成立"],[1971,"美元脱金"],[2020,"大放水"]].forEach(m=>{
-    marks.innerHTML+=`<line x1="${X(m[0])}" x2="${X(m[0])}" y1="${Y1}" y2="${Y1+5}" stroke="#8b9299"/><text x="${X(m[0])}" y="${Y1+18}" text-anchor="middle">${m[0]} ${m[1]}</text>`;});
+    marks.innerHTML+=`<line x1="${X(m[0])}" x2="${X(m[0])}" y1="${Y1}" y2="${Y1+5}" stroke="#7D8894"/><text x="${X(m[0])}" y="${Y1+18}" text-anchor="middle">${m[0]} ${m[1]}</text>`;});
   const L=path.getTotalLength();path.style.strokeDasharray=L;path.style.strokeDashoffset=reduced?0:L;
   let drawn=false;
   function tryDraw(){if(drawn)return;const r=path.getBoundingClientRect();
@@ -755,7 +756,7 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();for(let i=0;i<
   const p=$("supPath");p.setAttribute("d",d);
   const marks=$("supMarks");
   [2012,2016,2020,2024,2028].forEach(y=>{
-    marks.innerHTML+=`<line x1="${XX(y)}" x2="${XX(y)}" y1="${Y1}" y2="${Y1+5}" stroke="#8b9299"/><text x="${XX(y)}" y="${Y1+18}" text-anchor="middle">${y}</text>`;});
+    marks.innerHTML+=`<line x1="${XX(y)}" x2="${XX(y)}" y1="${Y1}" y2="${Y1+5}" stroke="#7D8894"/><text x="${XX(y)}" y="${Y1+18}" text-anchor="middle">${y}</text>`;});
   const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=reduced?0:L;
   let drawn=false;
   function tryDraw(){if(drawn)return;const r=p.getBoundingClientRect();
