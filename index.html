@@ -570,6 +570,30 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       <p class="note" style="margin-top:12px">静置，不是保管——被稀释是<b style="color:#EAEDEF">确定会发生的事</b>。</p>
     </div>
 
+    <div class="demo reveal" id="pathBox">
+      <div class="cap">同一时期 · 比特币这十五年（年末价 · 对数刻度 · 教学近似）</div>
+      <svg id="priceSvg" viewBox="0 0 800 240" aria-label="比特币十五年价格路径：约 0.3 美元到约九万美元">
+        <line x1="56" x2="700" y1="167" y2="167" stroke="rgba(49,88,107,.22)"/><text x="50" y="170" font-size="9.5" fill="#7D8894" text-anchor="end">$1</text><line x1="56" x2="700" y1="110" y2="110" stroke="rgba(49,88,107,.22)"/><text x="50" y="113" font-size="9.5" fill="#7D8894" text-anchor="end">$100</text><line x1="56" x2="700" y1="53" y2="53" stroke="rgba(49,88,107,.22)"/><text x="50" y="56" font-size="9.5" fill="#7D8894" text-anchor="end">$1 万</text><line x1="56" x2="700" y1="25" y2="25" stroke="rgba(49,88,107,.22)"/><text x="50" y="28" font-size="9.5" fill="#7D8894" text-anchor="end">$10 万</text><line x1="142" x2="142" y1="196" y2="201" stroke="#7D8894"/><text x="142" y="212" font-size="9" fill="#7D8894" text-anchor="middle">2012</text><line x1="314" x2="314" y1="196" y2="201" stroke="#7D8894"/><text x="314" y="212" font-size="9" fill="#7D8894" text-anchor="middle">2016</text><line x1="485" x2="485" y1="196" y2="201" stroke="#7D8894"/><text x="485" y="212" font-size="9" fill="#7D8894" text-anchor="middle">2020</text><line x1="657" x2="657" y1="196" y2="201" stroke="#7D8894"/><text x="657" y="212" font-size="9" fill="#7D8894" text-anchor="middle">2024</text>
+        <line x1="56" y1="16" x2="56" y2="196" stroke="rgba(49,88,107,.5)"/>
+        <line x1="56" y1="196" x2="700" y2="196" stroke="rgba(49,88,107,.5)"/>
+        <polyline id="prPath" points="56,182.4 99,148.2 142,135.1 185,85.2 228,95.9 271,92.2 314,82.1 357,49.1 399,65.4 442,57.2 485,39.8 528,34.0 571,46.9 614,35.2 657,25.4 700,26.3" fill="none" stroke="#E8813A" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="700" cy="26.3" r="3" fill="#E8813A"/>
+        <line x1="700" y1="26.3" x2="726" y2="30.3" stroke="#E8813A" stroke-width="1.6" stroke-dasharray="3 4"/>
+        <circle cx="726" cy="30.3" r="3.5" fill="#E8813A"/><text x="734" y="33" font-size="11" font-weight="700" fill="#E8813A" font-family="ui-monospace,Menlo,monospace">≈$63,000</text><text x="734" y="45" font-size="8.5" fill="#C9B296" font-family="ui-monospace,Menlo,monospace">2026-07 · 今</text>
+        <text x="60" y="174" font-size="11" fill="#C9B296" font-family="ui-monospace,Menlo,monospace">$0.30</text>
+        <text x="692" y="16" font-size="13" font-weight="700" fill="#E8813A" text-anchor="end" font-family="ui-monospace,Menlo,monospace">年末 $87,500</text>
+        
+        <text x="378" y="234" font-size="9.5" fill="#7D8894" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">横轴：年份（底部刻度=四次减半）· 纵轴：美元（对数）· 已发生的历史，非预测 · 过去不代表未来</text>
+      </svg>
+      <div class="halving-read" style="margin-top:14px">
+        <div class="cell"><div class="k">同样那 $100 万，若在这年放进比特币</div><div class="v"><input type="range" id="pyYear" min="2013" max="2024" value="2017" step="1" style="width:100%"></div></div>
+        <div class="cell"><div class="k">存入年份</div><div class="v" id="pyY">2017</div></div>
+        <div class="cell"><div class="k">到今天（2026-07）约值</div><div class="v" id="pyOut" style="color:var(--btc)">$455 万（×4.5）</div></div>
+      </div>
+      <p class="note" style="margin-top:12px"><b>历史回望，不是预测</b>——这条线也刚刚经历了本轮 −55%：$128,198（2025-10 高点）→ $57,950（2026-07 低点）。中途腰斩是常态（见档案室），归零也从未排除。（教学近似 · 2026-07 口径）</p>
+    </div>
+
+
     <div class="demo reveal">
       <div class="cap">其二 · 减半时刻表：拖动年份，看发行机器怎么自己踩刹车</div>
       <svg id="supSvg" viewBox="0 0 760 240" aria-label="比特币供应曲线与减半阶梯">
@@ -727,7 +751,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     <div class="box reveal">
       <p class="big">如果比特币归零，与它相关的一切投入将全部损失。<br>任何告诉你「不会亏」的人，都在对你撒谎——<br>包括未来的我们，如果我们哪天说了这句话。</p>
     </div>
-    <p class="reveal" style="margin-top:30px">十五年放上一条轴，三件事一眼可见：<b>涨的年份多（11 : 4）、最大跌幅一轮比一轮小、入场的机构与国家越来越多。</b></p>
+    <p class="reveal" style="margin-top:30px">十五年放上一条轴，三件事一眼可见：<b>涨的年份多（11 : 4）、最大跌幅一轮比一轮小（−93% → 本轮至今 −55%）、入场的机构与国家越来越多。</b></p>
     <div class="demo reveal">
       <div class="cap">十五年 · 年度涨跌与接受度（点击或左右滑动看每一年 · 柱高对数压缩，以数值为准 · 教学近似 · 2026-07 口径）</div>
       <div class="halving-read" style="margin:0 0 14px">
@@ -742,14 +766,19 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
           <line x1="330" y1="12" x2="342" y2="12" stroke="#A99BD6" stroke-width="2"/><text x="348" y="16" fill="#B9AEDD">轴上紫刻=接受度事件年</text>
         </g>
         <rect id="cycSel" x="54" y="24" width="46" height="266" fill="rgba(159,198,212,.08)" rx="3"/>
+        <line x1="52" y1="60" x2="52" y2="250" stroke="rgba(49,88,107,.55)" stroke-width="1.2"/>
         <line x1="56" y1="204" x2="730" y2="204" stroke="rgba(49,88,107,.55)" stroke-width="1.4"/>
+        <text x="46" y="208" text-anchor="end" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#7D8894">0%</text>
+        <text x="46" y="120" text-anchor="end" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#9AA4AD">涨</text>
+        <text x="46" y="238" text-anchor="end" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#9AA4AD">跌</text>
+        <text x="393" y="290" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="9.5" fill="#7D8894">年份（2011 – 2025 · 年末对年末）</text>
         <line x1="344" y1="201" x2="344" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="481" y1="201" x2="481" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="527" y1="201" x2="527" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="664" y1="201" x2="664" y2="207" stroke="#A99BD6" stroke-width="2"/><line x1="710" y1="201" x2="710" y2="207" stroke="#A99BD6" stroke-width="2"/>
-        <g id="cycBars"><rect class="cyb" data-yr="2011" x="54" y="106" width="32" height="98" fill="#B0793F"/><rect class="cyb" data-yr="2012" x="100" y="153" width="32" height="51" fill="#B0793F"/><rect class="cyb" data-yr="2013" x="145" y="74" width="32" height="130" fill="#B0793F"/><rect class="cyb" data-yr="2014" x="191" y="204" width="32" height="29" fill="#6E4526"/><rect class="cyb" data-yr="2015" x="237" y="183" width="32" height="21" fill="#B0793F"/><rect class="cyb" data-yr="2016" x="282" y="161" width="32" height="43" fill="#B0793F"/><rect class="cyb" data-yr="2017" x="328" y="108" width="32" height="96" fill="#B0793F"/><rect class="cyb" data-yr="2018" x="374" y="204" width="32" height="33" fill="#6E4526"/><rect class="cyb" data-yr="2019" x="420" y="167" width="32" height="37" fill="#B0793F"/><rect class="cyb" data-yr="2020" x="465" y="142" width="32" height="62" fill="#B0793F"/><rect class="cyb" data-yr="2021" x="511" y="175" width="32" height="29" fill="#B0793F"/><rect class="cyb" data-yr="2022" x="557" y="204" width="32" height="30" fill="#6E4526"/><rect class="cyb" data-yr="2023" x="602" y="157" width="32" height="47" fill="#B0793F"/><rect class="cyb" data-yr="2024" x="648" y="162" width="32" height="42" fill="#B0793F"/><rect class="cyb" data-yr="2025" x="694" y="204" width="32" height="4" fill="#6E4526"/></g>
-        <g font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#E0C9A6"><text x="70" y="99" text-anchor="middle">+1470%</text><text x="116" y="146" text-anchor="middle">+186%</text><text x="161" y="67" text-anchor="middle">+5500%</text><text x="207" y="248" text-anchor="middle" fill="#C9B296">−58%</text><text x="253" y="176" text-anchor="middle">+35%</text><text x="298" y="154" text-anchor="middle">+125%</text><text x="344" y="101" text-anchor="middle">+1330%</text><text x="390" y="252" text-anchor="middle" fill="#C9B296">−73%</text><text x="436" y="160" text-anchor="middle">+94%</text><text x="481" y="135" text-anchor="middle">+305%</text><text x="527" y="168" text-anchor="middle">+60%</text><text x="573" y="249" text-anchor="middle" fill="#C9B296">−64%</text><text x="618" y="150" text-anchor="middle">+155%</text><text x="664" y="155" text-anchor="middle">+121%</text><text x="710" y="223" text-anchor="middle" fill="#C9B296">≈−2%</text></g>
+        <g id="cycBars"><rect class="cyb" data-yr="2011" x="54" y="106" width="32" height="98" fill="#B0793F"/><rect class="cyb" data-yr="2012" x="100" y="153" width="32" height="51" fill="#B0793F"/><rect class="cyb" data-yr="2013" x="145" y="74" width="32" height="130" fill="#B0793F"/><rect class="cyb" data-yr="2014" x="191" y="204" width="32" height="29" fill="#6E4526"/><rect class="cyb" data-yr="2015" x="237" y="183" width="32" height="21" fill="#B0793F"/><rect class="cyb" data-yr="2016" x="282" y="161" width="32" height="43" fill="#B0793F"/><rect class="cyb" data-yr="2017" x="328" y="108" width="32" height="96" fill="#B0793F"/><rect class="cyb" data-yr="2018" x="374" y="204" width="32" height="33" fill="#6E4526"/><rect class="cyb" data-yr="2019" x="420" y="167" width="32" height="37" fill="#B0793F"/><rect class="cyb" data-yr="2020" x="465" y="142" width="32" height="62" fill="#B0793F"/><rect class="cyb" data-yr="2021" x="511" y="175" width="32" height="29" fill="#B0793F"/><rect class="cyb" data-yr="2022" x="557" y="204" width="32" height="30" fill="#6E4526"/><rect class="cyb" data-yr="2023" x="602" y="157" width="32" height="47" fill="#B0793F"/><rect class="cyb" data-yr="2024" x="648" y="162" width="32" height="42" fill="#B0793F"/><rect class="cyb" data-yr="2025" x="694" y="204" width="32" height="6" fill="#6E4526"/></g>
+        <g font-family="ui-monospace,Menlo,monospace" font-size="10.5" fill="#E0C9A6"><text x="70" y="99" text-anchor="middle">+1470%</text><text x="116" y="146" text-anchor="middle">+186%</text><text x="161" y="67" text-anchor="middle">+5500%</text><text x="207" y="248" text-anchor="middle" fill="#C9B296">−58%</text><text x="253" y="176" text-anchor="middle">+35%</text><text x="298" y="154" text-anchor="middle">+125%</text><text x="344" y="101" text-anchor="middle">+1330%</text><text x="390" y="252" text-anchor="middle" fill="#C9B296">−73%</text><text x="436" y="160" text-anchor="middle">+94%</text><text x="481" y="135" text-anchor="middle">+305%</text><text x="527" y="168" text-anchor="middle">+60%</text><text x="573" y="249" text-anchor="middle" fill="#C9B296">−64%</text><text x="618" y="150" text-anchor="middle">+155%</text><text x="664" y="155" text-anchor="middle">+121%</text><text x="710" y="228" text-anchor="middle" fill="#C9B296">−6%</text></g>
         <g font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#7D8894"><text x="70" y="278" text-anchor="middle">11</text><text x="116" y="278" text-anchor="middle">12</text><text x="161" y="278" text-anchor="middle">13</text><text x="207" y="278" text-anchor="middle">14</text><text x="253" y="278" text-anchor="middle">15</text><text x="298" y="278" text-anchor="middle">16</text><text x="344" y="278" text-anchor="middle">17</text><text x="390" y="278" text-anchor="middle">18</text><text x="436" y="278" text-anchor="middle">19</text><text x="481" y="278" text-anchor="middle">20</text><text x="527" y="278" text-anchor="middle">21</text><text x="573" y="278" text-anchor="middle">22</text><text x="618" y="278" text-anchor="middle">23</text><text x="664" y="278" text-anchor="middle">24</text><text x="710" y="278" text-anchor="middle">25</text></g>
         <g font-family="ui-monospace,Menlo,monospace" text-anchor="middle">
           <text x="393" y="316" font-size="9.5" fill="#B9AEDD">2017 期货上市 · 2020 上市公司入表 · 2021 主权国家 · 2024 现货 ETF/华尔街 · 2025 美国/德州战略储备 · 2026 SEC/CFTC 商品定性</text>
-          <text x="240" y="372" font-size="10" fill="#9AA4AD" text-anchor="end">最大跌幅，一轮比一轮小 →</text><rect x="318" y="352" width="22" height="32" fill="#8A5A34" opacity=".9"/><text x="329" y="347" text-anchor="middle" font-size="9" fill="#C9B296">−93%</text><text x="329" y="395" text-anchor="middle" font-size="8" fill="#7D8894">11</text><rect x="384" y="355" width="22" height="29" fill="#8A5A34" opacity=".9"/><text x="395" y="350" text-anchor="middle" font-size="9" fill="#C9B296">−85%</text><text x="395" y="395" text-anchor="middle" font-size="8" fill="#7D8894">13-15</text><rect x="450" y="355" width="22" height="29" fill="#8A5A34" opacity=".9"/><text x="461" y="350" text-anchor="middle" font-size="9" fill="#C9B296">−84%</text><text x="461" y="395" text-anchor="middle" font-size="8" fill="#7D8894">17-18</text><rect x="516" y="358" width="22" height="26" fill="#8A5A34" opacity=".9"/><text x="527" y="353" text-anchor="middle" font-size="9" fill="#C9B296">−77%</text><text x="527" y="395" text-anchor="middle" font-size="8" fill="#7D8894">21-22</text><rect x="582" y="373" width="22" height="11" fill="#8A5A34" opacity=".9"/><text x="593" y="368" text-anchor="middle" font-size="9" fill="#C9B296">−33%</text><text x="593" y="395" text-anchor="middle" font-size="8" fill="#7D8894">25-26</text>
+          <text x="240" y="372" font-size="10" fill="#9AA4AD" text-anchor="end">最大跌幅，一轮比一轮小 →</text><rect x="318" y="352" width="22" height="32" fill="#8A5A34" opacity=".9"/><text x="329" y="347" text-anchor="middle" font-size="9" fill="#C9B296">−93%</text><text x="329" y="395" text-anchor="middle" font-size="8" fill="#7D8894">11</text><rect x="384" y="355" width="22" height="29" fill="#8A5A34" opacity=".9"/><text x="395" y="350" text-anchor="middle" font-size="9" fill="#C9B296">−85%</text><text x="395" y="395" text-anchor="middle" font-size="8" fill="#7D8894">13-15</text><rect x="450" y="355" width="22" height="29" fill="#8A5A34" opacity=".9"/><text x="461" y="350" text-anchor="middle" font-size="9" fill="#C9B296">−84%</text><text x="461" y="395" text-anchor="middle" font-size="8" fill="#7D8894">17-18</text><rect x="516" y="358" width="22" height="26" fill="#8A5A34" opacity=".9"/><text x="527" y="353" text-anchor="middle" font-size="9" fill="#C9B296">−77%</text><text x="527" y="395" text-anchor="middle" font-size="8" fill="#7D8894">21-22</text><rect x="582" y="365" width="22" height="19" fill="#8A5A34" opacity=".9"/><text x="593" y="360" text-anchor="middle" font-size="9" fill="#C9B296">−55%</text><text x="593" y="395" text-anchor="middle" font-size="8" fill="#7D8894">25-26</text>
         </g>
       </svg>
       <p class="note" style="margin-top:12px"><b>可核验的过去，不是对未来的承诺</b>——早期大涨属低基数效应；「归零即全损」见上方黑框。（教学近似 · 本轮未完）</p>
@@ -845,7 +874,7 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
     2019:["+94%","机构级衍生品与托管起步"],2020:["+305%","上市公司开始入表 · 全球大放水"],
     2021:["+60%","萨尔瓦多法币化 · 特斯拉入表"],2022:["−64%","加息周期 · FTX 爆雷（行业出清）"],
     2023:["+155%","贝莱德申请 ETF · 预期升温"],2024:["+121%","美国现货 ETF 获批 · 第四次减半 · 华尔街正式入场"],
-    2025:["≈−2%","美国战略比特币储备 · 德州入库 · 金库公司潮（本轮至今回撤 ≈−33%）"]};
+    2025:["−6%","战略储备年：年内高点 ≈$12.8 万，年末回落收 −6%（本轮至今最大回撤 ≈−55%）"]};
   const sel=$("cycSel"),yEl=$("cyYr"),rEl=$("cyRet"),eEl=$("cyEv");
   function pick(yr){
     yr=Math.max(2011,Math.min(2025,yr));
@@ -865,6 +894,27 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
   svg.addEventListener("pointermove",ev=>{if(down)pick(yrFromEvent(ev));},{passive:true});
   addEventListener("pointerup",()=>{down=false;},{passive:true});
   pick(2024);
+})();
+
+
+/* ── 比特币十五年：自动描画 + 历史回望计算器 ── */
+(function(){
+  const p=$("prPath");if(!p)return;
+  const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=reduced?0:L;
+  let drawn=false;
+  function tryDraw(){if(drawn)return;const r=p.getBoundingClientRect();
+    if(r.top<innerHeight*0.85&&r.bottom>0){drawn=true;p.style.transition="stroke-dashoffset 2.6s ease";p.style.strokeDashoffset=0;}}
+  TICKS.push(tryDraw);tryDraw();
+  const PR={2013:757,2014:318,2015:430,2016:968,2017:13850,2018:3740,2019:7240,2020:29300,2021:46900,2022:16600,2023:42500,2024:93400};
+  const END=63000;
+  function run(){
+    const y=+$("pyYear").value;$("pyY").textContent=y;
+    const mult=END/PR[y];
+    const v=1000000*mult;
+    $("pyOut").textContent=v>=1e8?"$"+(v/1e8).toFixed(1)+" 亿":"$"+Math.round(v/1e4)+" 万";
+    $("pyOut").textContent+="（×"+(mult>=10?Math.round(mult):mult.toFixed(1))+"）";
+  }
+  $("pyYear").addEventListener("input",run);run();
 })();
 
 /* ── 世纪购买力曲线 ── */
