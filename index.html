@@ -21,6 +21,7 @@
   --silver:#D9DEE2; --mist:#7D8894; --btc:#E8813A; --btc-dim:#8A5A34;
   /* 深潜色谱：随下潜每章换一个冷色相（₿ 独占暖谱不变） */
   --acc1:#9FC6D4; --acc2:#85A8E0; --acc3:#7FD4B8; --acc4:#A99BD6; --acc5:#8393C7;
+  --gold:#E2BA6B; /* 鎏金：与 ₿ 橙同族，仅限资产本体/主slogan/题跋印 */
   --ease-velvet:cubic-bezier(.22,.61,.2,1);
   --serif:"Noto Serif SC","Songti SC","STSong",serif;
   --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","HarmonyOS Sans SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
@@ -76,13 +77,14 @@ nav.top a.ext{color:var(--titan)}
 /* ══════ HERO：里海（真实测深图 · 图录左右构图） ══════ */
 #sea{background:radial-gradient(ellipse 130% 100% at 76% 18%,#0C1E2A 0%,var(--steel-black) 56%,#05090E 100%);
   color:var(--silver);position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
-.hero-grid{max-width:1100px;margin:0 auto;padding:96px 24px 46px;display:flex;align-items:center;gap:36px;position:relative;z-index:2;width:100%;box-sizing:border-box}
-#sea .inner{flex:1;min-width:0;max-width:520px;text-align:left}
-.basin-wrap{flex:0 0 46%;display:flex;justify-content:center;pointer-events:none}
-#basinMap{width:100%;max-width:452px;height:auto;display:block}
+.hero-stack{width:100%;padding:100px 0 0;position:relative;z-index:2;text-align:center}
+#sea .inner{max-width:660px;margin:0 auto;padding:0 24px;text-align:center}
+#wangyuan{display:block;width:min(1180px,100%);height:auto;margin:26px auto 0;pointer-events:none}
+.c1-map{margin:2.6rem auto 0;max-width:330px}
+.c1-map svg{width:100%;height:auto;display:block}
 .hero-eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.42em;color:var(--mist)}
 .hero-h1{font-family:var(--serif);font-size:clamp(40px,6vw,58px);font-weight:600;letter-spacing:.2em;margin:22px 0 14px;color:#EAEDEF}
-.hero-slogan{font-size:clamp(17.5px,2.6vw,24px);letter-spacing:.28em;color:var(--titan);margin:0 0 28px}
+.hero-slogan{font-size:clamp(19px,3vw,27px);letter-spacing:.3em;color:var(--gold);margin:0 0 28px;text-shadow:0 0 26px rgba(226,186,107,.28)}
 .hero-thesis{font-size:15.5px;line-height:2.15;color:var(--silver);margin:0}
 .hero-thesis b{color:#EAEDEF;font-weight:600}
 .hero-tag{margin-top:30px;font-family:var(--mono);font-size:11px;color:var(--mist);letter-spacing:.18em}
@@ -105,16 +107,23 @@ nav.top a.ext{color:var(--titan)}
 #goldHoard{opacity:0;animation:hoardIn 1.6s var(--ease-velvet) 2.6s forwards,hoardBreathe 9s ease-in-out 5s infinite}
 @keyframes hoardIn{to{opacity:1}}
 @keyframes hoardBreathe{0%,100%{opacity:1}50%{opacity:.82}}
-/* 文字：与海交叠的柔和升起 */
+/* 望渊图：山影自远及近显影 */
+#wangyuan .wy{opacity:0;animation:wyIn 1.4s var(--ease-velvet) forwards}
+#wangyuan .wy4{animation-delay:.2s}#wangyuan .wyM1{animation-delay:.45s}
+#wangyuan .wy3{animation-delay:.6s}#wangyuan .wyM2{animation-delay:.85s}
+#wangyuan .wy2{animation-delay:1s}#wangyuan .wy1{animation-delay:1.3s}
+#wangyuan .wyS{animation-delay:1.9s}#wangyuan .wyB{animation-delay:2.2s}
+#wangyuan .wySeal{animation:wyIn 1.4s var(--ease-velvet) 2.6s forwards;opacity:0}
+@keyframes wyIn{to{opacity:1}}
+/* 文字：与山影交叠的柔和升起 */
 .hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{opacity:0;animation:up .95s var(--ease-velvet) forwards}
 .hero-eyebrow{animation-delay:.3s}.hero-h1{animation-delay:.45s}.hero-slogan{animation-delay:.65s}
 .hero-thesis{animation-delay:.85s}.hero-tag{animation-delay:1.05s}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){
-  .hero-grid{flex-direction:column;gap:10px;padding-top:84px;text-align:center}
-  #sea .inner{text-align:center;max-width:560px}
-  .basin-wrap{order:-1;flex:none;width:100%}
-  #basinMap{max-width:none;width:auto;max-height:48svh;margin:0 auto}
+  .hero-stack{padding-top:88px}
+  #wangyuan{margin-top:16px}
+  .c1-map{max-width:280px}
 }
 #why{--acc:var(--acc2);background:radial-gradient(ellipse 92% 42% at 50% 0%,rgba(133,168,224,.055),transparent 60%)}
 #honest{--acc:var(--acc4);background:radial-gradient(ellipse 92% 42% at 50% 0%,rgba(169,155,214,.055),transparent 60%)}
@@ -275,7 +284,8 @@ footer .fine{border-top:1px solid rgba(49,88,107,.35);margin-top:22px;padding-to
   .reveal{opacity:1;transition:none}
   .sonar{display:none}
   #coast,#kbg,#goldHoard,.hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{animation:none;opacity:1;transform:none}
-  .sink{visibility:hidden}
+  .sink,.drop{visibility:hidden}
+  #wangyuan .wy,#wangyuan .wySeal{animation:none;opacity:1}
   .rv{animation:none;opacity:.5;stroke-dashoffset:0}
 }
 @media(max-width:900px){
@@ -329,7 +339,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 
 <!-- ═══ HERO ═══ -->
 <header id="sea">
-  <div class="hero-grid">
+  <div class="hero-stack">
     <div class="inner">
       <div class="hero-eyebrow">品牌展示 · 非要约邀请 · 筹建中</div>
       <h1 class="hero-h1">里海金库</h1>
@@ -337,7 +347,102 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       <p class="hero-thesis">里海是一片<b>被大地环抱的海</b>：一百多条河注入，却没有一个出海口。<br>我们把公司的资产负债表，建成这样一座里海——<b>价值存进来，就安放在最深处。</b></p>
       <div class="hero-tag">Delaware C-Corp · 筹建中 · Caspian Vault 为暂定名</div>
     </div>
-    <div class="basin-wrap">
+    <svg id="wangyuan" viewBox="0 0 1200 430" preserveAspectRatio="xMidYMid meet" role="img" aria-label="望渊图：群山环抱，藏金于渊">
+      <defs>
+        <linearGradient id="wySky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#070B0E" stop-opacity="0"/><stop offset="1" stop-color="#0A1622"/>
+        </linearGradient>
+        <linearGradient id="wyVoid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#123043"/><stop offset=".5" stop-color="#0A1C29"/><stop offset="1" stop-color="#03070C"/>
+        </linearGradient>
+        <linearGradient id="wyMist" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7D8894" stop-opacity="0"/><stop offset=".5" stop-color="#7D8894" stop-opacity=".085"/><stop offset="1" stop-color="#7D8894" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="wyGold" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#E8B45A" stop-opacity=".22"/><stop offset=".55" stop-color="#E8963A" stop-opacity=".07"/><stop offset="1" stop-color="#E8963A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="430" fill="url(#wySky)"/>
+      <linearGradient id="wyFadeL" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#070B0E"/><stop offset="1" stop-color="#070B0E" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="wyFadeR" x1="1" y1="0" x2="0" y2="0">
+        <stop offset="0" stop-color="#070B0E"/><stop offset="1" stop-color="#070B0E" stop-opacity="0"/>
+      </linearGradient>
+      <!-- 渊：两山之间沉下去的海 -->
+      <path fill="url(#wyVoid)" d="M508,150 L692,150 L662,430 L538,430 Z"/>
+      <!-- 海面波痕（渊口） -->
+      <g stroke="#9FC6D4" fill="none" stroke-linecap="round">
+        <path d="M522,160 Q562,155 600,160 T678,160" stroke-width="1.1" opacity=".4"/>
+        <path d="M538,171 Q572,167 604,171 T664,171" stroke-width=".9" opacity=".26"/>
+        <path d="M554,182 Q586,179 614,182 T648,182" stroke-width=".8" opacity=".15"/>
+      </g>
+      <!-- 四重山影（远→近，石青→石绿→墨青），自两侧环抱 -->
+      <g class="wy wy4" opacity=".78">
+        <path fill="#16344A" d="M0,168 C40,160 76,140 104,112 C124,92 142,66 164,60 C188,54 206,82 226,98 C250,118 282,108 314,120 C362,138 444,154 520,164 L520,430 L0,430 Z"/>
+        <path fill="#16344A" d="M1200,158 C1150,150 1112,128 1082,100 C1064,84 1048,60 1028,56 C1004,52 988,84 966,102 C944,120 910,112 878,124 C832,140 750,156 680,164 L680,430 L1200,430 Z"/>
+      </g>
+      <rect class="wy wyM1" x="0" y="168" width="1200" height="46" fill="url(#wyMist)"/>
+      <g class="wy wy3" opacity=".9">
+        <path fill="#1C4551" d="M0,252 C48,244 88,224 116,200 C136,186 154,162 176,158 C200,154 218,180 240,194 C264,210 298,204 330,214 C384,232 462,256 535,286 L535,430 L0,430 Z"/>
+        <path fill="#1C4551" d="M1200,246 C1148,238 1110,220 1082,198 C1064,184 1050,164 1028,161 C1004,158 988,184 964,198 C940,212 908,206 876,216 C822,233 742,258 665,286 L665,430 L1200,430 Z"/>
+      </g>
+      <rect class="wy wyM2" x="0" y="286" width="1200" height="44" fill="url(#wyMist)"/>
+      <g class="wy wy2">
+        <path fill="#1B4A3C" d="M0,332 C44,326 84,310 110,292 C128,280 146,260 166,257 C188,254 204,276 224,288 C248,303 280,298 310,308 C368,327 456,358 550,402 L550,430 L0,430 Z"/>
+        <path fill="#1B4A3C" d="M1200,328 C1154,322 1116,308 1090,290 C1072,278 1056,258 1036,255 C1014,252 998,274 978,286 C954,301 922,296 892,306 C834,325 744,358 650,402 L650,430 L1200,430 Z"/>
+      </g>
+      <g class="wy wy1">
+        <path fill="#0D2430" d="M0,384 C60,374 122,368 182,376 C242,384 302,398 362,412 C408,422 456,428 496,430 L0,430 Z"/>
+        <path fill="#0D2430" d="M1200,380 C1140,370 1080,366 1020,374 C960,382 900,398 840,412 C792,422 744,428 706,430 L1200,430 Z"/>
+        <path fill="none" stroke="#E2BA6B" stroke-width=".8" opacity=".34" d="M0,384 C60,374 122,368 182,376 C242,384 302,398 362,412 C408,422 456,428 496,430"/>
+        <path fill="none" stroke="#E2BA6B" stroke-width=".8" opacity=".34" d="M1200,380 C1140,370 1080,366 1020,374 C960,382 900,398 840,412 C792,422 744,428 706,430"/>
+      </g>
+      <!-- 聚流：两缕金线自山麓入渊 -->
+      <path class="wy wyS" fill="none" stroke="#E2BA6B" stroke-width="1" opacity=".2" d="M184,262 C330,272 452,288 560,314"/>
+      <path class="wy wyS" fill="none" stroke="#E2BA6B" stroke-width="1" opacity=".2" d="M1016,258 C878,268 756,286 640,314"/>
+      <!-- 深度标注 -->
+      <g font-family="ui-monospace,Menlo,monospace" fill="#9FC6D4" text-anchor="start" opacity=".55">
+        <text x="700" y="164" font-size="10">海面 0 米</text>
+        <text x="672" y="282" font-size="10" opacity=".8">−520 米</text>
+      </g>
+      <text x="648" y="398" font-family="ui-monospace,Menlo,monospace" font-size="10" fill="#E2BA6B" opacity=".6">−1025 米</text>
+      <!-- 渊底藏金 -->
+      <ellipse class="wyGlow" cx="600" cy="396" rx="66" ry="30" fill="url(#wyGold)">
+        <animate attributeName="opacity" values=".55;1;.55" keyTimes="0;.42;1" dur="8s" repeatCount="indefinite"/>
+      </ellipse>
+      <g class="wy wyB" font-family="Georgia,serif" fill="#E8B45A" text-anchor="middle">
+        <text x="573" y="404" font-size="10" opacity=".38">₿</text>
+        <text x="600" y="404" font-size="21" opacity=".92">₿</text>
+        <text x="628" y="404" font-size="10" opacity=".34">₿</text>
+      </g>
+      <text class="wy wyB" x="600" y="422" font-family="ui-monospace,Menlo,monospace" font-size="8.5" fill="#E2BA6B" opacity=".5" text-anchor="middle">藏金于渊 · 教学示意</text>
+      <!-- 落金：价值自海面沉入渊底 -->
+      <circle class="drop" cx="600" r="2.2" fill="#E8B45A" opacity="0">
+        <animate attributeName="cy" values="168;388;388" keyTimes="0;.34;1" dur="8s" begin="3.4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;.9;.9;0;0" keyTimes="0;.05;.3;.36;1" dur="8s" begin="3.4s" repeatCount="indefinite"/>
+      </circle>
+      <rect x="0" y="0" width="90" height="430" fill="url(#wyFadeL)"/>
+      <rect x="1110" y="0" width="90" height="430" fill="url(#wyFadeR)"/>
+      <!-- 题跋印（鎏金） -->
+      <g class="wy wySeal" opacity=".62">
+        <rect x="1128" y="352" width="34" height="34" fill="none" stroke="#E2BA6B" stroke-width="1"/>
+        <rect x="1131.5" y="355.5" width="27" height="27" fill="none" stroke="#E2BA6B" stroke-width=".45" opacity=".6"/>
+        <text x="1145" y="375" font-family="Georgia,serif" font-size="15" fill="#E2BA6B" text-anchor="middle">₿</text>
+      </g>
+    </svg>
+  </div>
+  <div class="scrollhint">▼ 入 渊</div>
+</header>
+
+
+<!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
+<section id="corridor">
+  <div class="wrap">
+    <div class="kicker reveal" style="text-align:center">第一章 · 这是什么</div>
+    <h2 class="reveal" style="text-align:center">我们为什么叫里海</h2>
+    <p class="gx-foreword reveal">里海有很多头衔——最大、最深、最古老。但真正让我们非它不可的，只有一个：<strong>独立</strong>。它是一座天生的金库。</p>
+    <figure class="c1-map reveal">
       <svg id="basinMap" viewBox="0 0 460 640" role="img" aria-label="里海测深图：万川归之，藏金于渊">
         <defs>
           <linearGradient id="bathy" x1="0" y1="0" x2="0" y2="1">
@@ -417,18 +522,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <path class="rv" d="M60,412 C86,414 108,416 126,418"/>
         <path class="rv" d="M400,408 C372,410 338,414 314,418"/>
       </svg>
-    </div>
-  </div>
-  <div class="scrollhint">▼ 入 渊</div>
-</header>
-
-
-<!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
-<section id="corridor">
-  <div class="wrap">
-    <div class="kicker reveal" style="text-align:center">第一章 · 这是什么</div>
-    <h2 class="reveal" style="text-align:center">我们为什么叫里海</h2>
-    <p class="gx-foreword reveal">里海有很多头衔——最大、最深、最古老。但真正让我们非它不可的，只有一个：<strong>独立</strong>。它是一座天生的金库。</p>
+    </figure>
 
     <div class="c1-grid">
       <div class="plate reveal">
