@@ -90,23 +90,6 @@ nav.top a.ext{color:var(--titan)}
 .hero-tag{margin-top:30px;font-family:var(--mono);font-size:11px;color:var(--mist);letter-spacing:.18em}
 .depth-t{font-family:var(--mono);font-size:10px;fill:#9FC6D4;fill-opacity:.72;text-anchor:middle;letter-spacing:.18em}
 .scrollhint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;letter-spacing:.34em;color:var(--mist);z-index:3}
-/* 编排 · 帧1：水体自暗中显形（0–1.3s，无任何线条先动） */
-#coast,#kbg{opacity:0;animation:seaIn 1.3s var(--ease-velvet) .1s forwards}
-@keyframes seaIn{to{opacity:1}}
-/* 编排 · 帧2：河流细光丝错峰滑入（1.25s 起，无箭头，末端溶入水体） */
-.rv{fill:none;stroke:#7FB6CC;stroke-width:1.1;stroke-linecap:round;opacity:0;
-  stroke-dasharray:60;stroke-dashoffset:60;animation:rvIn 1.6s var(--ease-velvet) forwards}
-.rv:nth-of-type(1){animation-delay:1.25s}.rv:nth-of-type(2){animation-delay:1.45s}
-.rv:nth-of-type(3){animation-delay:1.65s}.rv:nth-of-type(4){animation-delay:1.85s}
-.rv:nth-of-type(5){animation-delay:2.05s}
-@keyframes rvIn{0%{opacity:0;stroke-dashoffset:60}30%{opacity:.85}100%{opacity:.5;stroke-dashoffset:0}}
-/* 常驻：岸线极缓呼吸（20s） */
-@keyframes seaBreathe{0%,100%{stroke-opacity:.55}50%{stroke-opacity:.78}}
-#coast{animation:seaIn 1.3s var(--ease-velvet) .1s forwards,seaBreathe 20s ease-in-out 3.4s infinite}
-/* 帧3：₿ 群在河流之后于渊底显影，随后极缓呼吸 */
-#goldHoard{opacity:0;animation:hoardIn 1.6s var(--ease-velvet) 2.6s forwards,hoardBreathe 9s ease-in-out 5s infinite}
-@keyframes hoardIn{to{opacity:1}}
-@keyframes hoardBreathe{0%,100%{opacity:1}50%{opacity:.82}}
 /* 望渊图：山影自远及近显影 */
 #wangyuan .wy{opacity:0;animation:wyIn 1.4s var(--ease-velvet) forwards}
 #wangyuan .wy4{animation-delay:.2s}#wangyuan .wyM1{animation-delay:.45s}
@@ -130,6 +113,7 @@ nav.top a.ext{color:var(--titan)}
 #road{--acc:var(--acc5);background:radial-gradient(ellipse 92% 42% at 50% 0%,rgba(131,147,199,.05),transparent 60%)}
 /* ── 章节骨架 ── */
 section{padding:88px 0 72px}
+.kicker.plaque{display:inline-block;border:1px solid var(--acc,var(--steel));padding:7px 18px;border-radius:2px;background:rgba(14,26,32,.6)}
 .kicker,.chap-k{font-family:var(--mono);font-size:11px;letter-spacing:.4em;color:var(--acc,var(--mist));margin-bottom:12px}
 h2{font-family:var(--serif);font-size:clamp(30px,4.2vw,42px);font-weight:600;letter-spacing:.08em;margin-bottom:26px;line-height:1.5;color:#EAEDEF}
 h2::after{content:"";display:block;width:46px;height:2px;background:var(--acc,var(--steel));margin:16px 0 0;border-radius:1px}
@@ -179,6 +163,31 @@ input[type=range]{accent-color:var(--steel)}
 .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0 8px}
 @media(max-width:820px){.doors{grid-template-columns:1fr}}
 .door-spec{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--mist);border-top:1px solid rgba(49,88,107,.3);margin-top:14px;padding-top:10px}
+/* 地理厅 · 真实制图 */
+.c1-map{max-width:600px}
+#geoMap{width:100%;height:auto;display:block;background:#0B1219}
+.geoN{font:600 13px var(--serif);fill:#C9D2D8;letter-spacing:.3em}
+.geoNf{font:400 10px var(--sans);fill:#5E6B76;letter-spacing:.2em}
+.geoSeaT{font:600 17px var(--serif);fill:#BFDCE8;letter-spacing:.5em}
+.geoDepth{font:9.5px var(--mono);fill:#9FC6D4;fill-opacity:.75;letter-spacing:.15em}
+.geoKbg{font:9px var(--sans);fill:#7D8894}
+.geoC{fill:#9FC6D4}.geoCt{font:9.5px var(--sans);fill:#98A4AE}
+.geoScale line{stroke-linecap:butt}.geoScale text{fill:#7D8894}
+.geoBtc{font:700 15px Georgia,serif;fill:#E8813A}
+.geoCap{font:10px var(--mono);color:var(--mist);letter-spacing:.18em;margin-top:8px;text-align:center}
+/* 入场编排：河先流 → 海显形 → 国界描 → 名字亮 → ₿ 沉底 */
+.c1-map .geoR,.c1-map .geoSea,.c1-map .geoB,.c1-map .geoN,.c1-map .geoNf,.c1-map .geoSeaT,
+.c1-map .geoDepth,.c1-map .geoKbg,.c1-map .geoC,.c1-map .geoCt,.c1-map .geoScale,.c1-map .geoBtc{opacity:0;transition:opacity 1.1s var(--ease-velvet)}
+.c1-map.on .geoR{opacity:.6;transition-delay:.15s}
+.c1-map.on .geoSea{opacity:1;transition-delay:.55s}
+.c1-map.on .geoB{opacity:.5;transition-delay:1.05s}
+.c1-map.on .geoN{opacity:1;transition-delay:1.5s}
+.c1-map.on .geoNf,.c1-map.on .geoKbg{opacity:1;transition-delay:1.75s}
+.c1-map.on .geoSeaT,.c1-map.on .geoDepth{opacity:1;transition-delay:2s}
+.c1-map.on .geoC,.c1-map.on .geoCt,.c1-map.on .geoScale{opacity:1;transition-delay:2.25s}
+.c1-map.on .geoBtc{opacity:1;transition-delay:2.7s}
+@media(prefers-reduced-motion:reduce){.c1-map .geoR,.c1-map .geoSea,.c1-map .geoB,.c1-map .geoN,.c1-map .geoNf,.c1-map .geoSeaT,.c1-map .geoDepth,.c1-map .geoKbg,.c1-map .geoC,.c1-map .geoCt,.c1-map .geoScale,.c1-map .geoBtc{opacity:1;transition:none}
+.c1-map.on .geoR{opacity:.6}.c1-map.on .geoB{opacity:.5}}
 /* 第一章图录铭牌 */
 .c1-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:2.2rem}
 @media(max-width:768px){.c1-grid{grid-template-columns:1fr}}
@@ -294,10 +303,9 @@ footer .fine{border-top:1px solid rgba(49,88,107,.35);margin-top:22px;padding-to
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transition:none}
   .sonar{display:none}
-  #coast,#kbg,#goldHoard,.hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{animation:none;opacity:1;transform:none}
-  .sink,.drop{visibility:hidden}
+  .hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{animation:none;opacity:1;transform:none}
+  .drop{visibility:hidden}
   #wangyuan .wy,#wangyuan .wySeal{animation:none;opacity:1}
-  .rv{animation:none;opacity:.5;stroke-dashoffset:0}
 }
 @media(max-width:900px){
   section{padding:66px 0 54px}
@@ -486,89 +494,18 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 <!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
 <section id="corridor">
   <div class="wrap">
-    <div class="kicker reveal" style="text-align:center">第一章 · 这是什么</div>
+    <div class="kicker plaque reveal" style="text-align:center">第一库室 · 地理厅</div>
     <h2 class="reveal" style="text-align:center">我们为什么叫里海</h2>
-    <p class="gx-foreword reveal">里海有很多头衔——最大、最深、最古老。但真正让我们非它不可的，只有一个：<strong>独立</strong>。它是一座天生的金库。</p>
+    <p class="gx-foreword reveal">世界上最大的内陆海：<strong>五国环抱，万川来朝，滴水不出。</strong><br>大自然画好了图纸——<strong>我们照着守。</strong></p>
     <figure class="c1-map reveal">
-      <svg id="basinMap" viewBox="0 0 460 640" role="img" aria-label="里海测深图：万川归之，藏金于渊">
-        <defs>
-          <linearGradient id="bathy" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#1B4258"/>
-            <stop offset=".38" stop-color="#123043"/>
-            <stop offset=".72" stop-color="#0A1A26"/>
-            <stop offset="1" stop-color="#071018"/>
-          </linearGradient>
-          <radialGradient id="deepGlow" cx=".5" cy=".82" r=".5">
-            <stop offset="0" stop-color="#040A10"/><stop offset="1" stop-color="#040A10" stop-opacity="0"/>
-          </radialGradient>
-          <radialGradient id="goldDeep" cx=".5" cy=".5" r=".5">
-            <stop offset="0" stop-color="#E8813A" stop-opacity=".16"/><stop offset=".6" stop-color="#E8813A" stop-opacity=".05"/><stop offset="1" stop-color="#E8813A" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <!-- 主水体（顺时针自伏尔加口起）：锯齿状三角洲北缘→乌拉尔口→东岸串珠凸起→
-             卡拉博加兹湾坝岸→土库曼巴什湾→东南斜岸→伊朗弧岸→西岸北上→阿普歇伦指形半岛→
-             杰尔宾特/马哈奇卡拉直岸→捷列克口→回伏尔加口 -->
-        <path id="coast" fill="url(#bathy)" stroke="#9FC6D4" stroke-width="1.2" stroke-opacity=".7" d="
-          M150,50
-          C154,44 160,48 166,44 C172,40 178,46 186,42 C194,38 200,44 208,42
-          C224,42 244,46 256,54
-          C272,60 284,70 288,86 C292,102 282,114 282,130
-          C286,144 296,150 298,162 C300,174 290,180 291,194
-          C292,206 293,220 293,234
-          C293,244 292,252 293,262 C294,278 294,290 296,302
-          C298,314 290,320 288,328 C287,336 296,340 298,350
-          C300,366 296,382 300,398 C304,414 310,424 312,440
-          C314,466 308,500 296,522 C280,552 246,570 208,568
-          C176,566 150,548 140,520
-          C132,498 134,472 130,448 C127,430 124,416 128,398
-          C132,382 138,372 142,364
-          C152,358 172,357 186,351 C193,347 193,341 184,339 C174,336 158,339 148,335
-          C140,330 136,318 134,304 C131,284 128,262 126,240 C124,215 124,196 130,176
-          C134,162 128,152 132,138 C136,120 142,104 144,88 C146,74 146,60 150,50 Z"/>
-        <!-- 卡拉博加兹湾：近闭潟湖，窄颈系于坝岸 -->
-        <path id="kbg" fill="#122B3C" stroke="#9FC6D4" stroke-width=".9" stroke-opacity=".55" d="
-          M294,246 C298,250 301,258 302,268 C304,286 316,298 336,300
-          C356,302 375,292 380,272 C384,252 374,235 352,230
-          C334,226 312,232 300,242 C297,244 295,245 294,246 Z"/>
-        <!-- 内等深线：中盆/南盆 -->
-        <path fill="none" stroke="#9FC6D4" stroke-width=".7" stroke-opacity=".3" d="M212,268 C238,264 256,280 258,304 C260,330 246,346 224,350 C200,354 182,340 180,318 C178,294 190,272 212,268 Z"/>
-        <path fill="none" stroke="#9FC6D4" stroke-width=".55" stroke-opacity=".22" d="M222,432 C252,428 274,450 276,482 C278,514 258,540 228,544 C198,548 176,524 174,494 C172,462 194,436 222,432 Z"/>
-        <ellipse cx="226" cy="496" rx="76" ry="82" fill="url(#deepGlow)"/>
-        <!-- 藏金于渊：₿ 群卧于南盆最深处（聚流成海的终点） -->
-        <ellipse cx="227" cy="506" rx="64" ry="42" fill="url(#goldDeep)"/>
-        <g id="goldHoard" font-family="Georgia,serif" fill="#E8813A" text-anchor="middle">
-          <text x="200" y="464" font-size="7" opacity=".16">₿</text><text x="222" y="462" font-size="7" opacity=".2">₿</text><text x="244" y="465" font-size="7" opacity=".16">₿</text>
-          <text x="190" y="482" font-size="8.5" opacity=".3">₿</text><text x="212" y="480" font-size="8.5" opacity=".34">₿</text><text x="234" y="481" font-size="8.5" opacity=".32">₿</text><text x="256" y="483" font-size="8.5" opacity=".28">₿</text>
-          <text x="198" y="500" font-size="10" opacity=".46">₿</text><text x="220" y="499" font-size="10" opacity=".5">₿</text><text x="242" y="500" font-size="10" opacity=".48">₿</text><text x="261" y="502" font-size="10" opacity=".4">₿</text>
-          <text x="206" y="521" font-size="12" opacity=".68">₿</text><text x="228" y="520" font-size="12.5" opacity=".85">₿</text><text x="250" y="521" font-size="12" opacity=".66">₿</text>
-          <text x="227" y="538" font-size="9" opacity=".32">₿</text>
-        </g>
-        <text x="196" y="112" class="depth-t">北盆 · 浅</text>
-        <text x="219" y="312" class="depth-t">中盆 −788 米</text>
-        <text x="226" y="444" class="depth-t">南盆 −1025 米</text>
-        <text x="227" y="562" class="depth-t" style="font-size:8.5px">藏金于渊 · 教学示意</text>
-        <!-- 沉降光点：河水送来的价值，沉进最深处（reduced-motion 时隐藏） -->
-        <g id="sinkDots">
-          <circle class="sink" r="1.6" fill="#E8963A" opacity="0">
-            <animateMotion dur="6s" begin="3s" repeatCount="indefinite" path="M158,46 C150,150 160,300 200,420 C210,455 218,480 224,496"/>
-            <animate attributeName="opacity" values="0;.9;.9;0" keyTimes="0;.08;.82;1" dur="6s" begin="3s" repeatCount="indefinite"/>
-          </circle>
-          <circle class="sink" r="1.4" fill="#E8963A" opacity="0">
-            <animateMotion dur="4.5s" begin="6.5s" repeatCount="indefinite" path="M126,418 C160,440 195,470 220,498"/>
-            <animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.1;.8;1" dur="4.5s" begin="6.5s" repeatCount="indefinite"/>
-          </circle>
-          <circle class="sink" r="1.4" fill="#E8963A" opacity="0">
-            <animateMotion dur="4.5s" begin="9.5s" repeatCount="indefinite" path="M314,418 C290,440 255,470 232,498"/>
-            <animate attributeName="opacity" values="0;.85;.85;0" keyTimes="0;.1;.8;1" dur="4.5s" begin="9.5s" repeatCount="indefinite"/>
-          </circle>
-        </g>
-        <!-- 河流细光丝：伏尔加/乌拉尔/捷列克/库拉/阿特列克（只进，无箭头） -->
-        <path class="rv" d="M156,8 C160,22 156,34 158,46"/>
-        <path class="rv" d="M262,12 C258,26 256,38 256,50"/>
-        <path class="rv" d="M62,168 C88,166 110,166 128,167"/>
-        <path class="rv" d="M60,412 C86,414 108,416 126,418"/>
-        <path class="rv" d="M400,408 C372,410 338,414 314,418"/>
-      </svg>
+      <svg id="geoMap" viewBox="0 0 597 620" role="img" aria-label="里海与环抱五国 · 真实地理（Natural Earth 制图数据）">
+<defs><linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2A4456"/><stop offset=".55" stop-color="#1C3140"/><stop offset="1" stop-color="#10202B"/></linearGradient>
+<clipPath id="geoClip"><rect width="597" height="620"/></clipPath></defs>
+<g clip-path="url(#geoClip)"><rect width="597" height="620" fill="#0B1219"/><path d="M71,476 L75,478 L75,481 L75,483 L78,490 L78,494 L73,496 L71,496 L70,501 L68,503 L65,503 L61,498 L60,490 L58,483 L58,478 L58,476 L53,470 L53,465 L55,463 L56,461 L55,459 L53,459 L50,459 L51,456 L53,454 L61,454 L65,459 L66,463 L65,467 L65,474 L66,476 L68,476 L71,476 Z" fill="#131F29" stroke="#223846" stroke-width=".5" stroke-opacity=".4"/><path d="M50,354 L48,352 L50,350 L53,350 L58,354 L60,354 L61,354 L65,357 L68,361 L70,363 L71,363 L71,365 L71,368 L70,370 L68,370 L66,370 L63,370 L60,370 L58,368 L56,363 L56,359 L55,359 L53,357 L51,354 L50,354 Z" fill="#131F29" stroke="#223846" stroke-width=".5" stroke-opacity=".4"/><path d="M491,153 L493,148 L494,142 L499,137 L499,131 L503,128 L503,124 L504,117 L509,117 L508,115 L509,115 L516,115 L518,113 L521,113 L523,111 L524,111 L523,115 L518,115 L511,120 L509,128 L506,131 L503,135 L503,144 L504,148 L499,155 L501,155 L499,159 L501,164 L499,166 L498,175 L498,177 L493,182 L489,179 L489,177 L491,173 L488,162 L491,153 Z" fill="#131F29" stroke="#223846" stroke-width=".5" stroke-opacity=".4"/><path d="M574,106 L572,106 L574,102 L571,95 L567,97 L559,93 L552,95 L547,91 L547,86 L557,80 L559,84 L561,89 L562,84 L567,86 L572,82 L566,78 L564,75 L567,75 L574,78 L574,84 L577,91 L586,91 L589,89 L587,84 L591,84 L591,82 L599,80 L596,84 L592,86 L591,91 L591,93 L587,100 L581,104 L576,106 L574,106 Z" fill="#131F29" stroke="#223846" stroke-width=".5" stroke-opacity=".4"/><g class="geoR" fill="none" stroke="#3E5C6E" stroke-width=".9" opacity=".6"><path d="M269,0 L267,2 L269,2 L269,4 L270,4 L269,4 L269,7 L269,9 L267,9 L267,11 L269,11 L267,11 L267,13 L269,13 L267,13 L267,16 L269,16 L267,16 L267,18 L269,18 L270,18 L270,20 L269,20 L269,22 L270,22 L270,24 L270,27 L269,27 L269,29 L270,29 L270,31 L270,33 L269,33 L269,35 L270,35 L269,35 L269,38 L269,40 L270,40 L272,42 L272,44 L272,42 L274,44 L275,47 L275,44 L277,47 L275,47 L277,47 L277,49 L279,49 L277,49 L279,51 L277,53 L279,53 L279,55 L280,55 L279,55 L279,58 L280,58 L280,60 L279,60 L279,62 L277,62 L277,64 L275,66 L272,69"/><path d="M518,230 L518,228 L516,228 L516,226 L514,224 L513,224 L513,222 L514,222 L514,219 L514,217 L516,215 L516,213 L514,210 L513,208 L511,208 L508,206 L506,206 L506,204 L501,204 L499,204 L499,202 L499,199 L499,197 L499,195 L501,195 L501,193 L499,193 L498,190 L498,188 L496,188 L496,186 L494,186 L494,184 L493,184 L491,182 L491,179"/><path d="M596,319 L594,319 L594,321 L592,321 L591,321 L591,319 L589,317 L587,315 L586,315 L584,315 L582,312 L581,312 L581,310 L572,303 L571,303 L571,301 L569,299 L567,299 L566,299 L566,297 L564,295 L562,292 L562,290 L562,288 L561,288 L559,288 L557,288 L557,286 L556,286 L556,284 L556,281 L549,277 L547,275 L546,275 L544,272 L544,275 L542,275 L541,275 L539,275 L536,272 L534,270 L531,266 L529,266 L529,264 L528,264 L526,264 L526,261 L524,261 L524,259 L526,257 L526,255 L524,255 L523,255 L521,253 L521,250 L523,250 L521,248 L519,244 L519,241 L519,239 L519,237 L519,235 L518,235 L518,233 L518,230 L519,230 L518,228 L516,224 L516,222 L516,219 L518,219 L519,219 L521,219 L523,217 L523,215 L523,213 L523,210 L521,208 L519,206 L518,206 L516,204 L516,202 L518,199 L519,199 L519,197 L521,197 L523,197 L523,195 L524,195 L526,195 L528,195 L529,195 L531,195 L533,193"/><path d="M511,505 L511,503 L509,503 L508,501 L506,501 L504,501 L504,503 L501,503 L499,505 L496,503 L494,503 L493,503 L493,501 L491,501 L489,498 L488,498 L488,496 L486,496 L483,492 L466,487 L465,487 L465,485 L463,485 L461,483 L460,481 L458,481 L456,481 L456,478 L455,478 L450,481 L448,481 L448,478 L446,478 L445,478 L438,478 L436,476 L435,476 L433,474 L431,474 L431,472 L428,472 L426,472 L426,470 L425,470 L423,467 L421,467 L420,467 L413,470 L411,470 L408,470 L406,470 L405,470 L403,467 L401,467 L400,467 L398,467 L396,467 L396,465 L395,465 L393,465 L392,465 L390,465 L388,467 L387,467 L385,467 L385,470 L383,470 L382,472 L377,476 L375,478 L375,481 L375,483 L375,485 L375,487 L373,487 L372,487 L372,490 L370,487 L367,490 L365,490 L363,490 L362,492 L360,492 L357,492 L355,492 L353,492 L353,490 L352,490 L350,490 L348,490 L347,490 L345,492"/><path d="M41,0 L50,2 L51,4 L51,2 L53,2 L55,2 L56,2 L58,2 L61,4 L63,4 L65,2 L65,0 L66,2 L70,2 L71,4 L73,4 L76,7 L78,7 L80,7 L81,7 L81,9 L83,9 L83,11 L86,11 L88,16 L88,18 L86,22 L88,24 L90,27 L91,27 L93,27 L95,27 L95,29 L95,31 L96,33 L100,33 L101,33 L103,35 L103,38 L105,38 L105,40 L106,40 L108,42 L109,44 L111,47 L113,47 L114,47 L116,49 L119,51 L119,53 L119,55 L119,58 L121,58 L123,58 L128,62 L129,64 L131,66 L133,66 L134,66 L136,66 L136,69 L134,71 L134,73 L136,73 L138,73 L139,73 L141,73 L141,75 L143,78 L144,78"/><path d="M144,78 L148,80 L149,78 L151,80 L154,80 L154,82 L156,82 L158,84 L158,86 L158,89 L158,91 L158,93 L159,93 L161,93 L163,95 L164,95 L166,97 L166,100 L168,102 L168,104 L169,106 L171,106"/><path d="M144,78 L144,80 L146,80 L146,82 L146,84 L148,84 L148,86 L149,86 L149,89 L148,91 L149,91 L149,93 L149,95 L149,97 L148,97 L146,102 L144,104 L143,104 L143,106 L141,106 L141,109 L141,111 L139,111 L138,111 L138,113 L138,115 L138,117 L136,120 L134,120 L134,122"/><path d="M95,337 L96,337 L98,337 L101,334 L108,337 L109,337 L113,337 L114,339 L116,339 L116,341"/><path d="M2,290 L3,288 L8,286 L10,286 L13,288 L15,288 L17,286 L18,286 L20,288 L23,288 L25,290 L27,290 L28,290 L30,292 L32,292 L33,292 L40,295 L41,297 L41,299 L43,301 L45,303 L46,303 L48,303 L48,306 L50,306 L50,308 L50,310 L51,310 L51,315 L53,315 L53,317 L55,319 L56,319 L58,321 L60,321 L63,321 L65,321 L66,321 L66,323 L68,323 L68,326 L70,326 L71,326 L71,328 L73,328 L75,328 L75,330 L76,330 L78,332 L80,332 L81,332 L83,334 L83,332 L85,332 L85,334 L86,334 L88,334 L90,334 L91,334 L91,337 L93,337 L95,337"/><path d="M116,341 L118,343 L118,346 L119,346 L118,346 L119,348 L119,346 L121,346 L121,348 L123,348 L123,350 L123,352 L124,352 L123,352 L123,354 L124,354 L124,352 L126,352 L126,354 L124,354 L126,354 L126,357 L128,357 L128,359 L126,359 L129,359 L128,361 L129,361 L131,361 L129,361 L129,363 L131,363 L133,363 L133,365 L133,368 L134,368 L134,370 L134,368 L136,368 L138,368 L138,370 L138,368 L139,370 L139,368 L141,368 L141,370 L143,370 L143,372 L144,372 L146,372 L148,372 L149,370 L149,372 L151,372 L151,370 L153,372 L154,374 L156,374 L158,374 L159,374 L161,374 L163,374 L164,374 L164,377 L166,374 L168,372 L169,372 L169,374 L171,374 L171,372 L171,374 L173,374 L174,374 L174,377 L176,377 L178,377 L179,379 L179,381 L181,381 L181,383 L181,385 L181,388 L182,388 L182,390 L181,390 L181,392 L182,392 L182,394 L182,396 L182,399 L182,401 L186,401 L191,403 L192,403 L194,403 L194,405"/><path d="M0,341 L2,341 L2,343 L3,343 L5,346 L5,348 L7,348 L7,350 L5,352 L5,354 L3,354 L2,354 L2,357 L3,357 L3,359 L3,361 L5,363 L7,365 L5,365 L7,368 L7,370 L5,370 L5,372 L7,372 L10,374 L13,377 L18,377 L20,374 L22,377 L22,374 L23,374 L25,374 L27,374 L28,374 L32,379 L33,379 L35,381 L35,383 L36,383 L38,385 L40,385 L41,390 L43,390 L43,392 L45,392 L45,394 L46,394 L48,399 L48,401 L50,403 L51,403 L51,405 L53,405 L53,408 L55,408 L55,410 L55,412 L56,412 L60,412 L60,414 L61,414 L61,416 L63,416 L63,419 L65,419 L63,419 L65,421 L66,421 L68,423 L71,423 L73,423 L76,423 L83,425 L85,427 L88,427 L90,427 L90,425 L91,425 L93,425 L95,425 L96,425 L100,425 L101,425 L103,425 L103,423 L105,421 L108,419 L108,416 L109,416 L111,414 L113,414 L114,414 L116,412 L118,412 L118,410 L119,408 L121,405 L124,405 L126,403 L128,401 L129,399 L131,399 L133,399 L134,399 L136,396 L141,394 L143,392 L143,390 L144,390 L146,390 L148,390 L149,390 L149,388 L149,385 L151,385 L151,383 L151,385 L151,383 L153,383 L153,381 L154,381 L156,381 L158,381 L159,381 L159,379 L161,379 L163,379 L164,377"/></g><g class="geoSea"><path d="M373,332 L372,330 L374,330 L372,329 L372,327 L371,327 L370,326 L368,323 L362,319 L359,317 L357,315 L356,315 L354,314 L354,312 L352,312 L350,310 L350,308 L349,306 L349,301 L349,299 L348,297 L346,294 L345,292 L346,291 L345,289 L346,287 L345,285 L344,284 L342,283 L340,282 L339,283 L338,282 L328,284 L326,284 L322,284 L321,284 L319,284 L318,285 L314,289 L309,299 L308,299 L308,301 L308,303 L309,301 L311,301 L313,302 L312,304 L312,306 L312,307 L310,313 L309,315 L309,317 L310,319 L310,322 L312,326 L312,328 L311,330 L310,329 L311,327 L311,325 L310,323 L309,322 L309,318 L307,315 L306,315 L306,313 L305,312 L303,312 L303,310 L301,310 L301,308 L301,307 L301,305 L301,303 L300,302 L299,300 L297,299 L297,297 L298,294 L299,292 L298,291 L297,289 L297,287 L297,285 L295,284 L296,282 L297,280 L298,279 L300,276 L301,274 L302,272 L302,270 L303,269 L303,268 L304,266 L305,264 L305,262 L304,260 L303,259 L301,257 L301,255 L302,257 L304,259 L305,260 L306,262 L307,260 L307,259 L307,257 L306,255 L305,255 L303,255 L303,253 L301,253 L298,252 L295,251 L293,252 L292,253 L289,250 L287,249 L284,249 L282,250 L281,251 L279,251 L277,248 L276,246 L275,245 L275,243 L273,240 L271,239 L271,237 L271,236 L269,236 L267,236 L266,237 L265,237 L261,237 L258,237 L259,232 L259,229 L259,224 L258,222 L258,220 L257,218 L256,217 L255,216 L253,215 L250,208 L250,206 L249,205 L248,203 L247,202 L246,200 L246,198 L244,198 L244,197 L244,192 L243,190 L242,189 L239,188 L227,185 L226,185 L224,183 L224,182 L224,180 L224,178 L223,175 L224,174 L225,173 L226,171 L227,171 L232,172 L234,172 L236,171 L237,172 L240,172 L242,172 L244,171 L245,172 L247,173 L248,175 L249,175 L249,176 L250,176 L253,178 L255,178 L256,177 L258,175 L259,175 L261,175 L261,176 L265,175 L267,177 L268,176 L267,175 L265,174 L263,172 L261,173 L259,173 L257,169 L257,167 L255,167 L253,165 L251,164 L248,162 L248,160 L248,159 L248,157 L249,155 L251,155 L252,154 L254,152 L255,152 L257,153 L258,154 L258,152 L257,151 L257,149 L257,147 L259,145 L259,144 L262,140 L262,138 L264,140 L265,140 L267,140 L269,140 L271,138 L272,138 L273,136 L274,135 L275,136 L278,137 L279,138 L281,138 L282,137 L283,137 L285,138 L295,137 L297,137 L299,137 L301,137 L307,140 L310,140 L311,141 L315,141 L318,142 L319,142 L321,141 L322,140 L324,140 L320,138 L318,137 L317,136 L312,135 L311,134 L309,133 L307,132 L307,130 L307,128 L307,127 L308,126 L309,123 L311,121 L313,120 L314,118 L315,116 L317,114 L317,113 L318,111 L318,109 L319,107 L319,105 L319,103 L321,98 L321,96 L319,93 L318,91 L317,89 L318,90 L318,89 L317,89 L315,89 L315,87 L317,85 L317,87 L319,86 L319,84 L320,83 L321,82 L322,80 L321,79 L319,78 L319,76 L318,73 L317,71 L315,71 L313,69 L311,68 L308,69 L306,68 L303,68 L301,68 L300,67 L297,66 L296,66 L296,68 L295,71 L291,72 L289,72 L289,74 L290,75 L286,74 L285,74 L284,73 L283,72 L283,70 L281,70 L281,72 L279,72 L277,71 L279,69 L277,70 L275,71 L274,70 L273,69 L271,68 L272,66 L271,64 L270,65 L269,66 L268,66 L267,65 L265,64 L263,64 L261,63 L257,62 L256,61 L255,61 L253,62 L252,63 L248,64 L246,66 L244,65 L244,66 L241,70 L241,68 L239,69 L238,70 L236,69 L236,73 L234,74 L234,73 L233,72 L232,72 L230,71 L228,74 L228,73 L227,74 L226,75 L224,78 L223,79 L223,77 L221,78 L218,81 L218,82 L216,83 L215,82 L214,84 L212,84 L211,85 L210,85 L210,87 L208,86 L207,87 L206,86 L206,88 L204,85 L203,88 L202,89 L201,87 L199,86 L198,85 L198,87 L199,89 L198,89 L198,87 L196,86 L195,87 L193,86 L195,88 L196,89 L194,89 L192,88 L192,89 L194,92 L194,94 L193,92 L192,90 L190,89 L190,91 L192,93 L191,93 L188,92 L188,94 L190,94 L190,96 L191,97 L192,98 L192,100 L190,99 L189,98 L188,97 L188,96 L186,97 L185,97 L185,99 L186,101 L186,104 L185,103 L184,102 L182,103 L181,105 L181,106 L180,106 L180,105 L179,104 L179,105 L177,105 L178,106 L177,105 L177,107 L175,106 L174,105 L173,105 L171,106 L170,107 L172,107 L173,109 L173,111 L172,112 L171,112 L172,113 L174,112 L175,113 L174,115 L175,117 L174,118 L173,119 L173,117 L171,115 L170,114 L169,113 L168,113 L167,113 L165,113 L164,114 L163,116 L161,116 L163,117 L159,118 L159,120 L157,120 L157,122 L157,124 L155,122 L154,122 L153,122 L151,122 L150,123 L149,123 L147,123 L146,124 L145,123 L144,125 L144,127 L143,128 L142,126 L141,124 L140,124 L139,124 L137,122 L136,121 L135,120 L135,122 L136,122 L137,124 L137,126 L138,128 L137,129 L136,128 L134,126 L132,126 L131,124 L133,123 L130,122 L129,121 L130,123 L130,125 L131,125 L133,127 L135,128 L135,129 L135,131 L133,131 L133,129 L133,132 L133,134 L133,136 L130,136 L129,136 L131,137 L131,139 L129,141 L129,143 L129,146 L127,146 L126,147 L125,150 L125,152 L123,153 L123,155 L122,156 L121,158 L120,157 L120,161 L119,163 L119,165 L117,162 L117,159 L115,159 L116,160 L116,162 L115,165 L114,165 L112,166 L111,167 L109,168 L108,169 L107,170 L106,175 L106,176 L106,179 L107,181 L109,182 L110,182 L111,182 L116,183 L117,184 L118,187 L119,189 L121,190 L122,190 L123,190 L125,192 L125,195 L127,197 L128,198 L129,201 L130,203 L130,205 L131,205 L131,207 L132,207 L133,209 L131,210 L131,212 L131,214 L130,214 L129,217 L128,216 L129,218 L129,220 L130,222 L131,219 L132,217 L132,215 L133,214 L133,212 L134,209 L134,206 L135,205 L136,204 L138,204 L139,205 L137,207 L136,210 L134,216 L133,221 L133,223 L132,225 L132,227 L133,229 L133,230 L134,229 L135,229 L135,230 L135,232 L133,233 L132,234 L132,236 L132,237 L131,239 L131,243 L134,245 L135,246 L137,248 L139,250 L139,252 L140,253 L140,255 L140,257 L140,259 L141,260 L144,261 L147,267 L149,269 L152,272 L157,280 L157,282 L159,283 L160,284 L160,286 L162,291 L163,291 L165,292 L167,292 L168,293 L169,295 L170,296 L171,297 L174,301 L175,302 L176,304 L178,307 L179,309 L180,310 L182,312 L183,313 L185,316 L186,319 L187,320 L188,325 L188,327 L189,330 L190,332 L194,337 L195,338 L197,339 L198,339 L199,341 L200,342 L200,345 L200,346 L201,348 L204,349 L206,351 L208,351 L210,352 L211,352 L213,351 L218,351 L219,353 L223,354 L224,356 L226,358 L227,359 L228,361 L228,364 L229,366 L228,366 L227,364 L225,362 L223,361 L222,361 L220,361 L219,361 L218,361 L216,362 L214,361 L213,361 L212,361 L210,361 L210,363 L208,364 L206,365 L204,366 L202,367 L200,369 L199,370 L199,372 L197,373 L197,375 L198,377 L198,378 L196,379 L196,381 L197,383 L196,385 L196,386 L196,388 L196,390 L195,390 L194,392 L193,393 L192,395 L192,397 L192,399 L195,402 L196,404 L196,406 L194,405 L195,407 L196,408 L194,407 L192,406 L190,407 L190,408 L190,414 L190,416 L189,418 L189,420 L186,422 L185,423 L184,421 L186,420 L187,418 L187,416 L184,416 L184,414 L183,413 L182,413 L180,414 L180,416 L180,417 L181,419 L180,421 L180,424 L179,425 L178,427 L177,429 L178,431 L178,439 L179,446 L179,450 L179,452 L179,455 L179,456 L179,462 L180,467 L180,469 L181,470 L182,472 L182,475 L183,477 L184,479 L187,482 L189,484 L194,486 L197,487 L210,489 L211,489 L212,489 L214,488 L216,491 L220,492 L222,493 L223,495 L224,497 L224,499 L226,501 L226,502 L228,504 L230,506 L232,508 L233,509 L236,511 L238,511 L238,513 L244,517 L249,520 L251,521 L261,523 L267,525 L273,526 L279,528 L285,527 L291,525 L297,524 L302,522 L308,521 L314,519 L319,517 L330,515 L332,515 L344,514 L347,513 L348,511 L348,513 L346,514 L344,514 L343,515 L342,515 L340,515 L339,515 L337,515 L335,515 L336,516 L338,517 L344,518 L349,517 L350,512 L349,510 L349,509 L348,507 L348,505 L347,501 L346,499 L346,494 L345,489 L344,487 L344,486 L344,482 L342,477 L342,463 L342,462 L343,459 L344,456 L344,455 L344,452 L344,448 L343,447 L342,443 L343,439 L343,437 L344,435 L345,432 L346,431 L346,429 L346,427 L348,425 L348,424 L346,423 L344,422 L344,420 L342,419 L341,419 L340,418 L339,416 L340,418 L338,417 L338,416 L338,414 L340,413 L338,413 L339,410 L338,411 L338,417 L336,416 L336,414 L336,412 L335,410 L334,412 L334,410 L334,408 L334,406 L333,406 L331,406 L330,407 L328,407 L327,406 L325,406 L324,405 L322,405 L321,405 L320,406 L321,407 L321,408 L321,411 L321,413 L320,407 L318,404 L319,402 L320,400 L321,399 L322,394 L323,392 L324,392 L326,392 L324,392 L323,394 L323,396 L322,398 L324,398 L327,397 L329,397 L330,398 L331,400 L334,400 L334,398 L336,399 L337,398 L338,398 L340,398 L338,396 L336,396 L337,394 L336,393 L334,393 L334,392 L332,391 L330,390 L330,392 L329,387 L328,387 L329,386 L330,384 L332,383 L332,381 L333,381 L334,379 L333,377 L332,377 L330,377 L329,377 L328,377 L326,378 L324,379 L323,378 L321,377 L320,377 L317,378 L318,377 L316,377 L315,377 L313,377 L313,376 L312,377 L313,381 L314,383 L316,385 L317,387 L315,386 L317,388 L315,387 L314,384 L313,383 L312,381 L312,379 L308,377 L307,375 L307,372 L307,370 L307,369 L307,367 L305,364 L305,362 L307,355 L307,354 L308,352 L310,349 L311,347 L311,346 L309,345 L310,343 L311,343 L311,341 L311,338 L313,335 L313,333 L313,330 L313,329 L314,330 L314,331 L316,334 L317,337 L318,338 L319,338 L318,338 L318,340 L319,342 L321,343 L322,342 L323,340 L323,342 L326,342 L326,340 L328,339 L328,341 L328,343 L330,344 L331,344 L333,343 L334,341 L334,339 L334,337 L336,337 L337,338 L337,340 L337,342 L338,345 L339,346 L338,347 L339,349 L340,349 L342,348 L344,349 L345,347 L346,346 L348,347 L349,347 L351,346 L350,345 L352,345 L354,345 L356,345 L356,346 L357,346 L362,346 L360,346 L362,346 L360,345 L358,343 L358,341 L357,339 L358,338 L356,338 L358,337 L359,336 L360,336 L362,338 L364,338 L363,340 L364,341 L368,340 L370,339 L372,338 L373,335 L374,333 Z" fill="url(#seaGrad)" stroke="#9FC6D4" stroke-width=".9" stroke-opacity=".55"/></g><g class="geoB" fill="none" stroke="#7D8894" stroke-width=".7" stroke-dasharray="3 3" opacity=".5"><path d="M98,292 L96,292 L91,290 L90,288 L88,288 L85,288 L81,286 L80,286 L78,284 L75,281 L71,279 L71,277 L73,272 L75,266 L73,266 L71,266 L68,264 L61,264 L56,259 L55,257 L51,257 L48,255 L45,255 L41,261 L40,257 L38,255 L36,255 L33,255 L28,257 L23,259 L20,261 L17,261 L15,264 L12,264 L8,261 L8,259 L10,257 L10,255 L3,253 L2,250"/><path d="M5,328 L10,326 L13,326 L20,323 L22,323 L25,323 L32,323 L35,323 L45,323 L43,321 L50,319"/><path d="M50,319 L50,321 L53,323 L55,323 L56,326 L51,328 L53,330 L58,332 L61,332 L63,332 L65,334 L66,337 L70,339 L70,341 L63,346 L63,348 L65,352 L68,359 L75,361 L81,365 L81,370 L81,372 L80,374 L80,377 L78,377 L71,377 L70,377 L71,379 L76,381 L78,385 L81,385 L85,390 L86,392 L90,394 L93,394 L100,396 L100,399 L96,401 L95,403 L96,403 L98,405 L100,408 L103,412 L101,412 L100,412 L96,412 L96,414 L100,416 L100,419 L100,421 L100,425"/><path d="M41,390 L45,390 L51,388 L53,388 L53,390 L55,392 L55,394 L55,396 L58,394 L60,396 L61,396 L65,399 L70,396 L73,396 L75,396 L76,396 L76,399 L76,403 L75,403 L76,405 L80,408 L83,410 L81,412 L85,421 L86,423 L86,425"/><path d="M0,498 L2,498 L7,498 L12,501 L15,498 L17,496 L18,496 L20,496 L22,496 L23,498 L23,501 L23,507 L23,509 L25,509 L27,509 L28,509 L30,507 L33,505 L35,503 L36,501 L38,503 L41,503"/><path d="M41,503 L41,501 L43,498 L43,496 L40,494 L36,492 L35,490 L35,487 L36,485 L35,483 L35,481 L36,478 L35,476 L30,472 L28,472 L23,470 L25,467 L25,463 L28,461 L28,459 L28,456 L30,454 L32,452 L32,450 L30,450 L27,450 L27,447 L27,441 L27,436 L25,434 L25,427 L22,423 L22,421 L22,419 L23,416 L23,414 L20,412 L18,410 L18,408 L18,405 L17,403 L18,403 L20,403 L25,403 L28,403 L30,403 L32,392 L33,388 L36,388 L41,390 L43,392"/><path d="M168,295 L166,297 L164,303 L163,306 L159,308 L154,310 L151,312 L148,317 L144,323 L143,323 L136,323 L133,321 L126,319 L124,319 L123,312 L121,310 L118,308 L116,306 L114,303 L111,299 L108,297 L106,295 L103,297 L101,297 L101,295 L98,292"/><path d="M98,292 L96,295 L95,297 L93,299 L91,299 L90,299 L90,301 L90,303 L90,306 L91,306 L93,310 L96,312 L100,315 L103,317 L105,319 L105,321 L105,326 L101,328 L98,330 L98,328 L96,328 L93,326 L88,323 L86,323 L85,326 L80,323 L76,323 L75,321 L73,319 L73,317 L63,312 L60,312 L56,315 L50,319"/><path d="M0,332 L3,334 L5,334 L7,341 L7,346 L7,348 L5,352 L2,354 L3,357 L3,359 L3,361 L7,365 L7,370 L5,370 L10,374 L15,377 L17,377 L23,374 L27,374 L30,377 L35,381 L41,388 L41,390 L43,390"/><path d="M299,297 L305,290 L310,286 L315,281 L317,281 L323,279 L332,277 L338,275 L347,272 L348,272 L352,272 L355,275 L357,275 L363,279 L372,284 L377,290 L378,292 L380,295 L380,297 L385,303 L387,308 L390,312 L392,315 L395,317 L396,319 L398,321 L400,321 L405,319 L410,319 L413,319 L415,319"/><path d="M415,319 L423,319 L431,319 L440,319 L443,319 L446,321 L448,321 L450,319 L451,317 L451,315 L448,312 L448,303 L446,295 L450,292 L451,290 L456,284 L458,284 L461,281 L471,281 L474,279 L476,277 L478,272 L479,270 L481,268 L483,266 L484,266 L486,268 L489,268 L491,268 L493,270 L493,272 L494,275 L496,275 L498,275 L498,272 L494,270 L491,264 L488,261 L486,261 L486,259 L488,259 L489,257 L493,259 L498,259 L499,257 L501,253 L506,257 L511,264 L513,264 L516,264 L518,266 L519,266 L521,266 L524,272 L526,275 L529,275 L539,275 L542,275 L546,277 L547,279 L547,281 L547,286 L546,288 L546,290 L551,292 L552,295 L554,295 L554,297 L551,297 L551,299 L551,301 L551,303 L552,306 L551,308 L549,310 L549,312 L551,315 L554,317 L562,323 L564,323 L572,321 L576,321 L579,321 L584,323 L587,323 L589,323 L592,323 L594,321 L596,321 L597,319"/><path d="M191,95 L189,95 L181,91 L174,89 L169,86 L169,84 L168,84 L166,82 L166,80 L166,78 L168,78 L169,78 L171,78 L173,78 L176,80 L179,80 L181,78 L178,69 L173,62 L169,55 L168,53 L163,47 L159,40 L154,35 L153,33 L148,33 L136,31 L133,31 L129,33 L126,33 L123,31 L121,27 L119,24 L119,22 L119,16 L118,11 L116,9 L111,9 L105,4"/><path d="M41,503 L43,507 L46,518 L48,521 L50,521 L50,523 L51,525 L51,527 L51,529 L51,534 L53,534 L53,536 L55,536 L56,536 L58,538 L61,552 L61,554 L63,554 L66,554 L68,554 L71,556 L73,560 L76,563 L81,560 L88,563 L91,565 L90,567 L85,569 L83,571 L81,576 L83,576 L83,580 L86,585 L88,587 L88,589 L88,591 L85,594 L80,596 L73,607 L71,609 L71,616 L71,618 L68,618 L66,616 L66,618"/><path d="M589,571 L589,569 L589,567 L589,565 L589,560 L587,556 L586,554 L587,552 L587,549 L587,545 L587,540 L586,534 L586,529 L584,525 L571,525 L559,525 L557,525 L554,516 L549,512 L546,507 L537,503 L533,501 L529,498 L526,494 L526,490 L526,487 L524,487 L523,487 L513,481 L508,478 L504,481 L503,481 L499,478 L496,481 L494,481 L491,481 L489,481 L484,474 L481,472 L478,472 L471,470 L465,467 L461,467 L460,467 L460,465 L460,463 L460,461 L458,459 L456,456 L455,456 L451,456 L445,456 L440,454 L436,454 L433,454 L430,454 L426,456 L425,456 L425,461 L423,461 L423,463 L420,461 L416,461 L410,461 L401,461 L395,463 L388,465 L385,470 L378,474 L377,478 L373,487 L372,490 L370,490 L368,490 L363,492 L358,494 L355,494 L345,494"/><path d="M572,620 L572,618 L574,618 L576,616 L577,614 L579,614 L579,611 L581,609 L582,607 L584,605 L582,602 L584,598 L584,596 L586,594 L586,591 L584,589 L584,587 L586,585 L587,585 L587,583 L589,580 L589,578 L591,576 L591,574 L589,571"/><path d="M594,199 L589,195 L586,193 L584,188 L582,184 L581,182 L577,179 L572,177 L567,173 L562,171 L559,168 L554,164 L549,162 L544,159 L539,155 L536,153 L531,151 L526,146 L521,144 L518,142 L513,137 L508,135 L503,133 L499,131 L496,131 L491,133 L486,135 L479,135 L469,137 L465,140 L460,142 L453,144 L446,146 L441,146 L435,148 L428,151 L423,153 L418,155 L415,155 L415,166 L415,175 L415,186 L415,195 L415,206 L415,217 L415,226 L415,237 L415,246 L415,257 L415,268 L415,277 L415,288 L415,297 L415,308 L415,319"/><path d="M66,348 L66,350 L68,350 L68,348 L66,348"/><path d="M50,328 L48,328 L48,330 L50,332 L50,330 L51,330 L50,328"/><path d="M589,571 L592,569 L594,571 L594,574"/><path d="M86,425 L88,427 L93,425 L100,425"/><path d="M43,390 L43,392 L45,392 L50,403 L51,405 L53,408 L55,410 L56,412 L58,412 L61,414 L63,416 L66,421 L70,423 L80,425 L86,425"/><path d="M100,425 L101,425 L109,416 L111,414 L116,412 L118,410 L123,405 L128,403 L133,399 L136,396 L141,392 L146,390 L149,390 L154,396 L159,401 L159,403 L158,405 L154,408 L153,408 L153,410 L153,412 L154,414 L158,416 L159,419 L159,421 L158,421 L154,423 L151,423 L149,425 L149,427 L149,430 L156,434 L158,434 L158,436 L159,439 L163,439 L169,447 L171,447 L178,445"/></g><text class="geoN" x="103" y="27" text-anchor="middle">俄罗斯</text><text class="geoN" x="401" y="75" text-anchor="middle">哈萨克斯坦</text><text class="geoN" x="441" y="421" text-anchor="middle">土库曼斯坦</text><text class="geoN" x="295" y="585" text-anchor="middle">伊朗</text><text class="geoN" x="93" y="332" text-anchor="middle">阿塞拜疆</text><text class="geoNf" x="27" y="275" text-anchor="middle">格鲁吉亚</text><text class="geoNf" x="544" y="270" text-anchor="middle">乌兹别克斯坦</text><text class="geoNf" x="534" y="128" text-anchor="middle">咸海</text><text class="geoSeaT" x="236" y="275" text-anchor="middle">里　海</text><text class="geoDepth" x="259" y="443" text-anchor="middle">水深 −1025 米</text><text class="geoKbg" x="362" y="306" text-anchor="middle">卡拉博加兹湾</text><circle class="geoC" cx="211" cy="359" r="2"/><text class="geoCt" x="205" y="362" text-anchor="end">巴库</text><circle class="geoC" cx="262" cy="567" r="2"/><text class="geoCt" x="268" y="570" text-anchor="start">德黑兰</text><circle class="geoC" cx="150" cy="95" r="2"/><text class="geoCt" x="156" y="98" text-anchor="start">阿斯特拉罕</text><circle class="geoC" cx="254" cy="215" r="2"/><text class="geoCt" x="260" y="218" text-anchor="start">阿克套</text><circle class="geoC" cx="314" cy="374" r="2"/><text class="geoCt" x="320" y="377" text-anchor="start">土库曼巴什</text><circle class="geoC" cx="494" cy="467" r="2"/><text class="geoCt" x="488" y="470" text-anchor="end">阿什哈巴德</text><g class="geoScale"><line x1="23" y1="589" x2="103" y2="589" stroke="#7D8894" stroke-width="1"/><line x1="23" y1="586" x2="23" y2="592" stroke="#7D8894"/><line x1="103" y1="586" x2="103" y2="592" stroke="#7D8894"/><text x="63" y="583" text-anchor="middle" class="geoCt">200 公里</text></g><text class="geoBtc" x="249" y="423" text-anchor="middle">₿</text></g>
+<rect x=".5" y=".5" width="596" height="619" fill="none" stroke="rgba(49,88,107,.5)"/>
+</svg>
+      <figcaption class="geoCap">制图数据：Natural Earth（公有领域）· 五国交界 · 欧亚要冲</figcaption>
     </figure>
 
     <div class="c1-grid">
@@ -596,7 +533,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 <!-- ═══ 二 · 为什么比特币（投资论点） ═══ -->
 <section id="why">
   <div class="wrap">
-    <div class="kicker reveal">第二章 · 为什么比特币</div>
+    <div class="kicker plaque reveal">第二库室 · 账房</div>
     <h2 class="reveal">你的钱，正在被悄悄稀释</h2>
     <p class="lead reveal">钱是一本<b>账本</b>，而记账的那一方，随时能加页。<br>比特币是人类第一次拥有——<b>谁也加印不了的钱</b>。三张图说清楚。</p>
 
@@ -687,7 +624,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
 <!-- ═══ 三 · 我们做什么 ═══ -->
 <section id="vault">
   <div class="wide">
-    <div class="kicker reveal">第三章 · 我们做什么</div>
+    <div class="kicker plaque reveal">第三库室 · 工序厅</div>
     <h2 class="reveal">替你把「拥有」这件事做对</h2>
 
     <div class="valueprop reveal">
@@ -785,7 +722,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
 <!-- ═══ 四 · 诚实条款 ═══ -->
 <section id="honest">
   <div class="wrap">
-    <div class="kicker reveal">第四章 · 诚实条款</div>
+    <div class="kicker plaque reveal">第四库室 · 档案室</div>
     <h2 class="reveal">先把最坏的话说在最前面</h2>
     <div class="box reveal">
       <p class="big">如果比特币归零，与它相关的一切投入将全部损失。<br>任何告诉你「不会亏」的人，都在对你撒谎——<br>包括未来的我们，如果我们哪天说了这句话。</p>
@@ -826,7 +763,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
 <!-- ═══ 五 · 路线图 ═══ -->
 <section id="road" style="border-top:1px solid rgba(49,88,107,.35)">
   <div class="wrap">
-    <div class="kicker reveal">第五章 · 路线图</div>
+    <div class="kicker plaque reveal">第五库室 · 航路图</div>
     <h2 class="reveal">慢，就是快</h2>
     <p class="note reveal" style="margin-bottom:26px">路线图挂在一条下潜的深度轴上：越往深处，越接近里海的底。</p>
     <div class="road-depth reveal">
