@@ -11,7 +11,7 @@
 <meta property="og:title" content="Caspian Vault · 里海金库 · Nothing flows out.">
 <meta property="og:description" content="被大地环抱的海：只进，不出。一家正在筹建的比特币金库公司。">
 <meta property="og:url" content="https://caspianvault.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='5' y='5' width='54' height='54' rx='13' fill='%230e1c28' stroke='%231f3d55'/%3E%3Cpath d='M32 13 C40 14 43 20 40 27 C44 33 43 42 37 48 C34 52 30 53 32 53 C34 53 30 52 27 48 C21 42 20 33 24 27 C21 20 24 14 32 13 Z' fill='none' stroke='%23d8b466' stroke-width='2'/%3E%3Ctext x='32' y='39' font-size='19' text-anchor='middle' fill='%23d8b466' font-family='Georgia,serif'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23070B0E'/%3E%3Cellipse cx='32' cy='32' rx='22' ry='26' fill='none' stroke='%239FC6D4' stroke-width='2.4'/%3E%3Cellipse cx='32' cy='33' rx='13' ry='16' fill='none' stroke='%239FC6D4' stroke-width='1.2' opacity='.55'/%3E%3Ctext x='32' y='41' font-size='22' text-anchor='middle' fill='%23E8813A' font-family='Georgia,serif' font-weight='bold'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;600&display=swap"></noscript>
 <style>
@@ -62,8 +62,12 @@ a{color:inherit}
 nav.top{position:-webkit-sticky;position:sticky;top:0;z-index:50;background:rgba(7,11,14,.9);
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(49,88,107,.35)}
 nav.top .row{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 24px;font-family:var(--sans);font-size:13px}
-nav.top .logo{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:900;letter-spacing:.06em;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+nav.top .logo{text-decoration:none;white-space:nowrap}
 nav.top .logo svg{display:block;flex:none}
+.lg-row{display:flex;align-items:center;gap:10px;border:none}
+.lg-name{display:flex;flex-direction:column;line-height:1.25}
+.lg-en{font:600 12.5px/1 var(--sans);letter-spacing:.34em;color:var(--silver)}
+.lg-zh{font:400 10px/1 var(--sans);letter-spacing:.5em;color:var(--mist);margin-top:4px}
 nav.top .links{display:flex;gap:15px;margin-left:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
 nav.top .links::-webkit-scrollbar{display:none}
 nav.top a{color:var(--mist);text-decoration:none;white-space:nowrap;padding-bottom:2px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;flex:none}
@@ -242,10 +246,8 @@ footer{background:var(--deep);color:#7e93a5;padding:56px 0 64px;font-family:var(
 footer .brand{font-family:var(--serif);color:#e9e0c9;font-size:18px;font-weight:900;letter-spacing:.1em;margin-bottom:14px}
 footer a{color:#a9b8c4}
 footer .fine{border-top:1px solid var(--deepline);margin-top:22px;padding-top:18px;color:#5f7488}
-.seal{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:48px;height:48px;margin:2.4rem auto 0;
-  color:#5f7488;border:1px solid var(--deepline);outline:1px solid var(--deepline);outline-offset:3px;border-radius:3px;font-family:var(--serif);line-height:1}
-.seal .b{font-size:1.15rem}
-.seal .w{font-size:.62rem;letter-spacing:.08em}
+.seal-v4{margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.8}
+.seal-micro{font:400 8.5px/1 var(--mono);letter-spacing:.3em;color:var(--mist)}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transition:none}
   .click-ping{display:none}
@@ -271,6 +273,18 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="lg-mark" viewBox="0 0 120 120">
+  <g fill="none" stroke-linecap="round">
+    <path d="M60,14 C81,13 97,22 101,38 C105,53 95,62 97,74 C99,88 103,96 100,106 C95,120 78,126 64,127 C50,126 37,118 35,105 C34,92 41,83 41,71 C39,59 31,51 34,37 C38,22 48,15 60,14 Z" stroke="#9FC6D4" stroke-width="1.7" opacity=".95"/>
+    <path d="M60,25 C76,24 88,31 91,43 C94,54 87,62 89,72 C91,83 94,90 92,98 C88,109 75,114 64,115 C53,114 43,107 42,97 C41,87 47,79 47,69 C45,59 39,52 42,41 C45,30 51,26 60,25 Z" stroke="#9FC6D4" stroke-width="1" opacity=".62"/>
+    <path d="M60,36 C71,35 80,40 82,49 C84,57 79,63 81,71 C82,79 85,84 83,90 C80,98 71,102 64,103 C56,102 49,97 48,90 C48,82 52,76 52,68 C51,60 46,54 48,47 C50,39 54,37 60,36 Z" stroke="#9FC6D4" stroke-width=".8" opacity=".38"/>
+    <path d="M60,47 C67,46 73,50 74,56 C75,62 71,66 72,71 C73,77 75,80 74,84 C72,89 67,92 63,92 C58,92 54,88 53,84 C53,79 56,75 56,70 C55,64 52,60 53,55 C54,50 56,48 60,47 Z" stroke="#9FC6D4" stroke-width=".7" opacity=".2"/>
+  </g>
+  <text x="60" y="76" font-size="20" text-anchor="middle" fill="#E8813A" font-family="Georgia,serif" font-weight="bold">₿</text>
+</symbol>
+</defs></svg>
+
 <div id="gauge" aria-hidden="true">
   <div class="tube"><div class="fill" id="gfill"></div></div>
   <div class="lbl">水位 · 只进不出</div>
@@ -278,9 +292,9 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 
 <nav class="top">
   <div class="row">
-    <a class="logo" href="#sea" aria-label="里海金库 首页">
-      <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="4" width="56" height="56" rx="13" fill="none" stroke="#b08d3e" stroke-width="2.4"/><path d="M32 13 C40 14 43 20 40 27 C44 33 43 42 37 48 C34 52 30 53 32 53 C34 53 30 52 27 48 C21 42 20 33 24 27 C21 20 24 14 32 13 Z" fill="none" stroke="#b08d3e" stroke-width="2"/><text x="32" y="39" font-size="18" text-anchor="middle" fill="#b08d3e" font-family="Georgia,serif">₿</text></svg>
-      里海金库
+    <a class="logo lg-row" href="#sea" aria-label="里海金库 首页">
+      <svg width="30" height="30" aria-hidden="true"><use href="#lg-mark"/></svg>
+      <span class="lg-name"><span class="lg-en">CASPIAN VAULT</span><span class="lg-zh">里海金库</span></span>
     </a>
     <div class="links">
       <a href="#corridor">为什么是里海</a><a href="#why">为什么比特币</a><a href="#vault">我们做什么</a><a href="#honest">诚实条款</a><a href="#road">路线图</a><a class="ext" href="https://roserparker.github.io/hukanbit/" target="_blank" rel="noopener">教育馆 ↗</a>
@@ -554,7 +568,10 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     <div class="fine">
       Caspian Vault（暂定名）· Delaware 实体筹建中 · 本页面为品牌展示，不构成任何证券的要约、要约邀请、招揽或投资建议；未注册亦未发行任何证券；不面向任何法律禁止此类内容之司法辖区内的人士。比特币价格波动剧烈，历史表现不代表未来；请仅以可承受全部损失的资金持有这一资产。教学数据均为近似值（2026-07 口径）。© 2026 Caspian Vault (name pending). All rights reserved.
     </div>
-    <div class="seal" aria-hidden="true"><span class="w">≋</span><span class="b">₿</span></div>
+    <div class="seal-v4" aria-hidden="true">
+      <svg width="54" height="54"><use href="#lg-mark"/></svg>
+      <div class="seal-micro">42°N 51°E · NOTHING FLOWS OUT</div>
+    </div>
   </div>
 </footer>
 
