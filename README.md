@@ -45,7 +45,7 @@ HERO #sea      里海轮廓+河流动画 · Nothing flows out · 「品牌展示
 
 ## 待办
 - [ ] 站长通读 v3 文案（六问结构 + HERO 隐喻 + 看涨期权表述为重点）
-- [ ] 注入访客统计一行（`hukanbit-analytics` worker 部署后替换页尾占位注释；追踪器已随胡侃站发布，data-site="caspian" 区分）
+- [x] 访客统计已接入（2026-07-08：worker 部署于 hukanbit-analytics.jpstone.workers.dev，本站 data-site="caspian"，追踪器随仓库自带 `analytics.js`；面板与运维见 Reserve/02_胡侃比特/hukanbit-analytics/，私密资产不入仓）
 - [ ] 命名终审后替换「暂定名」标注（商标粗筛见 命名备忘）
 - [ ] 措辞与「看涨期权」表述过律师内容红线（#honest 法务行已标「待律师终审」）
 - [ ] 视频脚本与宣讲页（宣传物料包批次二）
