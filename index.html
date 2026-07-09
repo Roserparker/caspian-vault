@@ -6,12 +6,12 @@
 <meta name="renderer" content="webkit">
 <meta name="format-detection" content="telephone=no,email=no">
 <title>Caspian Vault · 里海金库</title>
-<meta name="description" content="Caspian Vault（暂定名）——一家把资产负债表建成里海的比特币金库公司。上半场是公益科普（钱、法币、比特币底层、区块链），下半场是公司介绍。品牌与教育展示页，不构成任何证券要约或投资建议。">
+<meta name="description" content="Caspian Vault（里海金库，暂定名）——一家把资产负债表建成一座里海的比特币金库公司。替看得懂比特币的人，把「安全拥有」做成一家公司。品牌展示页，不构成任何证券要约或投资建议。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Caspian Vault · 里海金库">
-<meta property="og:description" content="被大地环抱的海：不与任何大洋连通，只按自己的收支表运转。一座正在筹建的比特币金库。">
+<meta property="og:title" content="Caspian Vault · 里海金库 · Nothing flows out.">
+<meta property="og:description" content="被大地环抱的海：只进，不出。一家正在筹建的比特币金库公司。">
 <meta property="og:url" content="https://caspianvault.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='6' width='52' height='52' rx='12' fill='%230e1c28'/%3E%3Cpath d='M14 40 q6 -5 12 0 t12 0 t12 0' stroke='%23d8b466' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3Ctext x='32' y='34' font-size='26' text-anchor='middle' fill='%23d8b466' font-family='Georgia,serif'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='5' y='5' width='54' height='54' rx='13' fill='%230e1c28' stroke='%231f3d55'/%3E%3Cpath d='M32 13 C40 14 43 20 40 27 C44 33 43 42 37 48 C34 52 30 53 32 53 C34 53 30 52 27 48 C21 42 20 33 24 27 C21 20 24 14 32 13 Z' fill='none' stroke='%23d8b466' stroke-width='2'/%3E%3Ctext x='32' y='39' font-size='19' text-anchor='middle' fill='%23d8b466' font-family='Georgia,serif'%3E%E2%82%BF%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
 <style>
 :root{
@@ -29,7 +29,6 @@
 html{-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:2.05;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-/* 瓷面噪点（胡侃设计系统 v1 回流）；老内核不认 inset，四边写全 */
 body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;pointer-events:none;opacity:.45;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
 .mono{font-family:var(--mono)}
@@ -38,10 +37,7 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;
 a{color:inherit}
 ::selection{background:var(--goldwash);color:var(--ink)}
 :focus-visible{outline:2px solid var(--waterlt);outline-offset:3px}
-/* 弦纹：双道细线 */
-.rule{border:none;height:5px;margin:3.4rem auto;max-width:200px;
-  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-/* 点击涟漪（胡侃 spawnPing 同源） */
+.rule{border:none;height:5px;margin:3.4rem auto;max-width:200px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .click-ping{position:fixed;width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid var(--gold);
   border-radius:50%;pointer-events:none;z-index:9999;opacity:.45;transform:scale(.18);
   animation:ping-out .55s var(--ease-breath) forwards}
@@ -54,81 +50,91 @@ a{color:inherit}
 @media(max-width:760px){#gauge{display:none}}
 /* ── 导航 ── */
 nav.top{position:-webkit-sticky;position:sticky;top:0;z-index:50;background:rgba(247,245,239,.97);border-bottom:1px solid var(--hair)}
-nav.top .row{max-width:1020px;margin:0 auto;display:flex;align-items:baseline;gap:18px;padding:11px 24px;font-family:var(--sans);font-size:13px}
-nav.top .logo{font-family:var(--serif);font-weight:900;letter-spacing:.08em;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
-nav.top .logo i{font-style:normal;color:var(--gold)}
-/* 链接条：窄屏单行横滑，永不换行挤压 */
+nav.top .row{max-width:1020px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 24px;font-family:var(--sans);font-size:13px}
+nav.top .logo{display:flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:900;letter-spacing:.06em;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+nav.top .logo svg{display:block;flex:none}
 nav.top .links{display:flex;gap:15px;margin-left:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
 nav.top .links::-webkit-scrollbar{display:none}
 nav.top a{color:var(--ink2);text-decoration:none;white-space:nowrap;padding-bottom:2px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;flex:none}
 nav.top a:hover{color:var(--ink);border-bottom-color:var(--gold)}
+nav.top a.ext{color:var(--gold)}
 @media(max-width:1000px){
-  nav.top .row{flex-wrap:wrap;gap:6px 18px;padding:10px 18px}
+  nav.top .row{flex-wrap:wrap;gap:6px 18px;padding:9px 18px}
   nav.top .links{margin-left:0;flex-basis:100%;font-size:12.5px;gap:14px;padding-bottom:2px}
 }
-/* ── HERO ── */
-#sea{background:linear-gradient(180deg,#0b1620 0%,var(--deep) 46%,var(--deep2) 100%);color:#e9e4d6;position:relative;overflow:hidden}
-#sea .inner{max-width:1020px;margin:0 auto;padding:70px 24px 0;position:relative;z-index:2;text-align:center}
-.eyebrow{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;color:#8fa3b5;text-transform:uppercase}
-#sea h1{font-family:var(--serif);font-size:clamp(40px,7.2vw,74px);font-weight:900;letter-spacing:.06em;margin:22px 0 4px;color:#f2ead6}
-#sea .en{font-family:var(--sans);font-size:clamp(13px,1.8vw,17px);letter-spacing:.52em;color:var(--goldbright);text-transform:uppercase;margin-bottom:32px}
-#sea .thesis{font-size:clamp(16px,2.3vw,20px);line-height:2.15;color:#cfd8dc;max-width:640px;margin:0 auto}
+/* ══════ HERO：里海（真实地理 + 只进不出） ══════ */
+#sea{background:radial-gradient(ellipse 120% 90% at 50% 8%,#12283a 0%,var(--deep) 46%,#0a1620 100%);color:#e9e4d6;position:relative;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+#sea .inner{max-width:1020px;margin:0 auto;padding:96px 24px 40px;position:relative;z-index:3;text-align:center}
+.hero-mark{margin:0 auto 26px}
+.eyebrow{font-family:var(--sans);font-size:11px;letter-spacing:.32em;color:#7c93a6;text-transform:uppercase}
+#sea h1{font-family:var(--serif);font-size:clamp(42px,7.4vw,78px);font-weight:900;letter-spacing:.1em;margin:20px 0 6px;color:#f4ecd8;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+#sea .en{font-family:var(--sans);font-size:clamp(12px,1.7vw,15px);letter-spacing:.56em;color:#9fb3c4;text-transform:uppercase}
+#sea .slogan{font-family:var(--serif);font-style:italic;font-size:clamp(24px,4.4vw,44px);font-weight:600;letter-spacing:.02em;color:var(--goldbright);margin:38px 0 8px;text-shadow:0 2px 34px rgba(216,180,102,.28)}
+#sea .thesis{font-size:clamp(15px,2.1vw,18.5px);line-height:2.1;color:#cbd6dc;max-width:600px;margin:14px auto 0}
 #sea .thesis b{color:#f2ead6;font-weight:600}
-#sea .thesis .gold{color:var(--goldbright)}
-#sea .tag{margin:24px auto 0;font-family:var(--mono);font-size:12.5px;color:#7e93a5}
-#basin{display:block;width:100%;max-width:1100px;margin:10px auto 0;position:relative;z-index:1}
-.scrollhint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:#6d8398;z-index:3}
-.river{fill:none;stroke:var(--goldbright);stroke-width:2;stroke-linecap:round;opacity:.85;stroke-dasharray:8 10}
+#sea .tag{margin:30px auto 0;font-family:var(--mono);font-size:12px;color:#6f889b;letter-spacing:.04em}
+/* 真实里海地图，作为英雄背景，海岸鎏金、河水只进 */
+#basinMap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:min(118%,940px);width:auto;z-index:1;opacity:.9;pointer-events:none}
+#basinMap .coast{fill:url(#seaFill);stroke:var(--goldbright);stroke-width:2.2;stroke-linejoin:round;
+  filter:drop-shadow(0 0 22px rgba(216,180,102,.35))}
+#basinMap .shine{fill:none;stroke:rgba(216,180,102,.5);stroke-width:1}
+#basinMap .river{fill:none;stroke:var(--goldbright);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:5 13;opacity:.9}
+#basinMap .rin{fill:var(--goldbright)}
+.scrollhint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:11px;letter-spacing:.34em;color:#6d8398;z-index:3}
+/* 载入编排 */
+.coast{stroke-dasharray:2600;stroke-dashoffset:2600;animation:draw 2.4s var(--ease-breath) .2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+#waterRise{transform:translateY(60px);opacity:0;animation:rise 1.8s var(--ease-breath) 1.5s forwards}
+@keyframes rise{to{transform:translateY(0);opacity:1}}
+.river{animation:flowin 3.2s linear 2.4s infinite}
+@keyframes flowin{to{stroke-dashoffset:-108}}
+.hero-mark,#sea h1,#sea .en,#sea .slogan,#sea .thesis,#sea .tag,.eyebrow{opacity:0;animation:up .9s var(--ease-breath) forwards}
+#sea .eyebrow{animation-delay:.1s}.hero-mark{animation-delay:.25s}#sea h1{animation-delay:.4s}#sea .en{animation-delay:.5s}
+#sea .slogan{animation-delay:.75s}#sea .thesis{animation-delay:.95s}#sea .tag{animation-delay:1.1s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 /* ── 章节骨架 ── */
-section{padding:84px 0 68px}
+section{padding:88px 0 72px}
 .kicker{font-family:var(--sans);font-size:11.5px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
-h2{font-family:var(--serif);font-size:clamp(26px,4vw,36px);font-weight:900;letter-spacing:.08em;margin-bottom:26px}
-h3{font-family:var(--serif);font-size:18px;margin:36px 0 12px;font-weight:700;letter-spacing:.05em}
+h2{font-family:var(--serif);font-size:clamp(27px,4vw,38px);font-weight:900;letter-spacing:.06em;margin-bottom:24px;line-height:1.5}
+h3{font-family:var(--serif);font-size:18.5px;margin:38px 0 12px;font-weight:700;letter-spacing:.04em}
 p{margin-bottom:16px;color:var(--ink2)}
 p b,p strong{color:var(--ink)}
+.lead{font-size:clamp(17px,2.3vw,20px);line-height:2;color:var(--ink);max-width:680px}
 .target{border-left:4px solid var(--hair);padding:6px 18px;color:var(--muted);font-size:15.5px;margin-bottom:6px}
-.no{font-family:var(--serif);font-size:22px;font-weight:900;margin:10px 0 18px}
+.no{font-family:var(--serif);font-size:21px;font-weight:900;margin:10px 0 18px}
 .pull{font-family:var(--serif);font-size:clamp(19px,2.8vw,25px);font-weight:700;line-height:1.95;letter-spacing:.03em;color:var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--hair);padding:26px 4px;margin:40px 0;text-align:center}
 .pull small{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;color:var(--muted);margin-top:12px;font-weight:400}
 .note{font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.8}
 .reveal{opacity:0;transition:opacity .8s var(--ease-breath)}
 .reveal.on{opacity:1}
-/* 深读 */
-.deepread{margin:34px 0 0;padding:14px 18px;background:var(--paper2);border:1px solid var(--hair);border-radius:6px;font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:2}
+.deepread{margin:30px 0 0;padding:14px 18px;background:var(--paper2);border:1px solid var(--hair);border-radius:6px;font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:2}
 .deepread b{letter-spacing:.14em;color:var(--gold);font-weight:700;margin-right:8px}
 .deepread a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold);margin-right:14px;white-space:nowrap}
 .deepread a:hover{color:var(--gold)}
-/* 卡片与演示 */
 .demo{background:var(--card);border:1px solid var(--hair);border-radius:8px;padding:26px 26px 22px;margin:26px 0}
 .demo .cap{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--muted);margin-bottom:16px}
-button.act{font-family:var(--sans);font-size:14px;padding:9px 20px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:4px;cursor:pointer;letter-spacing:.06em}
-button.act.ghost{background:transparent;color:var(--ink)}
-button.act:disabled{opacity:.45;cursor:default}
-.btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
 input[type=range]{accent-color:var(--water)}
-/* ══ 里海长廊（玄海展厅，gx 框架移植） ══ */
+/* ══ 里海长廊（gx 展牌） ══ */
 #corridor{background:linear-gradient(180deg,var(--deep2) 0%,var(--deep) 14%,var(--deep) 100%);color:#dfe2d9;position:relative}
 #corridor .kicker{color:var(--goldbright)}
 #corridor h2{color:#f2ead6}
-#corridor .gx-foreword{color:#a7b4bc;font-size:16px;line-height:2.15;max-width:640px;margin:0 auto 1rem;text-align:center}
-.gx-exhibit{position:relative;background:var(--deepcard);border:1px solid var(--deepline);border-radius:12px;
-  padding:2.2rem 2.1rem 2rem;margin:3rem 0;overflow:hidden;scroll-margin-top:5rem}
-.gx-exhibit::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 60% 48% at 18% -6%,rgba(216,180,102,.10),transparent 70%)}
+#corridor .gx-foreword{color:#a7b4bc;font-size:16px;line-height:2.15;max-width:620px;margin:0 auto 1rem;text-align:center}
+.gx-exhibit{position:relative;background:var(--deepcard);border:1px solid var(--deepline);border-radius:12px;padding:2.2rem 2.1rem 2rem;margin:2.4rem 0;overflow:hidden}
+.gx-exhibit::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 48% at 18% -6%,rgba(216,180,102,.10),transparent 70%)}
 .gx-no{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;color:#7e93a5;margin:0 0 1.2rem}
 .gx-art{display:flex;justify-content:center;align-items:center;gap:2.6rem;flex-wrap:wrap;padding:1rem 0 1.6rem}
 .gx-art svg{display:block;max-width:100%;height:auto}
-.gx-art .stroke{fill:none;stroke:var(--goldbright);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
-  filter:drop-shadow(0 0 9px rgba(216,180,102,.35))}
+.gx-art .stroke{fill:none;stroke:var(--goldbright);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 9px rgba(216,180,102,.35))}
 .gx-art .stroke.dim{stroke:#54718a;filter:none}
-.gx-plate{border-top:1px solid var(--deepline);padding-top:1.1rem;position:relative}
+.gx-plate{border-top:1px solid var(--deepline);padding-top:1.1rem}
 .gx-plate .gx-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;letter-spacing:.06em;margin:0 0 .35rem;color:#f0e9d8}
 .gx-plate .gx-meta{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;color:#7e93a5;margin:0 0 1rem}
 .gx-plate .gx-desc{font-family:var(--serif);font-size:.95rem;color:#b9c4c9;line-height:2.05;margin:0;text-align:justify}
 .gx-plate .gx-desc strong{color:#f0e9d8}
-.gx-motto{text-align:center;color:var(--goldbright);font-family:var(--serif);font-size:1.05rem;letter-spacing:.08em;margin:2.6rem 0 0;line-height:2.3}
-.gx-num{font-family:var(--mono);color:var(--goldbright)}
-/* ── 世纪曲线 + 一百万仪表 ── */
+.gx-motto{text-align:center;color:var(--goldbright);font-family:var(--serif);font-size:1.05rem;letter-spacing:.06em;margin:2.4rem 0 0;line-height:2.3}
+.client{max-width:640px;margin:2.4rem auto 0;text-align:center;font-family:var(--serif);font-size:1rem;line-height:2.1;color:#b9c4c9}
+.client b{color:#f0e9d8}
+/* ── 为什么比特币：曲线 + 一百万 ── */
 #curveBox svg{width:100%;height:auto;display:block}
 .curve-read{display:flex;gap:26px;align-items:baseline;flex-wrap:wrap;margin-top:8px;font-family:var(--mono)}
 .curve-read .y{font-size:15px;color:var(--muted)}
@@ -143,65 +149,31 @@ input[type=range]{accent-color:var(--water)}
 .mout .v{font-family:var(--mono);font-size:24px;font-weight:700;margin-top:2px}
 .mout .v small{font-size:12px;color:var(--muted);font-weight:400}
 @media(max-width:640px){.mout{grid-template-columns:1fr}}
-/* ── 轮回展牌 ── */
-.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0}
-@media(max-width:960px){.cycle{grid-template-columns:1fr 1fr}}
-.cycle .stop{background:var(--card);border:1px solid var(--hair);border-radius:8px;padding:16px 16px 14px;position:relative;overflow:hidden}
-.cycle .stop::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 20% -8%,rgba(176,141,62,.08),transparent 70%)}
-.cycle .yr{font-family:var(--mono);font-size:12.5px;color:var(--gold)}
-.cycle .t{font-family:var(--serif);font-weight:700;font-size:15.5px;margin:3px 0 6px}
-.cycle .d{font-family:var(--sans);font-size:12.5px;color:var(--muted);line-height:1.8}
-.cycle svg{display:block;margin:6px auto 10px}
-.cycle .stroke{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.cycle .stroke.dim{stroke:#c9c2ae}
-/* ── 廿一百万 ── */
 .halving-read{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
 .halving-read .cell{background:var(--paper2);border:1px solid var(--hair);border-radius:6px;padding:10px 14px;text-align:center}
 .halving-read .k{font-family:var(--sans);font-size:11px;letter-spacing:.12em;color:var(--muted)}
 .halving-read .v{font-family:var(--mono);font-size:22px;font-weight:700;margin-top:2px}
 @media(max-width:640px){.halving-read{grid-template-columns:1fr}}
-.capbars .row{display:grid;grid-template-columns:150px 1fr 110px;gap:12px;align-items:center;margin:10px 0;font-family:var(--sans);font-size:13px}
-.capbars .bar{height:14px;background:var(--grid);border-radius:3px;overflow:hidden}
-.capbars .bar i{display:block;height:100%;width:0;background:var(--water);border-radius:3px;transition:width 1.1s var(--ease-breath)}
-.capbars .row.btc .bar i{background:var(--gold)}
-.capbars .v{font-family:var(--mono);text-align:right;color:var(--ink);white-space:nowrap}
-@media(max-width:720px){.capbars .row{grid-template-columns:104px 1fr 92px;font-size:12px;gap:8px}}
-.scenario{border:1.5px dashed var(--gold);border-radius:8px;padding:16px 20px;margin:22px 0;background:var(--goldwash)}
-.scenario .tag{font-family:var(--sans);font-size:11px;letter-spacing:.24em;color:var(--gold);font-weight:700}
-.scenario p{margin:.4rem 0 0;font-size:14.5px}
-.fourcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0}
-.fourcards .fc{background:var(--card);border:1px solid var(--hair);border-radius:8px;padding:18px 20px}
-.fourcards .fc .k{font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;color:var(--gold);font-weight:700}
-.fourcards .fc h4{font-family:var(--serif);font-size:16px;margin:6px 0 8px}
-.fourcards .fc p{font-family:var(--sans);font-size:13.5px;line-height:1.95;color:var(--ink2);margin:0}
-@media(max-width:760px){.fourcards{grid-template-columns:1fr}}
-table.score{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13.5px;margin:20px 0 8px}
-table.score th,table.score td{border-bottom:1px solid var(--grid);padding:9px 10px;text-align:center}
-table.score th{font-size:12px;letter-spacing:.1em;color:var(--muted);font-weight:600}
-table.score td:first-child,table.score th:first-child{text-align:left}
-table.score .dot{font-size:15px}
-/* ── 区块链演示 ── */
-/* 自适应网格：任何宽度自动换行；老内核不认 aspect-ratio，用固定高度 */
-#village{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin:10px 0 4px}
-.book{min-height:96px;padding:8px 4px;border:1.5px solid var(--hair);border-radius:4px;background:var(--card);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--sans);font-size:11px;color:var(--ink2);transition:border-color .35s,background .35s,box-shadow .35s;position:relative;text-align:center}
-.book .mono{font-size:12px}
-.book.bad{border-color:var(--crit);color:var(--crit);background:#fdf3f1}
-.book.veto{border-color:var(--water);box-shadow:0 0 0 2px rgba(47,107,143,.3)}
-.verdictline{min-height:28px;font-family:var(--sans);font-size:14px;margin-top:10px}
-.verdictline b.okv{color:var(--good)} .verdictline b.badv{color:var(--crit)}
-#chainRow{display:flex;gap:0;align-items:center;overflow-x:auto;padding:12px 2px;margin-top:8px}
-.blk{min-width:118px;border:1.5px solid var(--deepline);border-radius:6px;background:var(--deep);color:#dfe7ea;padding:10px 12px;font-family:var(--sans);font-size:11.5px;transition:border-color .4s,background .4s}
-.blk .h{font-family:var(--mono);font-size:10px;color:var(--goldbright);word-break:break-all}
-.blk .p{font-family:var(--mono);font-size:10px;color:#8fa3b5;word-break:break-all}
-.blk.broken{border-color:var(--crit);background:#3a1712;color:#f1c9c2}
-.blk.broken .h,.blk.broken .p{color:#e88a7a}
-.linkarm{width:34px;height:2px;background:var(--deepline);flex:none;position:relative;transition:background .4s}
-.linkarm.broken{background:var(--crit)}
-.linkarm.broken::after{content:"✕";position:absolute;top:-9px;left:11px;color:var(--crit);font-size:11px}
-/* ── 分界带 ── */
-#divide{background:var(--paper2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:44px 0;text-align:center}
-#divide .line1{font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;color:var(--muted)}
-#divide .line2{font-family:var(--serif);font-size:clamp(17px,2.4vw,21px);font-weight:700;margin-top:12px;letter-spacing:.06em;line-height:2}
+/* ── 代码块：不可超发写死在协议里 ── */
+.codeblock{margin:26px 0}
+.cb-cap{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}
+pre.cb{background:#0c1a26;border:1px solid var(--deepline);border-radius:8px;padding:20px 22px;overflow-x:auto;
+  font-family:var(--mono);font-size:13px;line-height:1.95;color:#c6d2da;-webkit-overflow-scrolling:touch}
+pre.cb .c{color:#5f7789}
+pre.cb .k{color:var(--goldbright)}
+pre.cb .hot{color:#f0e9d8;font-weight:700}
+.cb-note{font-family:var(--sans);font-size:13.5px;line-height:1.95;color:var(--ink2);margin-top:14px}
+.cb-note b{color:var(--ink)}
+.cb-note .mono{color:var(--water)}
+/* ── hukanbit 引导带（泾渭分明） ── */
+#bridge{background:var(--paper2);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:56px 0;text-align:center}
+#bridge .k{font-family:var(--sans);font-size:11px;letter-spacing:.34em;color:var(--muted);text-transform:uppercase}
+#bridge h3{font-family:var(--serif);font-size:clamp(20px,3vw,26px);font-weight:900;margin:12px 0 10px;letter-spacing:.04em;color:var(--ink)}
+#bridge p{max-width:560px;margin:0 auto 22px;color:var(--ink2);font-size:15px}
+.bridge-btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:15px;letter-spacing:.06em;
+  padding:14px 26px;border:1.5px solid var(--ink);border-radius:6px;color:var(--ink);text-decoration:none;transition:background .2s,color .2s}
+.bridge-btn:hover{background:var(--ink);color:var(--paper)}
+.bridge-btn .arw{font-family:var(--mono)}
 /* ── 公司部（玄海） ── */
 #vault{background:var(--deep);color:#dfe2d9}
 #vault .kicker{color:var(--goldbright)}
@@ -209,27 +181,21 @@ table.score .dot{font-size:15px}
 #vault h3{color:#f0e9d8}
 #vault p{color:#b9c4c9}
 #vault p b,#vault p strong{color:#f0e9d8}
-.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:30px 0}
-.pillar{border:1px solid var(--deepline);border-radius:8px;padding:20px 18px;background:linear-gradient(180deg,#12283a,#0f2231)}
-.pillar .ic{font-size:20px}
-.pillar h4{font-family:var(--serif);font-size:15.5px;margin:10px 0 6px;color:#f0e9d8}
+.valueprop{border:1px solid var(--deepline);border-left:4px solid var(--goldbright);border-radius:8px;background:linear-gradient(180deg,#12283a,#0f2231);padding:28px 30px;margin:26px 0 8px}
+.valueprop .big{font-family:var(--serif);font-size:clamp(19px,2.7vw,24px);font-weight:700;line-height:1.85;color:#f4ecd8;margin-bottom:12px}
+.valueprop p{font-family:var(--sans);font-size:14.5px;line-height:1.95;margin:0;color:#b9c4c9}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:34px 0}
+.pillar{border:1px solid var(--deepline);border-radius:8px;padding:22px 18px;background:linear-gradient(180deg,#12283a,#0f2231)}
+.pillar svg{display:block;width:34px;height:34px;margin-bottom:14px}
+.pillar svg .s{fill:none;stroke:var(--goldbright);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pillar h4{font-family:var(--serif);font-size:16px;margin:0 0 7px;color:#f0e9d8;letter-spacing:.04em}
 .pillar p{font-family:var(--sans);font-size:13px;line-height:1.85;color:#9fb0ba;margin:0}
 @media(max-width:960px){.pillars{grid-template-columns:1fr 1fr}}
-.modelgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
-.modelgrid .mc{border:1px solid var(--deepline);border-radius:8px;padding:16px 18px;background:#102434}
-.modelgrid .k{font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;color:var(--goldbright);font-weight:700}
-.modelgrid p{font-family:var(--sans);font-size:13.5px;line-height:1.95;margin:.5rem 0 0;color:#b9c4c9}
-.modelgrid p b{color:#f0e9d8}
-@media(max-width:760px){.modelgrid{grid-template-columns:1fr}}
-.dial{display:flex;gap:34px;align-items:center;flex-wrap:wrap;margin:34px 0;padding:26px;border:1px solid var(--deepline);border-radius:8px;background:#102434}
-.dial .num{font-family:var(--mono);font-size:clamp(34px,5vw,52px);font-weight:700;color:var(--goldbright)}
-.dial .num small{font-size:14px;color:#8fa3b5;font-weight:400}
-.dial .expl{flex:1;min-width:240px;font-family:var(--sans);font-size:14px;color:#b9c4c9;line-height:1.95}
-.dial .expl b{color:#f0e9d8}
-#wheelBox{display:flex;justify-content:center;margin:8px 0 2px}
-#wheelBox svg{width:min(380px,88vw);height:auto}
-.wheel-dock{max-width:560px;margin:10px auto 0;min-height:86px;font-family:var(--sans);font-size:13px;color:#9fb0ba;line-height:1.9;text-align:center}
-.wheel-dock .h{color:var(--goldbright);font-weight:700}
+.metric{display:flex;gap:30px;align-items:center;flex-wrap:wrap;margin:34px 0;padding:24px 28px;border:1px solid var(--deepline);border-radius:8px;background:#102434}
+.metric .num{font-family:var(--mono);font-size:clamp(30px,4.4vw,44px);font-weight:700;color:var(--goldbright);line-height:1}
+.metric .num small{font-size:13px;color:#8fa3b5;font-weight:400}
+.metric .expl{flex:1;min-width:250px;font-family:var(--sans);font-size:14px;color:#b9c4c9;line-height:1.95}
+.metric .expl b{color:#f0e9d8}
 .rules{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin:24px 0;counter-reset:r;list-style:none}
 .rules li{counter-increment:r;font-family:var(--sans);font-size:14.5px;color:#c6cfd3;padding-left:34px;position:relative;line-height:1.85}
 .rules li b{color:#f0e9d8}
@@ -265,35 +231,24 @@ footer{background:var(--deep);color:#7e93a5;padding:56px 0 64px;font-family:var(
 footer .brand{font-family:var(--serif);color:#e9e0c9;font-size:18px;font-weight:900;letter-spacing:.1em;margin-bottom:14px}
 footer a{color:#a9b8c4}
 footer .fine{border-top:1px solid var(--deepline);margin-top:22px;padding-top:18px;color:#5f7488}
-/* 底款：素瓷阴刻，波上一枚 ₿ */
 .seal{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:48px;height:48px;margin:2.4rem auto 0;
-  color:#5f7488;border:1px solid var(--deepline);outline:1px solid var(--deepline);outline-offset:3px;border-radius:3px;
-  font-family:var(--serif);line-height:1}
+  color:#5f7488;border:1px solid var(--deepline);outline:1px solid var(--deepline);outline-offset:3px;border-radius:3px;font-family:var(--serif);line-height:1}
 .seal .b{font-size:1.15rem}
 .seal .w{font-size:.62rem;letter-spacing:.08em}
-@media (prefers-reduced-motion: no-preference){
-  .river{animation:flow 2.6s linear infinite}
-  @keyframes flow{to{stroke-dashoffset:-72}}
-  .spin{transform-origin:180px 180px;animation:rot 46s linear infinite}
-  @keyframes rot{to{transform:rotate(360deg)}}
-}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transition:none}
   .click-ping{display:none}
+  .coast,#waterRise,.river,.hero-mark,#sea h1,#sea .en,#sea .slogan,#sea .thesis,#sea .tag,.eyebrow{animation:none;opacity:1;stroke-dashoffset:0;transform:none}
 }
-/* ── 移动端全局细则（iPad 竖屏 768 与手机） ── */
 @media(max-width:900px){
-  section{padding:64px 0 52px}
-  h2{letter-spacing:.05em}
+  section{padding:66px 0 54px}
   .gx-exhibit{padding:1.6rem 1.3rem 1.5rem}
   .demo{padding:20px 16px 18px}
-  .dial{gap:20px;padding:20px}
+  .metric{gap:18px;padding:20px}
 }
 @media(max-width:520px){
   body{font-size:15.5px;line-height:1.98}
   .wrap,.wide{padding:0 18px}
-  table.score{font-size:12px}
-  table.score th,table.score td{padding:7px 5px}
   .pull{font-size:17.5px}
   .halving-read .v{font-size:18px}
   .curve-read .v{font-size:24px}
@@ -307,158 +262,107 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 
 <div id="gauge" aria-hidden="true">
   <div class="tube"><div class="fill" id="gfill"></div></div>
-  <div class="lbl">水位 · 闭环自持</div>
+  <div class="lbl">水位 · 只进不出</div>
 </div>
 
 <nav class="top">
   <div class="row">
-    <a class="logo" href="#sea">CASPIAN <i>VAULT</i> · 里海金库</a>
+    <a class="logo" href="#sea" aria-label="里海金库 首页">
+      <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="4" width="56" height="56" rx="13" fill="none" stroke="#b08d3e" stroke-width="2.4"/><path d="M32 13 C40 14 43 20 40 27 C44 33 43 42 37 48 C34 52 30 53 32 53 C34 53 30 52 27 48 C21 42 20 33 24 27 C21 20 24 14 32 13 Z" fill="none" stroke="#b08d3e" stroke-width="2"/><text x="32" y="39" font-size="18" text-anchor="middle" fill="#b08d3e" font-family="Georgia,serif">₿</text></svg>
+      里海金库
+    </a>
     <div class="links">
-      <a href="#corridor">里海长廊</a><a href="#money">先理解钱</a><a href="#cycle">法币的轮回</a><a href="#design">廿一百万</a><a href="#chain">区块链</a><a href="#vault">我们做什么</a><a href="#honest">诚实条款</a><a href="#road">路线图</a>
+      <a href="#corridor">为什么是里海</a><a href="#why">为什么比特币</a><a href="#vault">我们做什么</a><a href="#honest">诚实条款</a><a href="#road">路线图</a><a class="ext" href="https://roserparker.github.io/hukanbit/" target="_blank" rel="noopener">教育馆 ↗</a>
     </div>
   </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <header id="sea">
+  <svg id="basinMap" viewBox="0 0 500 700" role="img" aria-label="里海地图：多条河流注入，没有出海口">
+    <defs>
+      <linearGradient id="seaFill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#245277"/><stop offset="1" stop-color="#0d2033"/>
+      </linearGradient>
+    </defs>
+    <!-- 河流：只向内注入（Nothing flows out） -->
+    <g>
+      <path class="river" d="M240,8 C236,44 250,72 240,98"/><path class="rin" d="M240,100 l-4,-9 l8,0 z"/>
+      <path class="river" d="M412,44 C372,80 344,104 322,146"/><path class="rin" d="M321,148 l1,-9 l7,4 z"/>
+      <path class="river" d="M36,300 C108,300 168,300 202,300"/><path class="rin" d="M205,300 l-9,-4 l0,8 z"/>
+      <path class="river" d="M44,494 C120,482 156,466 182,442"/><path class="rin" d="M184,440 l-8,2 l1,-8 z"/>
+      <path class="river" d="M474,472 C402,462 340,452 306,438"/><path class="rin" d="M304,437 l8,3 l-1,-8 z"/>
+    </g>
+    <!-- 真实里海轮廓：北宽、中段（阿普歇伦）收窄成腰、南盆浑圆；封闭无出口 -->
+    <g id="waterRise">
+      <path id="coastPath" class="coast" d="M240,96 C296,98 326,128 330,172 C334,224 300,254 292,300 C285,352 300,394 305,432 C299,522 274,574 242,590 C210,574 185,522 179,432 C184,394 199,352 205,300 C199,254 168,224 150,172 C154,128 184,98 240,96 Z"/>
+      <path class="shine" d="M306,160 C330,196 322,244 300,286" opacity=".45"/>
+    </g>
+  </svg>
   <div class="inner">
-    <div class="eyebrow">Brand &amp; Education · 品牌与教育展示 · 非要约邀请</div>
+    <div class="eyebrow">品牌展示 · 非要约邀请 · 筹建中</div>
+    <svg class="hero-mark" width="60" height="60" viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#d8b466" stroke-width="1.6" opacity=".55"/><path d="M32 13 C40 14 43 20 40 27 C44 33 43 42 37 48 C34 52 30 53 32 53 C34 53 30 52 27 48 C21 42 20 33 24 27 C21 20 24 14 32 13 Z" fill="none" stroke="#d8b466" stroke-width="1.8"/><text x="32" y="39.5" font-size="20" text-anchor="middle" fill="#d8b466" font-family="Georgia,serif">₿</text></svg>
     <h1>里海金库</h1>
     <div class="en">Caspian Vault</div>
-    <p class="thesis">里海，是一片<b>被大地环抱的海</b>：<br>不与任何大洋连通，不受任何潮汐支配——<br>一百三十条河流注入，蒸发是它唯一的支出，<br><b>它只按自己的收支表运转。</b><br>我们正在筹建一家公司，<span class="gold">把资产负债表建成一座里海。</span></p>
-    <div class="tag">Delaware · 筹建中 · Caspian Vault 为暂定名</div>
+    <div class="slogan">Nothing flows out.</div>
+    <p class="thesis">里海是一片<b>被大地环抱的海</b>：一百多条河注入，却没有一个出海口。<br>我们把公司的资产负债表，建成这样一座里海——<b>价值存进来，就不再离开。</b></p>
+    <div class="tag">Delaware C-Corp · 筹建中 · Caspian Vault 为暂定名</div>
   </div>
-  <svg id="basin" viewBox="0 0 1100 380" role="img" aria-label="河流注入内流海的示意动画">
-    <defs><linearGradient id="waterG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6b8f"/><stop offset="1" stop-color="#16344c"/></linearGradient></defs>
-    <path d="M0,240 L120,150 L230,215 L330,120 L430,205 L550,150 L1100,150 L1100,380 L0,380 Z" fill="#0c1a26"/>
-    <path d="M550,150 L660,100 L780,190 L900,130 L1010,200 L1100,160 L1100,380 L550,380 Z" fill="#0a1722"/>
-    <path class="river" d="M150,152 C190,200 170,240 260,262 C330,278 350,290 420,300"/>
-    <path class="river" d="M660,104 C640,170 700,200 660,240 C630,270 600,288 560,299"/>
-    <path class="river" d="M990,196 C930,230 900,250 830,268 C770,283 730,292 690,300"/>
-    <g id="seaWater"><path id="waveP" d="M0,306 Q90,300 180,306 T360,306 T540,306 T720,306 T900,306 T1080,306 L1100,306 L1100,380 L0,380 Z" fill="url(#waterG)"/></g>
-    <circle cx="948" cy="58" r="17" fill="#e9e0c9" opacity=".85"/><circle cx="941" cy="52" r="15" fill="#0e1c28"/>
-  </svg>
   <div class="scrollhint">▼ 入 馆</div>
 </header>
 
-<!-- ═══ 〇 · 里海长廊 ═══ -->
+<!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
 <section id="corridor">
   <div class="wrap">
-    <div class="kicker reveal" style="text-align:center">馆 · Chapter 00 · The Caspian Corridor</div>
-    <h2 class="reveal" style="text-align:center">里海长廊 · 为什么叫这个名字</h2>
-    <p class="gx-foreword reveal">给公司取名字，我们没有翻词典，翻的是地图。灯很暗，是故意的——这片海的好处，都是在暗处才看得清的那种。六件展品，请慢慢走。</p>
+    <div class="kicker reveal" style="text-align:center">Chapter 01 · 这是什么</div>
+    <h2 class="reveal" style="text-align:center">我们为什么叫里海</h2>
+    <p class="gx-foreword reveal">里海有很多头衔——最大、最深、最古老。但真正让我们非它不可的，只有一个：<strong>独立</strong>。它是一座天生的金库。</p>
 
     <div class="gx-exhibit reveal">
-      <p class="gx-no">展品壹 / EXHIBIT I · 最大的内陆水体</p>
-      <div class="gx-art"><svg viewBox="0 0 220 150" width="300" height="205" aria-label="里海轮廓">
-        <path class="stroke" d="M96,12 C110,10 122,18 120,32 C118,44 126,50 124,62 C122,76 130,84 126,98 C122,114 110,126 100,136 C92,128 84,116 86,102 C88,90 80,84 84,70 C88,58 82,48 86,36 C90,24 88,16 96,12 Z"/>
-        <path class="stroke dim" d="M20,30 C50,20 70,26 96,12 M124,62 C150,58 170,64 200,56 M100,136 C130,142 160,138 205,144" stroke-dasharray="3 6"/>
-        <text x="148" y="105" font-size="11" fill="#7e93a5">371,000 km²</text>
-      </svg></div>
-      <div class="gx-plate">
-        <p class="gx-title">世界最大的内陆水体</p>
-        <p class="gx-meta">面积 371,000 平方公里 · 若按湖排名，没有对手</p>
-        <p class="gx-desc">亚马逊是世界最大的雨林，里海是世界最大的内陆水体——同一个句式：<strong>把「最大」直接写进名字里</strong>。它比整个日本的国土还要大，古希腊人两千多年前就在记录它（他们叫它 Hyrcanian Sea）。给一家做「储备」的公司命名，我们想要的第一件事，就是这种不需要解释的体量感。</p>
-      </div>
-    </div>
-
-    <div class="gx-exhibit reveal">
-      <p class="gx-no">展品贰 / EXHIBIT II · 闭环</p>
+      <p class="gx-no">其一 · 独立</p>
       <div class="gx-art"><svg viewBox="0 0 240 150" width="320" height="200" aria-label="闭环水系示意">
         <ellipse class="stroke" cx="120" cy="96" rx="64" ry="32"/>
         <path class="stroke dim" d="M40,18 C60,40 80,52 96,68 M120,12 L120,60 M200,22 C180,44 160,56 146,68"/>
         <path class="stroke" d="M116,22 L120,12 L124,22 M92,62 L96,68 L101,60 M141,62 L146,68 L138,60" stroke-width="1.2"/>
-        <path class="stroke dim" d="M104,44 q8,-10 16,0 q8,10 16,0" stroke-dasharray="2 4"/>
-        <text x="120" y="101" font-size="10" text-anchor="middle" fill="#d8b466">↑ 蒸发是唯一的支出</text>
+        <text x="120" y="101" font-size="10" text-anchor="middle" fill="#d8b466">Nothing flows out</text>
       </svg></div>
       <div class="gx-plate">
-        <p class="gx-title">没有出海口的海</p>
-        <p class="gx-meta">130+ 条河流注入 · 伏尔加河贡献约 80% · 天然出口：零</p>
-        <p class="gx-desc">里海不与任何大洋连通。它的水位不理会全球海平面，不受潮汐与洋流支配，只由一张<strong>自己的收支表</strong>决定：河流是收入，蒸发是支出。这层地理逻辑，恰好是比特币「自托管」哲学的镜像——<strong>不经过银行、不依赖第三方清算、自成一个完整的系统</strong>。它的安全不靠藏，靠的是不接管道。</p>
+        <p class="gx-title">一片不依赖任何人的海</p>
+        <p class="gx-meta">没有出海口 · 不与大洋连通 · 不受潮汐支配</p>
+        <p class="gx-desc">里海不与任何大洋相通，也没有一个流向外海的出口。它不理会全球海平面，不受潮汐与洋流摆布——一个<strong>不依赖外部、自成一体</strong>的完整系统。这正是比特币「自托管」的镜像：不经过银行、不依赖第三方清算。<strong>安全不靠藏，靠的是不接任何一根管道。</strong></p>
       </div>
     </div>
 
     <div class="gx-exhibit reveal">
-      <p class="gx-no">展品叁 / EXHIBIT III · 被封存的古海</p>
-      <div class="gx-art"><svg viewBox="0 0 240 130" width="320" height="173" aria-label="地质封存剖面">
+      <p class="gx-no">其二 · 恒久</p>
+      <div class="gx-art"><svg viewBox="0 0 240 130" width="320" height="173" aria-label="被围合的古海">
         <path class="stroke dim" d="M10,30 L230,30" stroke-dasharray="4 6"/>
         <path class="stroke" d="M10,58 C50,54 80,64 120,60 C160,56 200,64 230,58"/>
         <path class="stroke" d="M30,58 C40,80 50,96 70,104 C100,116 140,116 170,104 C190,96 200,80 210,58"/>
         <path class="stroke dim" d="M60,84 L180,84 M76,98 L164,98" stroke-width="1"/>
-        <text x="120" y="22" font-size="10" text-anchor="middle" fill="#7e93a5">远古大洋（约 3000 万年前）</text>
+        <text x="120" y="22" font-size="10" text-anchor="middle" fill="#7e93a5">被大地彻底围合</text>
       </svg></div>
       <div class="gx-plate">
-        <p class="gx-title">三千万年前被大地锁住的海洋</p>
-        <p class="gx-meta">成因：构造抬升 · 不是普通湖泊，是一片真正的远古海洋残骸</p>
-        <p class="gx-desc">大多数湖是雨水和冰川的孩子；里海不是。它是一片货真价实的古海洋，被地质运动彻底围合，<strong>被时间原样封存至今</strong>。「把一片海封存三千万年」——对一家以长期保管为业的公司来说，我们没能找到比这更好的图腾。</p>
+        <p class="gx-title">被时间原样封存的海</p>
+        <p class="gx-meta">被大地围合 · 存得住，也存得久</p>
+        <p class="gx-desc">它被地质运动彻底围合，原样保存至今。一片海能被这样安静地存放，靠的不是运气，是结构。<strong>对一家以长期保管为业的公司，我们没能找到比它更好的图腾。</strong></p>
       </div>
     </div>
 
-    <div class="gx-exhibit reveal">
-      <p class="gx-no">展品肆 / EXHIBIT IV · 无法归类</p>
-      <div class="gx-art"><svg viewBox="0 0 220 140" width="290" height="185" aria-label="公约文书">
-        <rect class="stroke" x="60" y="14" width="100" height="112" rx="4"/>
-        <path class="stroke dim" d="M74,36 L146,36 M74,50 L146,50 M74,64 L128,64"/>
-        <text x="110" y="86" font-size="13" text-anchor="middle" fill="#d8b466" style="font-family:var(--serif)">海？　湖？</text>
-        <path class="stroke" d="M74,106 C80,100 86,112 92,106" stroke-width="1"/>
-        <path class="stroke dim" d="M104,106 L146,106" stroke-width="1"/>
-      </svg></div>
-      <div class="gx-plate">
-        <p class="gx-title">连国际法都拒绝给它下定义</p>
-        <p class="gx-meta">沿岸五国争论 25 年 · 2018《里海法律地位公约》刻意回避「海/湖」二选一</p>
-        <p class="gx-desc">它到底是海还是湖？法学家吵了四分之一个世纪，最后签下的公约干脆<strong>拒绝二选一</strong>，只承认它是一个独立的「内流盆地」——旧地图上没有它的格子。这件事你应该觉得眼熟：一种既不是货币、又不是证券、也不是传统商品的资产，让全世界的监管者写了十几年定义草稿。<strong>不是它出了问题，是旧分类法到了边界。</strong></p>
-      </div>
-    </div>
-
-    <div class="gx-exhibit reveal">
-      <p class="gx-no">展品伍 / EXHIBIT V · 深度</p>
-      <div class="gx-art"><svg viewBox="0 0 300 190" width="360" height="228" aria-label="1025米深度与哈利法塔对比">
-        <path class="stroke dim" d="M10,34 L290,34"/>
-        <path class="stroke" d="M20,34 C50,60 60,120 90,150 C120,180 180,184 220,166 C250,152 264,90 280,40" stroke-width="1.3"/>
-        <path class="stroke" d="M150,178 L158,34 L166,178 M154,120 L162,120 M152,150 L164,150 M156,84 L161,84" stroke-width="1.1"/>
-        <text x="176" y="120" font-size="9.5" fill="#7e93a5">哈利法塔 828m</text>
-        <path class="stroke dim" d="M158,34 L158,20" stroke-dasharray="2 3"/>
-        <text x="158" y="14" font-size="9.5" text-anchor="middle" fill="#d8b466">塔尖距水面仍有近 200m</text>
-        <text x="40" y="170" font-size="10" fill="#d8b466" style="font-family:var(--mono)">−1,025m</text>
-      </svg></div>
-      <div class="gx-plate">
-        <p class="gx-title">把哈利法塔整座沉进去，塔尖离水面还有两百米</p>
-        <p class="gx-meta">最大深度 1,025 米 · 南深北浅，三段式盆地</p>
-        <p class="gx-desc">世界最高的人造建筑 828 米；里海南部最深处 <span class="gx-num">1,025</span> 米。<strong>人类最高的成就放进这片海里，连尖都露不出来。</strong>存放重要东西的地方，深一点，总是让人踏实一点。</p>
-      </div>
-    </div>
-
-    <div class="gx-exhibit reveal">
-      <p class="gx-no">展品陆 / EXHIBIT VI · 储量</p>
-      <div class="gx-art"><svg viewBox="0 0 300 130" width="360" height="156" aria-label="水量对比：五大湖的3.5倍">
-        <circle class="stroke dim" cx="66" cy="70" r="13"/><circle class="stroke dim" cx="92" cy="60" r="10"/><circle class="stroke dim" cx="112" cy="76" r="11"/><circle class="stroke dim" cx="88" cy="86" r="8"/><circle class="stroke dim" cx="70" cy="94" r="6"/>
-        <text x="88" y="118" font-size="9.5" text-anchor="middle" fill="#7e93a5">北美五大湖（合计）</text>
-        <text x="150" y="76" font-size="14" text-anchor="middle" fill="#d8b466" style="font-family:var(--serif)">×3.5 ＝</text>
-        <circle class="stroke" cx="228" cy="72" r="44"/>
-        <text x="228" y="124" font-size="9.5" text-anchor="middle" fill="#7e93a5">里海</text>
-      </svg></div>
-      <div class="gx-plate">
-        <p class="gx-title">一片海 ＝ 三个半五大湖</p>
-        <p class="gx-meta">总水量约为北美五大湖之和的 3.5 倍 · 千年鱼子酱与油气储备之地</p>
-        <p class="gx-desc">从古波斯到今天，这片海一直是「稀缺而昂贵之物」的产地与库房。<strong>储量，是它刻在名字里的第二层身份。</strong></p>
-      </div>
-    </div>
-
-    <p class="gx-motto reveal">名字取自一片海，也取自一个人。<br>个人的主权，与资产的主权，从此写在同一个词里。<br><span style="color:#7e93a5;font-size:.82em">—— Caspian，暂定名 · 待商标终审</span></p>
+    <p class="gx-motto reveal">独立、恒久——所以 Caspian 只做一件事：<br><strong style="color:#f0e9d8">安全地存储，守护你手里 BTC 的价值。</strong></p>
+    <p class="client reveal">我们要服务的，是这样一群人：<b>看得懂比特币的价值，却无法、或不愿亲自持有它</b>——受身份与渠道所限难以合法直接买入，或不想亲手打理交易、私钥与冷存储。<br>你负责看懂；<b>安全拥有这件事，交给里海。</b></p>
   </div>
 </section>
 
-<!-- ═══ 一 · 先理解钱 ═══ -->
-<section id="money">
+<!-- ═══ 二 · 为什么比特币（投资论点） ═══ -->
+<section id="why">
   <div class="wrap">
-    <div class="kicker reveal">馆 · Chapter 01 · 先理解钱</div>
-    <h2 class="reveal">在花钱和存钱之前，先理解钱</h2>
-    <p class="target reveal">「钱就是钱。资产涨了，就是我赚了。」</p>
-    <p class="no reveal">不对。得先看看，量它的那把尺子还准不准。</p>
-    <p class="reveal">钱的本质是<b>账本</b>——你存在银行里的钱，在银行的账本上是一笔<b>负债</b>；而记账的那一方，拥有往账本里添数字的权力。当账本可以被单方面加长，用它作单位量出来的「涨」，很多时候不是资产在长大，是<b>计价单位在缩水</b>。下面这条曲线，是过去一百一十三年里、世界最强势货币的官方成绩单：</p>
+    <div class="kicker reveal">Chapter 02 · 为什么比特币</div>
+    <h2 class="reveal">你的钱，正在被悄悄稀释</h2>
+    <p class="lead reveal">钱的本质是一本<b>账本</b>，而记账的那一方，握有往账本里添数字的权力。当账本可以被单方面加长，你的现金就在无声地缩水。比特币是人类第一次拥有一种——<b>谁也加印不了的钱</b>。为什么值得长期持有，三张图说清楚。</p>
 
     <div class="demo reveal" id="curveBox">
-      <div class="cap">展项 · 美元购买力 1913 – 2026（按官方 CPI 折算，1913 年 = $100 · 对数刻度）</div>
+      <div class="cap">其一 · 美元购买力 1913 – 2026（官方 CPI，1913 = $100 · 对数刻度）</div>
       <svg id="ppSvg" viewBox="0 0 760 300" aria-label="美元购买力世纪曲线">
         <line x1="56" y1="20" x2="56" y2="252" stroke="#d8d3c6"/>
         <line x1="56" y1="252" x2="730" y2="252" stroke="#d8d3c6"/>
@@ -474,11 +378,11 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <div class="v" id="ppVal">$3.1</div>
         <div class="cof" id="ppCof">——</div>
       </div>
-      <p class="note" style="margin-top:12px">三个刻痕：<b>1913</b> 美联储成立 · <b>1971</b> 美元与黄金脱钩，曲线从此失去地板 · <b>2020</b> 数年之内，流通中的美元多出了约四成。（官方 CPI 教学近似 · 2026-07 口径）</p>
+      <p class="note" style="margin-top:12px">三个刻痕：<b>1913</b> 美联储成立 · <b>1971</b> 美元与黄金脱钩，曲线从此失去地板 · <b>2020</b> 数年之内，流通美元多出约四成。（官方 CPI 教学近似 · 2026-07 口径）</p>
     </div>
 
     <div class="demo reveal">
-      <div class="cap">互动 · 你的一百万</div>
+      <div class="cap">互动 · 你的一百万，静置几十年后还剩多少</div>
       <div class="meter">
         <div><label>一笔资金（美元）</label><input type="number" id="mAmt" value="1000000" step="100000" min="1000"></div>
         <div><label>静置年数 <output id="mYrs" class="mono">30</output></label><input type="range" id="mN" min="5" max="50" value="30" step="1" style="width:100%"></div>
@@ -487,47 +391,11 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <div class="cell"><div class="k">按官方目标「温和的 2%」</div><div class="v" id="mOut2">—</div></div>
         <div class="cell"><div class="k">按百年实际均值 ≈3.2%</div><div class="v" id="mOut3">—</div></div>
       </div>
-      <p class="note" style="margin-top:12px">静置，不是保管。它每年都被那台看不见的机器悄悄分走一部分——这不是风险，是<b style="color:var(--ink)">确定会发生的事</b>。先换一把不缩水的尺子，再谈涨跌。</p>
+      <p class="note" style="margin-top:12px">静置，不是保管。它每年都被那台看不见的机器悄悄分走一部分——这不是风险，是<b style="color:var(--ink)">确定会发生的事</b>。</p>
     </div>
-
-    <div class="pull reveal">这就是伟大的印钞机之力。<small>——《债务驱动的世界》，胡侃比特</small></div>
-    <div class="deepread reveal"><b>深读</b><a href="https://roserparker.github.io/hukanbit/articles/01.html">《何为金钱》</a><a href="https://roserparker.github.io/hukanbit/articles/02.html">《债务驱动的世界》</a><span style="color:var(--muted)">—— 账本与尺子的完整论证，在教育馆「胡侃比特」。</span></div>
-  </div>
-</section>
-
-<!-- ═══ 二 · 法币的轮回 ═══ -->
-<section id="cycle" style="background:var(--card);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
-  <div class="wrap">
-    <div class="kicker reveal">馆 · Chapter 02 · 法币的轮回</div>
-    <h2 class="reveal">这个故事并不罕见</h2>
-    <p class="reveal">判断任何资产，先算一笔账：<b>再造一份，要花多少真钱？</b>沙子遍地都是，所以一文不值；黄金难挖，如今从矿里再取一克成本约 <b class="mono">60 美元</b>——这个「难得」就是它五千年身价的底座。而每当一种钱可以被零成本复制，历史只写过一种结局：</p>
-
-    <div class="cycle reveal">
-      <div class="stop"><svg viewBox="0 0 60 44" width="60" height="44"><circle class="stroke" cx="30" cy="22" r="15"/><path class="stroke dim" d="M22,22 a8,8 0 1 0 16,0" stroke-dasharray="2 3"/></svg><div class="yr">罗马</div><div class="t">银币掺铜</div><div class="d">第纳尔含银量三百年间从 98% 稀释到 5%——帝国晚期的标准信号</div></div>
-      <div class="stop"><svg viewBox="0 0 60 44" width="60" height="44"><rect class="stroke" x="16" y="6" width="28" height="32" rx="2"/><path class="stroke dim" d="M22,14 L38,14 M22,20 L38,20 M22,26 L32,26" stroke-width="1"/></svg><div class="yr">元朝</div><div class="t">宝钞超印</div><div class="d">人类第一场全国纸币实验，以「印到失控」写完最后一页</div></div>
-      <div class="stop"><svg viewBox="0 0 60 44" width="60" height="44"><path class="stroke" d="M14,32 L28,32 M21,32 L21,14 M14,14 a7,7 0 0 1 14,0"/><path class="stroke dim" d="M38,12 L48,12 M43,12 L43,32 M38,32 L48,32" stroke-width="1.2"/></svg><div class="yr">1971</div><div class="t">美元脱金</div><div class="d">最后一根锚链解开，纯信用货币的实验至今刚过五十年</div></div>
-      <div class="stop"><svg viewBox="0 0 60 44" width="60" height="44"><path class="stroke" d="M12,34 L20,22 L28,28 L38,12 L48,20"/><path class="stroke dim" d="M12,12 L48,12" stroke-dasharray="2 3" stroke-width="1"/></svg><div class="yr">2024</div><div class="t">利息超军费</div><div class="d">美国国债利息支出首次超过国防预算——债务开始追着债务跑</div></div>
-    </div>
-
-    <p class="reveal">超发→稀释→民生凋敝→重来，五千年一个循环。罕见的不是这个剧本——<b>罕见的是另一种结局第一次在技术上成为可能</b>：一种任何人、任何机构、任何议会都加印不了的钱。</p>
-    <div class="pull reveal">而中立的钱，纵观人类历史——第一次出现。<small>——《内在价值》，胡侃比特</small></div>
-    <div class="deepread reveal"><b>深读</b><a href="https://roserparker.github.io/hukanbit/articles/04.html">《内在价值》</a><a href="https://roserparker.github.io/hukanbit/gallery.html">货币文明长廊</a><span style="color:var(--muted)">—— 五千年货币兴衰的完整陈列。</span></div>
-  </div>
-</section>
-
-<!-- ═══ 三 · 廿一百万的设计 ═══ -->
-<section id="design">
-  <div class="wrap">
-    <div class="kicker reveal">馆 · Chapter 03 · 廿一百万的设计</div>
-    <h2 class="reveal">2,100 万枚：一部写死的货币宪法</h2>
-    <p class="target reveal">「数字货币嘛，改几行代码不就能多发一点？」</p>
-    <p class="no reveal">不对。恰恰是「多发一点」这件事，被它从根上处决了。</p>
-
-    <h3 class="reveal">一 · 为什么是 2,100 万，为什么改不了</h3>
-    <p class="reveal">比特币每十分钟记一页账，每记满 21 万页（约四年），新币产量<b>自动减半</b>：50 → 25 → 12.5 → 6.25 → 3.125……这串数列加到尽头，恰好收敛于 <b class="mono">21,000,000</b>，最后一「聪」将在 <b class="mono">2140 年</b>前后发行完毕。想改？规则有<b>双保险</b>：它写死在代码里，而任何修改需要全球上万个独立节点同时点头——2017 年，业界最大的算力与公司联盟试图仅仅调整区块大小，被普通用户的节点集体否决。<b>没有掌印人，是设计出来的，不是承诺出来的。</b></p>
 
     <div class="demo reveal">
-      <div class="cap">互动 · 减半时刻表：拖动年份，看发行机器怎么自己踩刹车</div>
+      <div class="cap">其二 · 减半时刻表：拖动年份，看发行机器怎么自己踩刹车</div>
       <svg id="supSvg" viewBox="0 0 760 240" aria-label="比特币供应曲线与减半阶梯">
         <line x1="56" y1="18" x2="56" y2="196" stroke="#d8d3c6"/>
         <line x1="56" y1="196" x2="730" y2="196" stroke="#d8d3c6"/>
@@ -545,213 +413,141 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <div class="cell"><div class="k">每页账的新币奖励</div><div class="v" id="hRw">3.125 ₿</div></div>
         <div class="cell"><div class="k">已发行 / 年增发率</div><div class="v" id="hPc">95% · 0.8%</div></div>
       </div>
-      <p class="note" style="margin-top:12px">2026 年：约 <b class="mono">95%</b> 的比特币已经发行完毕，年增发率约 <b class="mono">0.8%</b>——<b>已低于黄金的年开采率</b>。剩下的 5%，要再挖一百多年。（教学近似值 · 2026-07 口径）</p>
+      <p class="note" style="margin-top:12px">2026 年：约 <b class="mono">95%</b> 已发行完毕，年增发率约 <b class="mono">0.8%</b>——<b>已低于黄金的年开采率</b>。（教学近似值 · 2026-07 口径）</p>
     </div>
 
-    <h3 class="reveal">二 · 够分吗：聪的算术</h3>
-    <p class="reveal">2,100 万枚听起来很少——但每一枚可以切成一亿份，最小单位叫<b>「聪」（sat）</b>。总共 <b class="mono">2,100 万 × 1 亿 = 2.1 千万亿聪</b>。全球 80 亿人平分，每人约 <b class="mono">26 万聪</b>。单位这一层永远不会不够用；<b>稀缺的从来不是刻度，是总量。</b></p>
-    <p class="reveal">这个总量的池子，现在装到哪儿了？把三个数字放在一张对数尺上：</p>
-    <div class="demo reveal">
-      <div class="cap">展项 · 资产池对照（对数比例 · 教学近似 · 2026-07 口径）</div>
-      <div class="capbars" id="capbars">
-        <div class="row btc"><span>比特币总市值</span><div class="bar"><i data-w="62"></i></div><span class="v">≈ $1.3 万亿</span></div>
-        <div class="row"><span>黄金总市值</span><div class="bar"><i data-w="83"></i></div><span class="v">≈ $20+ 万亿</span></div>
-        <div class="row"><span>全球总财富</span><div class="bar"><i data-w="100"></i></div><span class="v">≈ $500 万亿</span></div>
-      </div>
-      <p class="note" style="margin-top:10px">全球持有者估算约 4–6 亿人（各研究口径不一）——占世界人口的个位数百分比。作个不精确但有用的类比：<b style="color:var(--ink)">大约相当于 1998 年的互联网。</b></p>
-      <div class="scenario">
-        <span class="tag">情景推演 · 不是预测</span>
-        <p>若某一天它承接了黄金所承载的「货币溢价」角色，其总池容量将与黄金同一量级——这是一个用来理解体量的<b>坐标</b>，不是一个价格判断。我们不做价格预测，本页任何内容都不例外。</p>
-      </div>
+    <div class="codeblock reveal">
+      <div class="cb-cap">其三 · 「不可超发」不是承诺，是代码</div>
+      <pre class="cb"><code><span class="c">// bitcoin-core / src/validation.cpp —— 全网每个节点都在运行的共识规则</span>
+CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
+{
+    int halvings = nHeight / params.nSubsidyHalvingInterval; <span class="c">// 每 210,000 块一次</span>
+    <span class="c">// 64 次减半后，奖励归零——发行永久停止</span>
+    <span class="k">if</span> (halvings &gt;= 64)
+        <span class="k">return</span> <span class="hot">0</span>;
+    CAmount nSubsidy = 50 * COIN;   <span class="c">// 起始：每块 50 枚</span>
+    nSubsidy <span class="hot">&gt;&gt;=</span> halvings;            <span class="c">// 每减半一次，右移一位（÷2）</span>
+    <span class="k">return</span> nSubsidy;
+}</code></pre>
+      <p class="cb-note">每 21 万个区块，新币奖励<b>减半</b>（<span class="mono">nSubsidy &gt;&gt;= halvings</span> 就是一次二进制右移）；64 次之后，函数<b>返回 0</b>，再也发不出一聪。这段代码由全球上万个独立节点各自运行——谁若打包的区块多发一分钱，其余节点即刻判定无效、拒绝接力。<b>2,100 万不是一句口号，是一行所有人都在执行、且改不动的代码。</b>（2017 年，业界最大的算力与公司联盟仅想改一个参数，被普通用户的节点集体否决。）</p>
     </div>
-
-    <h3 class="reveal">三 · 「不可超发」四论</h3>
-    <div class="fourcards reveal">
-      <div class="fc"><span class="k">经济</span><h4>固定供给 vs 弹性供给</h4><p>法币的供给曲线是一条可以被会议纪要拉长的橡皮筋；比特币的供给曲线是一堵墙。历史上每一次「供给冲击」式贬值，在固定供给面前被永久归零。</p></div>
-      <div class="fc"><span class="k">历史</span><h4>被稀释者的名单</h4><p>第纳尔、宝钞、马克、比索、里拉……第二章那面轮回墙上的每一位，死因高度一致：掌印的手最终没能管住自己。比特币的解法不是换一只更自律的手，是取消这只手。</p></div>
-      <div class="fc"><span class="k">政治</span><h4>没有掌印人</h4><p>规则改动需要全球节点共识。2017 年，算力与资本的最大联盟试图修改协议，被运行节点的普通用户否决——在这个网络里，<b style="color:var(--ink)">验证的权力大于生产的权力</b>。</p></div>
-      <div class="fc"><span class="k">工程</span><h4>能量之墙</h4><p>难度调整让出块永远稳在十分钟；想篡改历史账页，需要烧掉与全网等量的电力。它的账本不是被条文保护的，是被物理学保护的。</p></div>
-    </div>
-
-    <h3 class="reveal">四 · 看不见的东西，凭什么是硬通货</h3>
-    <p class="reveal">因为<b>钱从来就不是那个物件，而是物件背后的账本</b>。太平洋雅浦岛的石币沉入海底，岛民照常拿它交易——石头看不见了，账还在全村人心里。黄金的价值也不在金属里，在「再造一克要花 60 美元」这笔账里。比特币只是第一次把这本账做到了<b>人人可查、无人可改</b>。给它做张体检表：</p>
-    <table class="score reveal">
-      <tr><th>好钱的性质</th><th>黄金</th><th>法币</th><th>比特币</th></tr>
-      <tr><td>稀缺（总量有顶）</td><td class="dot">◐</td><td class="dot">○</td><td class="dot">●</td></tr>
-      <tr><td>难以伪造 / 增发</td><td class="dot">●</td><td class="dot">○</td><td class="dot">●</td></tr>
-      <tr><td>可分割</td><td class="dot">◐</td><td class="dot">●</td><td class="dot">●</td></tr>
-      <tr><td>可携带 / 可传输</td><td class="dot">○</td><td class="dot">◐</td><td class="dot">●</td></tr>
-      <tr><td>耐久</td><td class="dot">●</td><td class="dot">◐</td><td class="dot">●</td></tr>
-      <tr><td>人人可验证</td><td class="dot">○</td><td class="dot">○</td><td class="dot">●</td></tr>
-    </table>
-    <p class="note reveal">● 强 · ◐ 部分 · ○ 弱。黄金难验（假金条骗过银行的案例年年有）、难运（跨境运一吨金子是一场行动）；比特币的验证，一台旧笔记本就够。</p>
-    <div class="pull reveal">难得，本身就是价值；<br>而这一次，「难得」第一次有了数学证明。</div>
-    <div class="deepread reveal"><b>深读</b><a href="https://roserparker.github.io/hukanbit/articles/03.html">《无形的坚硬》</a><a href="https://roserparker.github.io/hukanbit/lab.html">互动实验室</a><span style="color:var(--muted)">—— 从雅浦石币到拜占庭将军，亲手做一遍实验。</span></div>
   </div>
 </section>
 
-<!-- ═══ 四 · 区块链三分钟 ═══ -->
-<section id="chain" style="background:var(--card);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+<!-- ═══ 引导带：教育归胡侃比特 ═══ -->
+<div id="bridge">
   <div class="wrap">
-    <div class="kicker reveal">馆 · Chapter 04 · 区块链三分钟</div>
-    <h2 class="reveal">一本全村人手一册的账</h2>
-    <p class="reveal">银行的账本只有一本，锁在银行里，改不改、怎么改，你说了不算。区块链换了一个思路：<b>把同一本账，发给全村每个人，人手一册</b>。想做假账？你得同时骗过大多数人。</p>
-
-    <div class="demo reveal">
-      <div class="cap">互动一 · 试着改一笔账</div>
-      <div id="village" aria-label="九本相同的账本"></div>
-      <div class="verdictline" id="villageVerdict">九本账，内容一模一样。</div>
-      <div class="btnrow"><button class="act" id="btnTamper1">把 3 号账本的余额偷偷 +9,999 ▶</button></div>
-    </div>
-
-    <p class="reveal">这只是第一道锁。每隔十分钟，全网把新交易打包成「区块」，算出指纹（哈希）；<b>下一个区块把上一个的指纹刻在自己身上</b>——环环相扣成「链」。改任何一页旧账，指纹立变，后面所有环节当场断裂：</p>
-
-    <div class="demo reveal">
-      <div class="cap">互动二 · 试着改一个旧区块</div>
-      <div id="chainRow" aria-label="区块链条演示"></div>
-      <div class="verdictline" id="chainVerdict">五个区块，环环相扣。</div>
-      <div class="btnrow"><button class="act" id="btnTamper2">篡改 2 号区块里的一笔交易 ▶</button></div>
-      <p class="note" style="margin-top:12px">想让假账重新圆上，得把断掉的每一环全部重算——需要与全网等量的电力。第三章那面「能量之墙」，守的就是这本账。</p>
-    </div>
-
-    <p class="reveal">没有行长，没有总部，没有下班时间。它连续运转了十六年，结算了万亿美元量级的转账，<b>账本从未被改写过一次</b>。这就是我们敢把「金库」建在它上面的全部理由——不是信任谁，而是不需要信任谁。</p>
-    <div class="deepread reveal"><b>深读</b><a href="https://roserparker.github.io/hukanbit/articles/03.html">《无形的坚硬》</a><a href="https://roserparker.github.io/hukanbit/satoshi.html">中本聪文献馆</a><span style="color:var(--muted)">—— 读一读那个再也没有回来的人留下的十五句话。</span></div>
+    <div class="k">Company here · Education there</div>
+    <h3>想真正读懂比特币，而不只是持有它？</h3>
+    <p>账本、尺子、能量、区块链、五千年货币兴衰——这些「为什么」，我们没有堆在公司主页上。它们属于一座免费的公益教育馆。这里是公司，那里是学堂，泾渭分明。</p>
+    <a class="bridge-btn" href="https://roserparker.github.io/hukanbit/" target="_blank" rel="noopener">进入胡侃比特 · 公益教育馆 <span class="arw">→</span></a>
   </div>
-</section>
-
-<!-- ═══ 分界带 ═══ -->
-<div id="divide">
-  <div class="line1">MUSEUM ENDS · COMPANY BEGINS</div>
-  <div class="line2">以上是公益科普，属于所有人；以下是一家公司的介绍。<br>两者相互独立，请分开评判。</div>
 </div>
 
-<!-- ═══ 五 · 我们做什么 ═══ -->
+<!-- ═══ 三 · 我们做什么 ═══ -->
 <section id="vault">
   <div class="wide">
-    <div class="kicker reveal">司 · Chapter 05 · Caspian Vault</div>
-    <h2 class="reveal">我们做什么：替你把「拥有」这件事做对</h2>
-    <p class="reveal" style="max-width:720px"><b>我们的任务一句话：替看得懂比特币的人，把「安全拥有」做成一家公司。</b>读完上面四章的人常卡在同一处——认知到了，动手那一步过不去：有人受身份或渠道所限，<b>无法合法直接买入</b>；有人不愿亲自打理交易、私钥与冷存储——私钥丢了就是永别，人不在了，家人打不开钱包。这两类人，就是我们要服务的人。</p>
-    <p class="reveal">Caspian Vault 的形态是<b>一家美国 Delaware 公司</b>：合规买入比特币、机构级冷藏、第三方审计、写进可继承的法律结构——你持有的是公司的股份，公司替你扛四根柱子：</p>
+    <div class="kicker reveal">Chapter 03 · 我们做什么</div>
+    <h2 class="reveal">替你把「拥有」这件事做对</h2>
+
+    <div class="valueprop reveal">
+      <div class="big">你买的，是一张比特币的长期看涨期权。</div>
+      <p>不用注册交易所，不用保管私钥，不用学任何技术——像持有一只股票一样，安全地拥有比特币的长期敞口。买入、机构级冷藏、审计、写进可继承的法律结构——这些最容易出事的环节，全部由公司替你扛。你持有的，是这家公司的股份。</p>
+    </div>
 
     <div class="pillars reveal">
-      <div class="pillar"><div class="ic">🔐</div><h4>托管</h4><p>机构级合格托管 + 多签冷储。私钥保管这件最容易出事的事，交给制度而不是记性。</p></div>
-      <div class="pillar"><div class="ic">🌳</div><h4>传承</h4><p>股份写得进遗嘱、信托与家族架构——传下去的是一份产权，不是一串没人知道的密码。</p></div>
-      <div class="pillar"><div class="ic">🛂</div><h4>合规路径</h4><p>面向美国及国际合格投资人，一条路径清晰、文件齐全的持有通道。</p></div>
-      <div class="pillar"><div class="ic">📜</div><h4>税务清晰</h4><p>公司「持有不卖」，把应税时点合法后推（递延，而非免税）；持股的税务路径比持币清晰。</p></div>
-    </div>
-
-    <h3 class="reveal">这类公司的通用模型（教育口径）</h3>
-    <p class="reveal">这个行业有一台原型机：Michael Saylor 的 Strategy（MSTR）——五年时间，把一家平庸的软件公司变成了全球最大的企业比特币持有者。它的机器只有一个循环：</p>
-    <div id="wheelBox" class="reveal">
-      <svg viewBox="0 0 360 380" aria-label="每股含币量飞轮示意图">
-        <g class="spin">
-          <path d="M180,66 A114,114 0 0 1 294,172" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
-          <path d="M292,208 A114,114 0 0 1 200,292" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
-          <path d="M160,292 A114,114 0 0 1 68,208" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
-          <path d="M66,172 A114,114 0 0 1 160,68" fill="none" stroke="#b08d3e" stroke-width="2" marker-end="url(#arr)"/>
-        </g>
-        <defs><marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b08d3e"/></marker></defs>
-        <g font-size="13" fill="#dfe2d9" text-anchor="middle" style="font-family:var(--sans)">
-          <g class="wn" data-k="n1" style="cursor:pointer"><text x="180" y="42">① 低成本募资</text></g>
-          <g class="wn" data-k="n2" style="cursor:pointer"><text x="312" y="190" text-anchor="start">② 买入</text><text x="312" y="208" text-anchor="start">比特币</text></g>
-          <g class="wn" data-k="n3" style="cursor:pointer"><text x="180" y="330">③ 每股含币 ↑</text></g>
-          <g class="wn" data-k="n4" style="cursor:pointer"><text x="48" y="190" text-anchor="end">④ 信任与</text><text x="48" y="208" text-anchor="end">溢价 ↑</text></g>
-        </g>
-        <g text-anchor="middle">
-          <text x="180" y="176" font-size="15" fill="#f0e9d8" style="font-family:var(--serif)" font-weight="900">每股含币量</text>
-          <text x="180" y="200" font-size="10.5" fill="#8fa3b5">BTC YIELD · 唯一仪表</text>
-        </g>
-      </svg>
-    </div>
-    <div class="wheel-dock" id="wheelDock">把鼠标放到任一节点上（手机轻点）——看这一步到底发生了什么。</div>
-
-    <div class="modelgrid reveal">
-      <div class="mc"><span class="k">模型里的「类期权」结构</span><p>成熟阶段的此类公司常用<b>零利率可转换债券</b>募资：投资人不收利息，换一个为期数年的选择权——币涨了转成股票分享涨幅，币跌了到期拿回本金。等于<b>用利息，换一张「保本的比特币看涨期权」</b>；公司则拿到没有强平条款的长期弹药。这是对行业模型的描述，不构成对任何证券的推介。</p></div>
-      <div class="mc"><span class="k">它与 ETF 的分野</span><p>ETF：1 元钱 → 1 元币 → 1 元市值，<b>永远 1:1</b>，一面诚实的镜子。储备公司：当股价高于每股含币净值（mNAV&gt;1）时增发募资买币，新增的币多于新增的股——<b>老股东每股背后的币变多了</b>。这台「每股含币复利机器」是它存在的理由；而 mNAV≤1 时增发就是稀释——所以纪律比模型更值钱。</p></div>
-      <div class="mc"><span class="k">参照系</span><p>原型机 Strategy：持币 <b class="mono">709,715 ₿</b>（2026 年初口径）、总债务约 <b class="mono">$8.2B</b> 而加权利率仅 <b class="mono">0.42%</b>。行业的标杆，也是行业的压力测试现场。</p></div>
-      <div class="mc"><span class="k">反面教材（同一家公司）</span><p>MSTR 后期发行的优先股带来每年约 <b class="mono">$689M</b> 固定股息义务——熊市里真正咬人的东西。<b>年轻公司若学这一层，等于婴儿举杠铃。</b>我们把它挂在这里，当自己的警钟。</p></div>
-    </div>
-
-    <div class="dial reveal">
-      <div>
-        <div class="num">10,000 <small>sats / 股（示意）</small></div>
-        <div style="font-family:var(--sans);font-size:12px;color:#8fa3b5;letter-spacing:.18em;margin-top:4px">每股含币量 · 唯一仪表</div>
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect class="s" x="7" y="6" width="26" height="28" rx="2"/><circle class="s" cx="24" cy="20" r="5"/><path class="s" d="M24 20 L24 26"/><path class="s" d="M12 6 L12 34"/></svg>
+        <h4>托管</h4><p>机构级合格托管 + 多签冷储。私钥保管这件最容易出事的事，交给制度，而不是交给记性。</p>
       </div>
-      <div class="expl">这家公司只有一块仪表盘：<b>每股含币量</b>——你的每一股背后，站着多少聪比特币。我们的纪律写进章程：<b>当增发不能让这个数字上升时，就不增发。</b>它只许升，不许降。每月公告，链上可验。</div>
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path class="s" d="M20 8 L20 32"/><path class="s" d="M20 16 C14 16 12 12 12 12 M20 16 C26 16 28 12 28 12"/><path class="s" d="M20 24 C13 24 10 19 10 19 M20 24 C27 24 30 19 30 19"/><path class="s" d="M14 32 L26 32"/></svg>
+        <h4>传承</h4><p>股份写得进遗嘱、信托与家族架构——传下去的是一份产权，不是一串没人打得开的密码。</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path class="s" d="M20 6 L31 11 L31 20 C31 28 26 32 20 35 C14 32 9 28 9 20 L9 11 Z"/><path class="s" d="M15 20 L19 24 L26 15"/></svg>
+        <h4>合规</h4><p>面向美国及国际合格投资人，一条路径清晰、文件齐全、可审计的合法持有通道。</p>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path class="s" d="M20 7 L20 33"/><path class="s" d="M11 12 L29 12"/><path class="s" d="M11 12 L7 22 L15 22 Z"/><path class="s" d="M29 12 L25 22 L33 22 Z"/><path class="s" d="M14 33 L26 33"/></svg>
+        <h4>税务</h4><p>公司「持有不卖」，把应税时点合法后推（递延，而非免税）；持股的税务路径，比自己持币清晰得多。</p>
+      </div>
+    </div>
+
+    <div class="metric reveal">
+      <div class="num">10,000 <small>sats / 股（示意）</small></div>
+      <div class="expl">这家公司只有一块仪表：<b>每股含币量</b>——你的每一股背后，站着多少聪比特币。章程写死一条纪律：<b>它只许升，不许降。</b>每月公告，持币地址公开，链上随时可验。</div>
     </div>
 
     <h3 class="reveal">飞轮谁都会画，刹车才值钱</h3>
     <ol class="rules reveal">
-      <li><b>起步只用普通股，零杠杆。</b>模型里的可转债属于成熟期工具；年轻的金库先学会不欠任何人一个日期。</li>
-      <li><b>零强平通道。</b>章程禁止任何附带追加保证金、可被强制平仓的融资——没人能逼这家公司在底部卖币。</li>
-      <li><b>95 / 5 仓位与 24 个月粮草。</b>约 95% 比特币、5% 现金，任何时点留足两年运营开支——现金流设计必须扛住比特币横盘五年。</li>
-      <li><b>纯持有。</b>一枚币不外借、一张期权不卖出、一手期货不碰。收益噱头的每一个点，都以你最在乎的「绝不丢币」为代价。</li>
-      <li><b>玻璃金库。</b>月度公告持仓与每股含币量、持币地址公开、链上随时可验——透明，胜过聪明。</li>
+      <li><b>起步只用普通股，零杠杆。</b>先学会不欠任何人一个到期日。</li>
+      <li><b>零强平通道。</b>章程禁止任何可被强制平仓的融资——没人能逼这家公司在底部卖币。</li>
+      <li><b>95 / 5 与两年粮草。</b>约 95% 比特币、5% 现金，任何时点留足两年运营开支，扛得住横盘五年。</li>
+      <li><b>纯持有。</b>一枚币不外借、一张期权不卖、一手期货不碰——收益噱头的每一分，都以「绝不丢币」为代价。</li>
+      <li><b>玻璃金库。</b>持仓、每股含币量、持币地址全部月度公开，链上可验——透明，胜过聪明。</li>
     </ol>
 
     <h3 class="reveal">我们的长处</h3>
     <div class="strengths reveal">
       <div class="sc"><div class="t">同船同侧</div><div class="d">创始人自有资金先入库——先用自己的钱证明纪律，再谈别人的钱。</div></div>
-      <div class="sc"><div class="t">中文母语服务</div><div class="d">从尽调文件到风险披露，用你的母语讲清楚每一行——信任不该隔着翻译。</div></div>
-      <div class="sc"><div class="t">纪律公开可验</div><div class="d">五条刹车与月度公告全部公开——评判我们，不需要相信我们。</div></div>
+      <div class="sc"><div class="t">中文母语服务</div><div class="d">从尽调文件到风险披露，用你的母语讲清每一行——信任不该隔着翻译。</div></div>
+      <div class="sc"><div class="t">纪律公开可验</div><div class="d">五条刹车与月度公告全部公开——评判我们，不需要先相信我们。</div></div>
       <div class="sc"><div class="t">教育先行</div><div class="d">先建了一座免费教育馆，再筹这家公司——让懂的人自己走过来。</div></div>
     </div>
 
     <div class="commit reveal"><b>三条自律（写给自己的法）：</b>不向任何人承诺或暗示任何回报；只接受来源清晰、已合法在境外的资金，逐一完成合格投资人核验；关于公司证券的任何沟通，仅在既有关系中私下进行——本页面不构成其中任何一种。</div>
-    <div class="deepread reveal" style="background:#102434;border-color:var(--deepline);color:#9fb0ba"><b>深读</b><a style="color:#dfe2d9;border-bottom-color:var(--goldbright)" href="https://roserparker.github.io/hukanbit/treasury.html">金库 · 模型说明书</a><span style="color:#7e93a5">—— 教育馆里那份把丑话写在最前面的完整版。</span></div>
   </div>
 </section>
 
-<!-- ═══ 六 · 诚实条款 ═══ -->
+<!-- ═══ 四 · 诚实条款 ═══ -->
 <section id="honest">
   <div class="wrap">
-    <div class="kicker reveal">司 · Chapter 06 · 诚实条款</div>
+    <div class="kicker reveal">Chapter 04 · 诚实条款</div>
     <h2 class="reveal">先把最坏的话说在最前面</h2>
     <div class="box reveal">
       <p class="big">如果比特币归零，与它相关的一切投入将全部损失。<br>任何告诉你「不会亏」的人，都在对你撒谎——<br>包括未来的我们，如果我们哪天说了这句话。</p>
     </div>
-    <p class="reveal" style="margin-top:30px">它的波动同样凶猛。历史上，比特币经历过四次超过 75% 的回撤——每一次都有人以为它死了，每一次持有不满一个完整周期的人都伤痕累累：</p>
+    <p class="reveal" style="margin-top:30px">它的波动同样凶猛。历史上，比特币经历过四次超过 75% 的回撤——每一次都有人以为它死了：</p>
     <div class="ddbars reveal">
       <div class="dd"><div class="bar"><i style="height:93%"></i></div><div class="v">−93%</div><div class="y">2011</div></div>
       <div class="dd"><div class="bar"><i style="height:85%"></i></div><div class="v">−85%</div><div class="y">2013–15</div></div>
       <div class="dd"><div class="bar"><i style="height:84%"></i></div><div class="v">−84%</div><div class="y">2017–18</div></div>
       <div class="dd"><div class="bar"><i style="height:77%"></i></div><div class="v">−77%</div><div class="y">2021–22</div></div>
     </div>
-    <p class="reveal">所以我们的立场从第一天写死：这个资产，<b>只适合用「即使全部损失也不影响生活」的钱、以五年起步的时间</b>去认识。我们把自家条款放进模拟器，用这四次暴跌反复碾压测试——测试报告未来会与月度公告一起公开。</p>
-    <p class="note reveal">本页全部内容为教育与品牌展示，不构成投资建议、法律或税务意见，亦不构成任何证券的要约、要约邀请或推介。Caspian Vault 为筹建中实体的暂定名称，尚未发行任何证券。本页不面向任何法律禁止此类内容之司法辖区内的人士。（措辞待持牌律师终审）</p>
+    <p class="reveal">所以我们的立场从第一天写死：这个资产，<b>只适合用「即使全部损失也不影响生活」的钱、以五年起步的时间</b>去持有。我们把自家条款放进模拟器，用这四次暴跌反复碾压测试——报告未来会与月度公告一起公开。</p>
+    <p class="note reveal">本页全部内容为品牌展示，不构成投资建议、法律或税务意见，亦不构成任何证券的要约、要约邀请或推介。Caspian Vault 为筹建中实体的暂定名称，尚未发行任何证券。本页不面向任何法律禁止此类内容之司法辖区内的人士。（措辞待持牌律师终审）</p>
   </div>
 </section>
 
-<!-- ═══ 七 · 路线图 ═══ -->
+<!-- ═══ 五 · 路线图 ═══ -->
 <section id="road" style="background:var(--card);border-top:1px solid var(--hair)">
   <div class="wrap">
-    <div class="kicker reveal">司 · Chapter 07 · 路线图</div>
+    <div class="kicker reveal">Chapter 05 · 路线图</div>
     <h2 class="reveal">慢，就是快</h2>
     <div class="road reveal">
-      <div class="node done"><div class="t">公开写作与教育</div><div class="d">五篇专栏、货币文明长廊、互动实验室与文献馆已上线——先把认知的地基免费打给所有人。</div></div>
+      <div class="node done"><div class="t">公开写作与教育</div><div class="d">五篇专栏、货币文明长廊、互动实验室已上线——先把认知的地基免费打给所有人（在教育馆胡侃比特）。</div></div>
       <div class="node here"><div class="t">Delaware 起步壳 <span class="flag">● 你在这里</span></div><div class="d">美国公司筹建中：章程纪律（含上面那五条刹车）、托管与审计框架、退出条款的压力测试。</div></div>
       <div class="node"><div class="t">创始记录期</div><div class="d">创始人自有资金先行入库；月度公告从第一枚币开始，让每股含币量曲线自己说话。</div></div>
       <div class="node"><div class="t">极小范围的同行者</div><div class="d">仅通过熟人引荐、面向经核验的合格投资人私下进行——没有公开募集，永远没有倒计时。</div></div>
       <div class="node"><div class="t">亚洲架构（远期）</div><div class="d">当规模与信任都长够了，再谈更大的结构。跟着信任走，不跟着野心走。</div></div>
     </div>
-    <div class="pull reveal">百米巨浪，已经出现在了海平面上。<br>我们选择先造船，再等潮。<small>——《诺亚方舟》，胡侃比特</small></div>
-    <div class="deepread reveal"><b>深读</b><a href="https://roserparker.github.io/hukanbit/articles/05.html">《诺亚方舟》</a><span style="color:var(--muted)">—— 为什么是方舟，而不是赌桌。</span></div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="brand">CASPIAN VAULT · 里海金库</div>
-    <div>被大地环抱，按自己的收支表运转。</div>
-    <div style="margin-top:10px">联系：本页不设公开联系方式——我们以熟人引荐的方式认识每一位朋友。<br>想先看懂比特币？从公益教育馆「<a href="https://roserparker.github.io/hukanbit/index.html">胡侃比特</a>」读起：五篇文章、货币长廊、互动实验室，永久免费。</div>
+    <div>被大地环抱，只进不出。Nothing flows out.</div>
+    <div style="margin-top:10px">联系：本页不设公开联系方式——我们以熟人引荐的方式认识每一位朋友。<br>想先看懂比特币？从公益教育馆「<a href="https://roserparker.github.io/hukanbit/" target="_blank" rel="noopener">胡侃比特</a>」读起：五篇文章、货币长廊、互动实验室，永久免费。</div>
     <div class="fine">
-      Caspian Vault（暂定名）· Delaware 实体筹建中 · 本页面为品牌与教育展示，不构成任何证券的要约、要约邀请、招揽或投资建议；未注册亦未发行任何证券；不面向任何法律禁止此类内容之司法辖区内的人士。比特币价格波动剧烈，历史表现不代表未来；请仅以可承受全部损失的资金认识这一资产。教学数据均为近似值（2026-07 口径）。© 2026 Caspian Vault (name pending). All rights reserved.
+      Caspian Vault（暂定名）· Delaware 实体筹建中 · 本页面为品牌展示，不构成任何证券的要约、要约邀请、招揽或投资建议；未注册亦未发行任何证券；不面向任何法律禁止此类内容之司法辖区内的人士。比特币价格波动剧烈，历史表现不代表未来；请仅以可承受全部损失的资金持有这一资产。教学数据均为近似值（2026-07 口径）。© 2026 Caspian Vault (name pending). All rights reserved.
     </div>
     <div class="seal" aria-hidden="true"><span class="w">≋</span><span class="b">₿</span></div>
   </div>
 </footer>
 
-<!-- analytics：第 3 步部署后替换为 <script defer src="…/analytics.js" data-site="caspian"></script> -->
+<!-- analytics：部署后替换为 <script defer src="…/analytics.js" data-site="caspian"></script> -->
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
@@ -760,20 +556,6 @@ const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 /* ── 水位刻度 ── */
 const gfill=$("gfill");
 function gauge(){const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);gfill.style.height=(p*100).toFixed(1)+"%";}
-
-/* ── 海面微澜（节流：隔帧更新 + 页面隐藏时休眠，照顾老设备电量） ── */
-(function(){
-  if(reduced)return;
-  const wp=$("waveP");let t=0,skip=false;
-  (function wave(){
-    requestAnimationFrame(wave);
-    if(document.hidden)return;
-    skip=!skip;if(skip)return;
-    t+=0.028;
-    let d="M0,"+(306+Math.sin(t)*2);
-    for(let x=90;x<=1080;x+=90){const y=306+Math.sin(t+x/140)*3;d+=` Q${x-45},${y-4} ${x},${y}`;}
-    d+=" L1100,380 L0,380 Z";wp.setAttribute("d",d);})();
-})();
 
 /* ── reveal（滚动驱动 + 保险丝） ── */
 const reveals=[...document.querySelectorAll(".reveal")];
@@ -785,11 +567,10 @@ let rafPend=false;
 addEventListener("scroll",()=>{if(rafPend)return;rafPend=true;requestAnimationFrame(()=>{rafPend=false;checkReveals();gauge();});},{passive:true});
 addEventListener("resize",checkReveals);
 checkReveals();setTimeout(checkReveals,300);
-/* 单一心跳：reveal/水位/各懒加载 tick 共用，隐藏页休眠 */
 const TICKS=[];
 setInterval(()=>{if(document.hidden)return;checkReveals();gauge();for(let i=0;i<TICKS.length;i++)TICKS[i]();},400);
 
-/* ── 点击涟漪（胡侃 spawnPing 同源） ── */
+/* ── 点击涟漪 ── */
 (function(){
   let live=0;
   function spawnPing(x,y){
@@ -891,71 +672,6 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();for(let i=0;i<
   }
   $("supYear").addEventListener("input",e=>setY(+e.target.value));
   setY(2026);
-})();
-
-/* ── 容量条 ── */
-(function(){
-  let done=false;
-  function tryBars(){if(done)return;const el=$("capbars");if(!el)return;const r=el.getBoundingClientRect();
-    if(r.top<innerHeight*0.85&&r.bottom>0){done=true;el.querySelectorAll("i").forEach(i=>{i.style.width=i.dataset.w+"%";});}}
-  TICKS.push(tryBars);tryBars();
-})();
-
-/* ── 村账本 ── */
-const village=$("village");
-for(let i=1;i<=9;i++){
-  const b=document.createElement("div");b.className="book";b.id="bk"+i;
-  b.innerHTML=`<div>账本 ${i}</div><div class="mono" id="bal${i}">余额 100</div>`;
-  village.appendChild(b);}
-$("btnTamper1").addEventListener("click",()=>{
-  const btn=$("btnTamper1");btn.disabled=true;
-  const bk3=$("bk3");bk3.classList.add("bad");$("bal3").textContent="余额 10,099";
-  $("villageVerdict").innerHTML='3 号账本：「我的余额是 10,099！」';
-  setTimeout(()=>{for(let i=1;i<=9;i++)if(i!==3)$("bk"+i).classList.add("veto");
-    $("villageVerdict").innerHTML='其余八本齐声核对：「<b class="badv">不对，是 100。</b>」—— <b class="okv">8 : 1，假账当场作废。</b>';},reduced?0:900);
-  setTimeout(()=>{bk3.classList.remove("bad");$("bal3").textContent="余额 100";
-    for(let i=1;i<=9;i++)$("bk"+i).classList.remove("veto");
-    $("villageVerdict").innerHTML='账本恢复一致。想骗过这个村子，你得同时收买大多数人——而这个「村」，有全球上万个节点。';
-    btn.disabled=false;},reduced?400:3400);
-});
-
-/* ── 链条 ── */
-const chainRow=$("chainRow");
-const HASHES=["a91f…c2","7d04…9e","f3b8…61","28c5…d7","905a…4b"];
-for(let i=0;i<5;i++){
-  if(i>0){const arm=document.createElement("div");arm.className="linkarm";arm.id="arm"+i;chainRow.appendChild(arm);}
-  const b=document.createElement("div");b.className="blk";b.id="blk"+i;
-  b.innerHTML=`<div><b>区块 ${i+1}</b></div><div class="p">前指纹 ${i===0?"创世":HASHES[i-1]}</div><div>交易 ×${120+i*7}</div><div class="h">指纹 ${HASHES[i]}</div>`;
-  chainRow.appendChild(b);}
-$("btnTamper2").addEventListener("click",()=>{
-  const btn=$("btnTamper2");btn.disabled=true;
-  const b2=$("blk1");b2.classList.add("broken");b2.querySelector(".h").textContent="指纹 ????…!!";
-  $("chainVerdict").innerHTML='2 号区块被改——它的指纹瞬间变了。';
-  [2,3,4].forEach((i,k)=>setTimeout(()=>{
-    const arm=$("arm"+i);if(arm)arm.classList.add("broken");
-    $("blk"+i).classList.add("broken");
-    if(i===4)$("chainVerdict").innerHTML='<b class="badv">后面所有区块当场断裂。</b>想瞒天过海？把断掉的每一环全部重算——那需要与全网等量的电力。';
-  },reduced?0:(k+1)*650));
-  setTimeout(()=>{for(let i=0;i<5;i++){$("blk"+i).classList.remove("broken");
-      $("blk"+i).querySelector(".h").textContent="指纹 "+HASHES[i];}
-    for(let i=1;i<5;i++){const arm=$("arm"+i);if(arm)arm.classList.remove("broken");}
-    $("chainVerdict").textContent="诚实的链，比造假便宜得多——这就是它十六年不被改写的原因。";
-    btn.disabled=false;},reduced?600:4600);
-});
-
-/* ── 飞轮解说牌 ── */
-(function(){
-  const dock=$("wheelDock");
-  const EX={
-    n1:["① 低成本募资","公司以尽可能低的成本募集长期资金。成熟公司用 0% 可转债（见下方模型卡）；年轻公司只用普通股——因为最便宜的资本，是不带任何刚性义务的资本。"],
-    n2:["② 买入比特币 · 按纪律、全部","募来的钱不投厂房、不囤理财——按纪律买成比特币，进入多签冷储。这类公司账上唯一会生长的资产，就是币本身。"],
-    n3:["③ 每股含币上升 · BTC Yield","关键一步：只要增发时市场愿意付溢价（mNAV>1），募资买回的币就多于新股带来的摊薄——老股东每一股背后的币变多了。这个增速叫 BTC Yield，是这类公司的真正 KPI。"],
-    n4:["④ 信任与溢价上升 · 回到第一步","每股含币持续上升、纪律公开可验，市场愿意给更高溢价；溢价越高，下一轮募资条件越好。注意：它的燃料是信任与纪律，不是币价上涨。"]};
-  document.querySelectorAll(".wn").forEach(g=>{
-    const k=g.dataset.k;
-    function show(){const info=EX[k];if(!info)return;
-      dock.innerHTML='<span class="h">'+info[0]+'</span><br>'+info[1];}
-    g.addEventListener("pointerenter",show);g.addEventListener("click",show);});
 })();
 </script>
 </body>
