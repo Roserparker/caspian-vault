@@ -44,10 +44,6 @@ body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;pointer-even
 a{color:inherit}
 ::selection{background:#16303C;color:#fff}
 :focus-visible{outline:2px solid var(--titan);outline-offset:3px}
-.sonar{position:fixed;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;
-  border:1px solid var(--titan);opacity:.7;pointer-events:none;z-index:9999;
-  animation:sonar-out .7s var(--ease-velvet) forwards}
-@keyframes sonar-out{to{transform:scale(7);opacity:0}}
 /* ── 右缘深度刻度（全站签名部件：0 → −1025 米） ── */
 #depthRail{position:fixed;top:50%;right:14px;transform:translateY(-50%);z-index:40;
   display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
@@ -152,9 +148,16 @@ input[type=range]{accent-color:var(--steel)}
 .gx-motto strong{color:#EAEDEF}
 .client{max-width:640px;margin:2.4rem auto 0;text-align:center;font-family:var(--serif);font-size:1rem;line-height:2.1;color:var(--silver)}
 .client b{color:#EAEDEF}
-.badge{opacity:0;animation:badgeIn .8s var(--ease-velvet) 2.6s forwards}
-@keyframes badgeIn{0%{opacity:0;transform:scale(.7)}60%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
-@media(prefers-reduced-motion:reduce){.badge{animation:none;opacity:1}}
+#priceSvg .pv0{opacity:0;transition:opacity .45s var(--ease-velvet)}
+#priceSvg .pv-dash{opacity:0;transition:opacity .5s var(--ease-velvet) 2.6s}
+#priceSvg .pv-dot{opacity:0;transition:opacity .4s var(--ease-velvet) 2.9s}
+#priceSvg .badge{opacity:0;transform:translate(6px,0);transition:opacity .6s var(--ease-velvet) 3.1s,transform .6s var(--ease-velvet) 3.1s}
+#priceSvg .pv-gap{opacity:0;transform:scaleY(0);transform-origin:0 0;transition:opacity .3s var(--ease-velvet) 3.9s,transform .9s var(--ease-velvet) 3.9s}
+#priceSvg .pv-gapt{opacity:0;transition:opacity .5s var(--ease-velvet) 4.8s}
+#priceSvg.go .pv0,#priceSvg.go .pv-dash,#priceSvg.go .pv-dot,#priceSvg.go .pv-gapt{opacity:1}
+#priceSvg.go .badge{opacity:1;transform:none}
+#priceSvg.go .pv-gap{opacity:1;transform:scaleY(1)}
+@media(prefers-reduced-motion:reduce){#priceSvg .pv0,#priceSvg .pv-dash,#priceSvg .pv-dot,#priceSvg .badge,#priceSvg .pv-gap,#priceSvg .pv-gapt{transition:none;opacity:1;transform:none}}
 /* 节点地球仪 */
 .net-grid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:26px;align-items:center}
 @media(max-width:860px){.net-grid{grid-template-columns:1fr}}
@@ -321,7 +324,6 @@ footer .fine{border-top:1px solid rgba(49,88,107,.35);margin-top:22px;padding-to
 .seal-micro{font:400 8.5px/1 var(--mono);letter-spacing:.3em;color:var(--mist)}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transition:none}
-  .sonar{display:none}
   .hero-eyebrow,.hero-h1,.hero-slogan,.hero-thesis,.hero-tag{animation:none;opacity:1;transform:none}
   .drop{visibility:hidden}
   #wangyuan .wy,#wangyuan .wySeal{animation:none;opacity:1}
@@ -582,23 +584,21 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <text x="162" y="20" font-size="11" fill="#8A96A0" font-family="ui-monospace,Menlo,monospace">对数轴</text>
         <line x1="70" x2="690" y1="203" y2="203" stroke="rgba(49,88,107,.25)"/><text x="62" y="207" font-size="12" fill="#A6B2BC" text-anchor="end">$1 万</text><line x1="70" x2="690" y1="144" y2="144" stroke="rgba(49,88,107,.25)"/><text x="62" y="148" font-size="12" fill="#A6B2BC" text-anchor="end">$100 万</text><line x1="70" x2="690" y1="84" y2="84" stroke="rgba(49,88,107,.25)"/><text x="62" y="88" font-size="12" fill="#A6B2BC" text-anchor="end">$1 亿</text><line x1="70" x2="690" y1="55" y2="55" stroke="rgba(49,88,107,.25)"/><text x="62" y="59" font-size="12" fill="#A6B2BC" text-anchor="end">$10 亿</text>
         <polyline id="prPath" points="70,203.1 111,167.7 153,154.1 194,102.2 235,113.3 277,109.5 318,99.0 359,64.7 401,81.6 442,73.1 483,55.0 525,49.0 566,62.4 607,50.3 649,40.1 690,40.9" fill="none" stroke="#E8813A" stroke-width="3.4" stroke-linejoin="round"/>
-        <line x1="690" y1="40.9" x2="720" y2="45.2" stroke="#E8813A" stroke-width="2.4" stroke-dasharray="3 4"/>
-        <circle cx="720" cy="45.2" r="4.5" fill="#E8813A"/>
-        <circle cx="70" cy="203.1" r="4.5" fill="#EAEDEF"/>
-        <text x="80" y="193" font-size="13" fill="#EAEDEF" font-family="ui-monospace,Menlo,monospace" font-weight="700">$1 万 · 2010</text>
+        <line class="pv-dash" x1="690" y1="40.9" x2="720" y2="45.2" stroke="#E8813A" stroke-width="2.4" stroke-dasharray="3 4"/>
+        <circle class="pv-dot" cx="720" cy="45.2" r="4.5" fill="#E8813A"/>
         <g class="badge">
           <text x="728" y="50" font-size="17" font-weight="700" fill="#E8813A" font-family="ui-monospace,Menlo,monospace">≈$21 亿</text>
           <text x="728" y="67" font-size="11" fill="#E0C9A6" font-family="ui-monospace,Menlo,monospace">今 · ×21 万</text>
         </g>
         <line x1="70" x2="720" y1="221" y2="221" stroke="rgba(49,88,107,.4)"/>
-        <text x="70" y="230" font-size="13.5" fill="#A9BFE0" font-family="ui-monospace,Menlo,monospace" font-weight="700">躺在美元里</text>
-        <text x="188" y="230" font-size="11" fill="#8A96A0" font-family="ui-monospace,Menlo,monospace">线性轴 · 官方 CPI</text>
+        <text x="84" y="230" font-size="13.5" fill="#A9BFE0" font-family="ui-monospace,Menlo,monospace" font-weight="700">躺在美元里</text>
+        <text x="202" y="230" font-size="11" fill="#8A96A0" font-family="ui-monospace,Menlo,monospace">线性轴 · 官方 CPI</text>
         <line x1="70" x2="690" y1="246" y2="246" stroke="rgba(49,88,107,.25)"/><text x="62" y="250" font-size="12" fill="#A6B2BC" text-anchor="end">$1 万</text><line x1="70" x2="690" y1="288" y2="288" stroke="rgba(49,88,107,.25)"/><text x="62" y="292" font-size="12" fill="#A6B2BC" text-anchor="end">$8 千</text><line x1="70" x2="690" y1="317" y2="317" stroke="rgba(49,88,107,.25)"/><text x="62" y="321" font-size="12" fill="#A6B2BC" text-anchor="end">$6.6 千</text>
         <path d="M70,246.4 L70,246.4 L111,252.5 L153,255.9 L194,258.9 L235,260.4 L277,261.8 L318,265.8 L359,269.7 L401,273.1 L442,277.2 L483,279.7 L525,291.2 L566,301.2 L607,306.3 L649,310.5 L690,314.3 L720,316.1 L720,246.4 Z" fill="rgba(133,168,224,.14)"/>
         <line x1="70" x2="720" y1="246" y2="246" stroke="#85A8E0" stroke-width="1" stroke-dasharray="2 5" opacity=".5"/>
         <polyline id="ppUsd" points="70,246.4 111,252.5 153,255.9 194,258.9 235,260.4 277,261.8 318,265.8 359,269.7 401,273.1 442,277.2 483,279.7 525,291.2 566,301.2 607,306.3 649,310.5 690,314.3" fill="none" stroke="#85A8E0" stroke-width="3" stroke-linejoin="round"/>
-        <line x1="690" y1="314.3" x2="720" y2="316.1" stroke="#85A8E0" stroke-width="2.2" stroke-dasharray="3 4"/>
-        <circle cx="720" cy="316.1" r="4.5" fill="#85A8E0"/>
+        <line class="pv-dash" x1="690" y1="314.3" x2="720" y2="316.1" stroke="#85A8E0" stroke-width="2.2" stroke-dasharray="3 4"/>
+        <circle class="pv-dot" cx="720" cy="316.1" r="4.5" fill="#85A8E0"/>
         <g class="badge">
           <text x="728" y="321" font-size="15" font-weight="700" fill="#A9BFE0" font-family="ui-monospace,Menlo,monospace">剩 $6,700</text>
           <text x="728" y="337" font-size="11" fill="#8FA3C9" font-family="ui-monospace,Menlo,monospace">−33% 购买力</text>
@@ -606,6 +606,17 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
         <text x="410" y="278" font-size="12" fill="#A9BFE0" font-family="ui-monospace,Menlo,monospace">阴影 = 已蒸发的购买力</text>
         <line x1="153" x2="153" y1="336" y2="343" stroke="#8A96A0"/><text x="153" y="359" font-size="12" fill="#A6B2BC" text-anchor="middle">2012</text><line x1="318" x2="318" y1="336" y2="343" stroke="#8A96A0"/><text x="318" y="359" font-size="12" fill="#A6B2BC" text-anchor="middle">2016</text><line x1="483" x2="483" y1="336" y2="343" stroke="#8A96A0"/><text x="483" y="359" font-size="12" fill="#A6B2BC" text-anchor="middle">2020</text><line x1="649" x2="649" y1="336" y2="343" stroke="#8A96A0"/><text x="649" y="359" font-size="12" fill="#A6B2BC" text-anchor="middle">2024</text>
         <text x="380" y="380" font-size="11" fill="#8A96A0" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">年末真实数据 · 非预测 · 过去不代表未来</text>
+        <g class="pv0">
+          <line x1="70" y1="203.1" x2="70" y2="246.4" stroke="rgba(234,237,239,.55)" stroke-width="1.6"/>
+          <circle cx="70" cy="203.1" r="4.5" fill="#EAEDEF"/>
+          <circle cx="70" cy="246.4" r="4.5" fill="#EAEDEF"/>
+          <text x="80" y="193" font-size="13" fill="#EAEDEF" font-family="ui-monospace,Menlo,monospace" font-weight="700">$1 万 · 2010</text>
+        </g>
+        <g transform="translate(720,52)"><line class="pv-gap" x1="0" y1="0" x2="0" y2="257.5" stroke="#DE5548" stroke-width="2.4" stroke-dasharray="6 5"/></g>
+        <g class="pv-gapt">
+          <text x="712" y="172" font-size="13" font-weight="700" fill="#DE5548" text-anchor="end" font-family="ui-monospace,Menlo,monospace">两条路相差</text>
+          <text x="712" y="192" font-size="17" font-weight="700" fill="#DE5548" text-anchor="end" font-family="ui-monospace,Menlo,monospace">≈31 万倍</text>
+        </g>
       </svg>
       <p class="note" style="margin-top:12px"><b>历史回望，不是预测</b>——这条线也刚刚经历了本轮 −55%：$128,198（2025-10 高点）→ $57,950（2026-07 低点）。中途腰斩是常态（见档案室），归零也从未排除。（教学近似 · 2026-07 口径）</p>
     </div>
@@ -891,21 +902,6 @@ addEventListener("resize",checkReveals);
 checkReveals();setTimeout(()=>{checkReveals();runTicks();},300);
 setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},400);
 
-/* ── 声呐环点击反馈 ── */
-(function(){
-  let live=0;
-  function spawnSonar(x,y){
-    if(reduced||live>=8)return;
-    const s=document.createElement("i");s.className="sonar";
-    s.style.left=x+"px";s.style.top=y+"px";live++;
-    let dead=false;const done=()=>{if(dead)return;dead=true;live--;s.remove();};
-    s.addEventListener("animationend",done);setTimeout(done,800);
-    document.body.appendChild(s);}
-  const evt=window.PointerEvent?"pointerdown":"mousedown";
-  document.addEventListener(evt,ev=>{if(ev.button)return;spawnSonar(ev.clientX,ev.clientY);},{passive:true});
-})();
-
-
 /* ── 十五年图：点选/滑动看每一年 ── */
 (function(){
   const svg=$("cycSvg");if(!svg)return;
@@ -947,8 +943,10 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
   let drawn=false;
   function tryDraw(){if(drawn)return;const r=p.getBoundingClientRect();
     if(r.top<innerHeight*0.85&&r.bottom>0){drawn=true;
-      u.style.transition="stroke-dashoffset 1.8s ease .2s";u.style.strokeDashoffset=0;
-      p.style.transition="stroke-dashoffset 2.6s ease .9s";p.style.strokeDashoffset=0;}}
+      const sv=$("priceSvg");if(sv)sv.classList.add("go");
+      const tr="stroke-dashoffset 2.2s cubic-bezier(.22,.61,.2,1) .35s";
+      u.style.transition=tr;u.style.strokeDashoffset=0;
+      p.style.transition=tr;p.style.strokeDashoffset=0;}}
   TICKS.push(tryDraw);tryDraw();
 })();
 
