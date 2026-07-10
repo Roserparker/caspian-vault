@@ -32,8 +32,36 @@ html{-webkit-text-size-adjust:100%;overflow-x:hidden;scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--steel-black);color:var(--silver);font-family:var(--sans);font-size:17px;line-height:1.9;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(130% 64% at 50% -12%,rgba(140,185,205,.20),rgba(140,185,205,.055) 46%,rgba(140,185,205,0) 72%);
+  opacity:calc(1 - var(--dive,0)*1.7)}
 body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:-1;
-  background:#03070C;opacity:calc(var(--dive,0)*.55)}
+  background:#02040A;opacity:calc(var(--dive,0)*.9)}
+/* ── 水面线（0 米：入水一瞬） ── */
+#waterline{position:relative;height:66px}
+#waterline::before{content:"";position:absolute;left:0;right:0;top:26px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(159,198,212,.5) 18%,rgba(159,198,212,.5) 82%,transparent)}
+#waterline::after{content:"";position:absolute;left:0;right:0;top:27px;height:38px;
+  background:linear-gradient(180deg,rgba(140,185,205,.09),rgba(140,185,205,0))}
+.wl-lab{position:absolute;top:36px;left:50%;transform:translateX(-50%);font:400 10.5px/1 var(--mono);letter-spacing:.35em;color:var(--mist)}
+/* ── 章节界碑（跨页细线+深度大字+一句白话） ── */
+.mstone{display:flex;align-items:center;gap:22px;max-width:1060px;margin:78px auto 6px;padding:0 24px}
+.mstone .ms-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(159,198,212,.28))}
+.mstone .ms-line:last-child{background:linear-gradient(90deg,rgba(159,198,212,.28),transparent)}
+.mstone .ms-core{text-align:center}
+.mstone .ms-num{display:block;font:600 21px/1.2 var(--mono);color:var(--titan);letter-spacing:.06em}
+.mstone .ms-say{display:block;font:400 12px/1.6 var(--sans);font-style:normal;color:var(--mist);margin-top:6px;letter-spacing:.18em}
+/* ── 活水深表（左下角随滚动走字） ── */
+#diveHud{position:fixed;left:16px;bottom:14px;z-index:40;font:400 11px/1 var(--mono);letter-spacing:.14em;color:var(--mist);
+  background:rgba(5,8,12,.6);border:1px solid rgba(49,88,107,.4);border-radius:2px;padding:7px 11px;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+#diveHud b{color:var(--titan);font-weight:600;margin-left:6px}
+/* ── 首屏警示铭牌（最坏的话说在最前面） ── */
+.worst-first{display:block;max-width:660px;margin:24px auto 0;padding:11px 20px;background:rgba(2,5,9,.66);
+  border:1px solid rgba(159,198,212,.2);border-radius:2px;font-size:13px;line-height:1.8;color:var(--silver);
+  text-decoration:none;text-align:center;transition:border-color .3s var(--ease-velvet)}
+.worst-first:hover{border-color:rgba(159,198,212,.5)}
+.worst-first b{color:var(--titan);font-weight:600;border-bottom:1px dotted rgba(159,198,212,.55);padding-bottom:1px}
 .mono,.knum{font-family:var(--mono)}
 .knum{color:var(--titan);font-weight:400}
 .serif{font-family:var(--serif);font-weight:600}
@@ -360,6 +388,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 </symbol>
 </defs></svg>
 
+<div id="diveHud" aria-hidden="true">深度<b id="dhNum">0 米</b></div>
 <div id="depthRail" aria-hidden="true">
   <div class="dr-line"><i id="drCur"></i></div>
   <span class="dr-t" id="drNum">0 米</span>
@@ -386,6 +415,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       <div class="hero-slogan serif">聚流成海，藏金于渊。</div>
       <p class="hero-thesis">里海是一片<b>被大地环抱的海</b>：一百多条河注入，却没有一个出海口。<br>我们把公司的资产负债表，建成这样一座里海——<b>价值存进来，就安放在最深处。</b></p>
       <div class="hero-tag">Delaware C-Corp · 筹建中 · Caspian Vault 为暂定名</div>
+      <a class="worst-first" href="#honest">先把最坏的说在最前面：比特币可能腰斩，也从未排除归零。<b>风险细账，收在 −800 米档案室</b></a>
     </div>
     <svg id="wangyuan" viewBox="0 0 1200 540" preserveAspectRatio="xMidYMid meet" role="img" aria-label="里海剖面图：群山之下海面平展，水下渐深，渊底藏金">
       <defs>
@@ -511,6 +541,8 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
   <div class="scrollhint">▼ 入 渊</div>
 </header>
 
+<div id="waterline" aria-hidden="true"><span class="wl-lab">海面 · 0 米</span></div>
+
 
 <!-- ═══ 一 · 为什么是里海（这是什么 / 为什么需要它） ═══ -->
 <section id="corridor">
@@ -552,6 +584,8 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 </section>
 
 <!-- ═══ 二 · 为什么比特币（投资论点） ═══ -->
+<div class="mstone reveal" aria-hidden="true"><span class="ms-line"></span><span class="ms-core"><b class="ms-num">−200 米</b><i class="ms-say">最后一缕阳光，到这里为止</i></span><span class="ms-line"></span></div>
+
 <section id="why">
   <div class="wrap">
     <div class="kicker plaque reveal">第二库室 · 账房</div>
@@ -699,6 +733,8 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
 </div>
 
 <!-- ═══ 三 · 我们做什么 ═══ -->
+<div class="mstone reveal" aria-hidden="true"><span class="ms-line"></span><span class="ms-core"><b class="ms-num">−520 米</b><i class="ms-say">微光层，世界开始安静</i></span><span class="ms-line"></span></div>
+
 <section id="vault">
   <div class="wide">
     <div class="kicker plaque reveal">第三库室 · 工序厅</div>
@@ -797,6 +833,8 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
 </section>
 
 <!-- ═══ 四 · 诚实条款 ═══ -->
+<div class="mstone reveal" aria-hidden="true"><span class="ms-line"></span><span class="ms-core"><b class="ms-num">−800 米</b><i class="ms-say">无光层。最坏的话，收在这一层</i></span><span class="ms-line"></span></div>
+
 <section id="honest">
   <div class="wrap">
     <div class="kicker plaque reveal">第四库室 · 档案室</div>
@@ -838,12 +876,13 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     </div>
     <p class="reveal">立场从第一天写死：<b>只用「亏光也不影响生活」的钱、以五年起步的时间</b>持有。</p>
     <details class="fold reveal"><summary>细读</summary><div class="fx"><p>我们把自家条款放进模拟器，用这四次暴跌反复碾压测试——报告未来会与月度公告一起公开。</p></div></details>
-    <p class="note reveal">本页全部内容为品牌展示，不构成投资建议、法律或税务意见，亦不构成任何证券的要约、要约邀请或推介。Caspian Vault 为筹建中实体的暂定名称，尚未发行任何证券。本页不面向任何法律禁止此类内容之司法辖区内的人士。（措辞待持牌律师终审）</p>
   </div>
 </section>
 
 <!-- ═══ 五 · 路线图 ═══ -->
-<section id="road" style="border-top:1px solid rgba(49,88,107,.35)">
+<div class="mstone reveal" aria-hidden="true"><span class="ms-line"></span><span class="ms-core"><b class="ms-num">−1025 米</b><i class="ms-say">海床。金库在脚下</i></span><span class="ms-line"></span></div>
+
+<section id="road">
   <div class="wrap">
     <div class="kicker plaque reveal">第五库室 · 航路图</div>
     <h2 class="reveal">慢，就是快</h2>
@@ -864,7 +903,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params&amp; params)
     <div>被大地环抱，只进不出。Nothing flows out.</div>
     <div style="margin-top:10px">联系：不设公开通道——以熟人引荐认识每一位朋友。<br>想先看懂比特币？从「<a href="https://roserparker.github.io/hukanbit/" target="_blank" rel="noopener">胡侃比特</a>」读起，永久免费。</div>
     <div class="fine">
-      Caspian Vault（暂定名）· Delaware 实体筹建中 · 本页面为品牌展示，不构成任何证券的要约、要约邀请、招揽或投资建议；未注册亦未发行任何证券；不面向任何法律禁止此类内容之司法辖区内的人士。比特币价格波动剧烈，历史表现不代表未来；请仅以可承受全部损失的资金持有这一资产。教学数据均为近似值（2026-07 口径）。© 2026 Caspian Vault (name pending). All rights reserved.
+      Caspian Vault（暂定名）· Delaware 实体筹建中 · 本页面为品牌展示，不构成任何证券的要约、要约邀请、招揽或投资建议；未注册亦未发行任何证券；不面向任何法律禁止此类内容之司法辖区内的人士。比特币价格波动剧烈，历史表现不代表未来；请仅以可承受全部损失的资金持有这一资产。教学数据均为近似值（2026-07 口径）。措辞待持牌律师终审。© 2026 Caspian Vault (name pending). All rights reserved.
     </div>
     <div class="seal-v4" aria-hidden="true">
       <svg width="54" height="54"><use href="#lg-mark"/></svg>
@@ -880,11 +919,11 @@ const $=id=>document.getElementById(id);
 const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ── 深度刻度：0 → −1025 米（滚动=下潜；同步 --dive 驱动水色渐深） ── */
-const drCur=$("drCur"),drNum=$("drNum");
+const drCur=$("drCur"),drNum=$("drNum"),dhNum=$("dhNum");
 function gauge(){const h=document.documentElement;
   const p=Math.min(1,Math.max(0,h.scrollTop/(h.scrollHeight-h.clientHeight||1)));
   drCur.style.top=(p*125)+"px";
-  drNum.textContent="−"+Math.round(p*1025)+" 米";
+  const dep=(p<.004?"0 米":"−"+Math.round(p*1025)+" 米");drNum.textContent=dep;if(dhNum)dhNum.textContent=dep;
   document.body.style.setProperty("--dive",p.toFixed(3));}
 
 
