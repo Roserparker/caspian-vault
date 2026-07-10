@@ -572,27 +572,28 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
 
     <div class="demo reveal" id="pathBox">
       <div class="cap">同一笔 $1 万（2010）· 两条路（年末真实数据 · 对数刻度 · 购买力按官方 CPI，2025 年 +2.7%）</div>
-      <svg id="priceSvg" viewBox="0 0 800 262" aria-label="同一笔一万美元（2010）：进比特币约值二十一亿，躺在美元里剩约六千七购买力">
-        <g font-family="ui-monospace,Menlo,monospace" font-size="10">
-          <circle cx="70" cy="12" r="2.6" fill="#E8813A"/><text x="80" y="16" fill="#E0C9A6">这笔钱进了比特币</text>
-          <circle cx="220" cy="12" r="2.6" fill="#85A8E0"/><text x="230" y="16" fill="#A9BFE0">这笔钱躺在美元里（按官方 CPI）</text>
-        </g>
-        <line x1="64" x2="700" y1="194" y2="194" stroke="rgba(49,88,107,.22)"/><text x="58" y="197" font-size="9.5" fill="#7D8894" text-anchor="end">$1 万</text><line x1="64" x2="700" y1="132" y2="132" stroke="rgba(49,88,107,.22)"/><text x="58" y="135" font-size="9.5" fill="#7D8894" text-anchor="end">$100 万</text><line x1="64" x2="700" y1="70" y2="70" stroke="rgba(49,88,107,.22)"/><text x="58" y="73" font-size="9.5" fill="#7D8894" text-anchor="end">$1 亿</text><line x1="64" x2="700" y1="40" y2="40" stroke="rgba(49,88,107,.22)"/><text x="58" y="43" font-size="9.5" fill="#7D8894" text-anchor="end">$10 亿</text><line x1="149" x2="149" y1="206" y2="211" stroke="#7D8894"/><text x="149" y="222" font-size="9" fill="#7D8894" text-anchor="middle">2012</text><line x1="318" x2="318" y1="206" y2="211" stroke="#7D8894"/><text x="318" y="222" font-size="9" fill="#7D8894" text-anchor="middle">2016</text><line x1="488" x2="488" y1="206" y2="211" stroke="#7D8894"/><text x="488" y="222" font-size="9" fill="#7D8894" text-anchor="middle">2020</text><line x1="658" x2="658" y1="206" y2="211" stroke="#7D8894"/><text x="658" y="222" font-size="9" fill="#7D8894" text-anchor="middle">2024</text>
-        <line x1="64" y1="18" x2="64" y2="206" stroke="rgba(49,88,107,.5)"/>
-        <line x1="64" y1="206" x2="700" y2="206" stroke="rgba(49,88,107,.5)"/>
-        <polyline id="ppUsd" points="64,193.7 106,194.1 149,194.4 191,194.6 234,194.7 276,194.8 318,195.0 361,195.3 403,195.6 446,195.9 488,196.0 530,197.0 573,197.8 615,198.2 658,198.6 700,199.0" fill="none" stroke="#85A8E0" stroke-width="1.6" stroke-linejoin="round"/>
-        <line x1="700" y1="199.0" x2="728" y2="199.2" stroke="#85A8E0" stroke-width="1.4" stroke-dasharray="3 4"/>
-        <circle cx="728" cy="199.2" r="3" fill="#85A8E0"/>
-        <polyline id="prPath" points="64,193.7 106,156.9 149,142.8 191,88.8 234,100.4 276,96.4 318,85.5 361,49.9 403,67.4 446,58.6 488,39.9 530,33.6 573,47.5 615,34.9 658,24.3 700,25.2" fill="none" stroke="#E8813A" stroke-width="2.2" stroke-linejoin="round"/>
-        <line x1="700" y1="25.2" x2="728" y2="29.6" stroke="#E8813A" stroke-width="1.8" stroke-dasharray="3 4"/>
-        <circle cx="728" cy="29.6" r="3.5" fill="#E8813A"/>
-        <circle cx="64" cy="193.7" r="3.5" fill="#D9DEE2"/>
-        <text x="72" y="208" font-size="10.5" fill="#D9DEE2" font-family="ui-monospace,Menlo,monospace">$1 万 · 2010</text>
-        <text x="736" y="33" font-size="12" font-weight="700" fill="#E8813A" font-family="ui-monospace,Menlo,monospace">≈$21 亿</text>
-        <text x="736" y="45" font-size="8.5" fill="#C9B296" font-family="ui-monospace,Menlo,monospace">2026-07 · ×21 万</text>
-        <text x="736" y="202" font-size="11" font-weight="700" fill="#85A8E0" font-family="ui-monospace,Menlo,monospace">剩 ≈$6,700</text>
-        <text x="736" y="214" font-size="8.5" fill="#8FA3C9" font-family="ui-monospace,Menlo,monospace">购买力 · −33%</text>
-        <text x="382" y="256" font-size="9.5" fill="#7D8894" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">横轴：年份 · 纵轴：美元（对数）· 年末真实数据 · 已发生的历史，非预测 · 过去不代表未来</text>
+      <svg id="priceSvg" viewBox="0 0 812 408" aria-label="同一笔一万美元：进比特币约二十一亿（对数轴）；躺美元剩约六千七购买力（线性轴，可见的下坡）">
+        <text x="68" y="18" font-size="12.5" fill="#E0C9A6" font-family="ui-monospace,Menlo,monospace">进比特币（对数轴）</text>
+        <line x1="68" x2="700" y1="203" y2="203" stroke="rgba(49,88,107,.22)"/><text x="61" y="207" font-size="11" fill="#8A96A0" text-anchor="end">$1 万</text><line x1="68" x2="700" y1="142" y2="142" stroke="rgba(49,88,107,.22)"/><text x="61" y="146" font-size="11" fill="#8A96A0" text-anchor="end">$100 万</text><line x1="68" x2="700" y1="82" y2="82" stroke="rgba(49,88,107,.22)"/><text x="61" y="86" font-size="11" fill="#8A96A0" text-anchor="end">$1 亿</text><line x1="68" x2="700" y1="51" y2="51" stroke="rgba(49,88,107,.22)"/><text x="61" y="55" font-size="11" fill="#8A96A0" text-anchor="end">$10 亿</text>
+        <polyline id="prPath" points="68,203.1 110,166.8 152,152.9 194,99.8 237,111.2 279,107.2 321,96.5 363,61.4 405,78.7 447,70.0 489,51.5 531,45.3 574,59.0 616,46.6 658,36.2 700,37.1" fill="none" stroke="#E8813A" stroke-width="3.2" stroke-linejoin="round"/>
+        <line x1="700" y1="37.1" x2="728" y2="41.4" stroke="#E8813A" stroke-width="2" stroke-dasharray="3 4"/>
+        <circle cx="728" cy="41.4" r="4" fill="#E8813A"/>
+        <circle cx="68" cy="203.1" r="4" fill="#D9DEE2"/>
+        <text x="77" y="195" font-size="12" fill="#D9DEE2" font-family="ui-monospace,Menlo,monospace">$1 万 · 2010</text>
+        <text x="736" y="45" font-size="15" font-weight="700" fill="#E8813A" font-family="ui-monospace,Menlo,monospace">≈$21 亿</text>
+        <text x="736" y="60" font-size="10" fill="#C9B296" font-family="ui-monospace,Menlo,monospace">今 · ×21 万</text>
+        <line x1="152" x2="152" y1="222" y2="228" stroke="#7D8894"/><text x="152" y="242" font-size="11" fill="#8A96A0" text-anchor="middle">2012</text><line x1="321" x2="321" y1="222" y2="228" stroke="#7D8894"/><text x="321" y="242" font-size="11" fill="#8A96A0" text-anchor="middle">2016</text><line x1="489" x2="489" y1="222" y2="228" stroke="#7D8894"/><text x="489" y="242" font-size="11" fill="#8A96A0" text-anchor="middle">2020</text><line x1="658" x2="658" y1="222" y2="228" stroke="#7D8894"/><text x="658" y="242" font-size="11" fill="#8A96A0" text-anchor="middle">2024</text>
+        <text x="68" y="262" font-size="12.5" fill="#A9BFE0" font-family="ui-monospace,Menlo,monospace">躺在美元里（线性轴 · 按官方 CPI）</text>
+        <line x1="68" x2="700" y1="279" y2="279" stroke="rgba(49,88,107,.22)"/><text x="61" y="283" font-size="11" fill="#8A96A0" text-anchor="end">$1 万</text><line x1="68" x2="700" y1="324" y2="324" stroke="rgba(49,88,107,.22)"/><text x="61" y="328" font-size="11" fill="#8A96A0" text-anchor="end">$8 千</text><line x1="68" x2="700" y1="355" y2="355" stroke="rgba(49,88,107,.22)"/><text x="61" y="359" font-size="11" fill="#8A96A0" text-anchor="end">$6.6 千</text>
+        <path d="M68,279.1 L68,279.1 L110,285.6 L152,289.2 L194,292.3 L237,294.0 L279,295.4 L321,299.7 L363,303.8 L405,307.5 L447,311.8 L489,314.5 L531,326.7 L574,337.3 L616,342.7 L658,347.2 L700,351.3 L728,353.2 L728,279.1 Z" fill="rgba(133,168,224,.13)"/>
+        <line x1="68" x2="728" y1="279" y2="279" stroke="#85A8E0" stroke-width="1" stroke-dasharray="2 5" opacity=".5"/>
+        <polyline id="ppUsd" points="68,279.1 110,285.6 152,289.2 194,292.3 237,294.0 279,295.4 321,299.7 363,303.8 405,307.5 447,311.8 489,314.5 531,326.7 574,337.3 616,342.7 658,347.2 700,351.3" fill="none" stroke="#85A8E0" stroke-width="3" stroke-linejoin="round"/>
+        <line x1="700" y1="351.3" x2="728" y2="353.2" stroke="#85A8E0" stroke-width="1.8" stroke-dasharray="3 4"/>
+        <circle cx="728" cy="353.2" r="4" fill="#85A8E0"/>
+        <text x="736" y="357" font-size="14" font-weight="700" fill="#85A8E0" font-family="ui-monospace,Menlo,monospace">剩 ≈$6,700</text>
+        <text x="736" y="372" font-size="10" fill="#8FA3C9" font-family="ui-monospace,Menlo,monospace">−33% 购买力</text>
+        <text x="344" y="317" font-size="11" fill="#8FA3C9" font-family="ui-monospace,Menlo,monospace">阴影 = 已蒸发的购买力</text>
+        <text x="384" y="400" font-size="10.5" fill="#7D8894" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">年末真实数据 · 已发生的历史，非预测 · 过去不代表未来</text>
       </svg>
       <div class="halving-read" style="margin-top:14px">
         <div class="cell"><div class="k">同样那 $100 万，若在这年放进比特币</div><div class="v"><input type="range" id="pyYear" min="2013" max="2024" value="2017" step="1" style="width:100%"></div></div>
@@ -601,6 +602,28 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       </div>
       <p class="note" style="margin-top:12px"><b>历史回望，不是预测</b>——这条线也刚刚经历了本轮 −55%：$128,198（2025-10 高点）→ $57,950（2026-07 低点）。中途腰斩是常态（见档案室），归零也从未排除。（教学近似 · 2026-07 口径）</p>
     </div>
+
+    <div class="demo reveal" id="rulerBox">
+      <div class="cap">换一把尺子 · 同一个标普 500（2010 = 起点 100 · 对数刻度 · 价格指数未含股息）</div>
+      <svg id="spSvg" viewBox="0 0 812 262" aria-label="同一个标普500：用美元量十六年约六倍；用比特币量跌去约百分之九十九点九九七">
+        <g font-family="ui-monospace,Menlo,monospace" font-size="11.5">
+          <circle cx="74" cy="14" r="3" fill="#85A8E0"/><text x="85" y="18" fill="#A9BFE0">用美元量它</text>
+          <circle cx="200" cy="14" r="3" fill="#E8813A"/><text x="211" y="18" fill="#E0C9A6">用比特币量它</text>
+        </g>
+        <line x1="68" x2="700" y1="52" y2="52" stroke="rgba(49,88,107,.22)"/><text x="61" y="56" font-size="11" fill="#8A96A0" text-anchor="end">×10</text><line x1="68" x2="700" y1="78" y2="78" stroke="rgba(49,88,107,.22)"/><text x="61" y="82" font-size="11" fill="#8A96A0" text-anchor="end">起点</text><line x1="68" x2="700" y1="130" y2="130" stroke="rgba(49,88,107,.22)"/><text x="61" y="134" font-size="11" fill="#8A96A0" text-anchor="end">−99%</text><line x1="68" x2="700" y1="182" y2="182" stroke="rgba(49,88,107,.22)"/><text x="61" y="186" font-size="11" fill="#8A96A0" text-anchor="end">−99.99%</text><line x1="152" x2="152" y1="208" y2="214" stroke="#7D8894"/><text x="152" y="228" font-size="11" fill="#8A96A0" text-anchor="middle">2012</text><line x1="321" x2="321" y1="208" y2="214" stroke="#7D8894"/><text x="321" y="228" font-size="11" fill="#8A96A0" text-anchor="middle">2016</text><line x1="489" x2="489" y1="208" y2="214" stroke="#7D8894"/><text x="489" y="228" font-size="11" fill="#8A96A0" text-anchor="middle">2020</text><line x1="658" x2="658" y1="208" y2="214" stroke="#7D8894"/><text x="658" y="228" font-size="11" fill="#8A96A0" text-anchor="middle">2024</text>
+        <polyline id="spUsd" points="68,77.9 110,77.9 152,76.4 194,73.5 237,72.3 279,72.4 321,71.3 363,69.3 405,70.1 447,67.2 489,65.5 531,62.8 574,65.2 616,62.8 658,60.4 700,58.7" fill="none" stroke="#85A8E0" stroke-width="3.4" stroke-linejoin="round"/>
+        <line x1="700" y1="58.7" x2="728" y2="57.7" stroke="#85A8E0" stroke-width="1.8" stroke-dasharray="3 4"/>
+        <circle cx="728" cy="57.7" r="4" fill="#85A8E0"/>
+        <text x="736" y="62" font-size="14" font-weight="700" fill="#85A8E0" font-family="ui-monospace,Menlo,monospace">×6</text>
+        <polyline id="spBtc" points="68,77.9 110,109.0 152,119.5 194,162.1 237,151.0 279,154.5 321,162.7 363,190.7 405,176.7 447,181.3 489,195.4 531,198.0 574,188.7 616,196.9 658,203.4 700,200.9" fill="none" stroke="#E8813A" stroke-width="3.4" stroke-linejoin="round"/>
+        <line x1="700" y1="200.9" x2="728" y2="196.2" stroke="#E8813A" stroke-width="1.8" stroke-dasharray="3 4"/>
+        <circle cx="728" cy="196.2" r="4" fill="#E8813A"/>
+        <text x="736" y="200" font-size="13" font-weight="700" fill="#E8813A" font-family="ui-monospace,Menlo,monospace">−99.997%</text>
+        <circle cx="68" cy="77.9" r="4" fill="#D9DEE2"/>
+      </svg>
+      <p class="note" style="margin-top:12px;font-size:13px"><b>不是股市变弱——是尺子不同。</b>美元这把尺子每年缩一点，比特币这把尺子十六年没加过一格刻度。（真实指数 · 未含股息再投资 · 非投资建议）</p>
+    </div>
+
 
 
     <div class="demo reveal">
@@ -917,6 +940,16 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
       u.style.transition="stroke-dashoffset 1.8s ease .2s";u.style.strokeDashoffset=0;
       p.style.transition="stroke-dashoffset 2.6s ease .9s";p.style.strokeDashoffset=0;}}
   TICKS.push(tryDraw);tryDraw();
+  const s1=$("spUsd"),s2=$("spBtc");
+  if(s1&&s2){const L1=s1.getTotalLength(),L2=s2.getTotalLength();
+    s1.style.strokeDasharray=L1;s1.style.strokeDashoffset=reduced?0:L1;
+    s2.style.strokeDasharray=L2;s2.style.strokeDashoffset=reduced?0:L2;
+    let d2=false;
+    function tryDraw2(){if(d2)return;const r=s1.getBoundingClientRect();
+      if(r.top<innerHeight*0.85&&r.bottom>0){d2=true;
+        s1.style.transition="stroke-dashoffset 1.8s ease .2s";s1.style.strokeDashoffset=0;
+        s2.style.transition="stroke-dashoffset 2.4s ease 1s";s2.style.strokeDashoffset=0;}}
+    TICKS.push(tryDraw2);tryDraw2();}
   const PR={2013:757,2014:318,2015:430,2016:968,2017:13850,2018:3740,2019:7240,2020:29300,2021:46900,2022:16600,2023:42500,2024:93400};
   const END=63000;
   function run(){
