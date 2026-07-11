@@ -25,6 +25,7 @@ disp = []
 disp += [strip(m) for m in re.findall(r"<h[1-4][^>]*>(.*?)</h[1-4]>", s, re.S)]
 disp += [strip(m) for m in re.findall(r'class="hero-slogan"[^>]*>(.*?)</div>', s, re.S)]
 disp += [strip(m) for m in re.findall(r'class="vd-step[^"]*"><b>(.*?)</b>', s, re.S)]
+disp += [strip(m) for m in re.findall(r'class="dive-land"[^>]*>(.*?)</div>', s, re.S)]
 i = s.find("如果比特币归零")
 if i > 0: disp.append(strip(s[i-40:i+400]))
 disp.append("里海金库聚流成海，藏金于渊。先把最坏的话说在最前面")

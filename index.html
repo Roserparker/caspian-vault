@@ -64,16 +64,18 @@ body::after{content:"";position:fixed;top:0;left:0;right:0;bottom:0;pointer-even
 .mstone .ms-line:last-child{transform-origin:0 50%}
 .mstone.on .ms-line{transform:scaleX(1)}
 /* ── 下潜镜头：俯视里海→推近 ₿→从字缝入黑（滚动驱动·原生滚动不劫持） ── */
-.dive{height:300vh;position:relative}
+.dive{height:240vh;position:relative}
 .dive-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .dive-pin .c1-map{margin:0;width:min(92vw,600px);max-width:600px;transform-origin:41.71% 67.26%;will-change:transform}
 .dive .c1-map svg text,.dive .geoCap{transition:opacity .9s var(--ease-velvet)}
 .dive.dv-deep .c1-map svg text,.dive.dv-deep .c1-map.on svg text,.dive.dv-deep .geoCap{opacity:0}
 .dive-close{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;will-change:transform,opacity}
 .dive-close svg{width:min(88vw,540px);height:auto}
-.dive-black{position:absolute;top:0;left:0;right:0;bottom:0;background:#071016;opacity:0;pointer-events:none;will-change:opacity}
+.dive-land{position:absolute;left:0;right:0;top:70%;text-align:center;opacity:0;pointer-events:none;
+  font-family:var(--serif);font-size:clamp(19px,3vw,28px);letter-spacing:.14em;color:#DDE4E8;will-change:opacity}
+.dive-land b{color:var(--gold);font-weight:400;margin-right:.35em}
 .dive-off{height:auto}.dive-off .dive-pin{position:static;height:auto;overflow:visible}
-.dive-off .dive-close,.dive-off .dive-black{display:none}
+.dive-off .dive-close,.dive-off .dive-land{display:none}
 /* ── 首屏警示铭牌（最坏的话说在最前面） ── */
 .worst-first{display:block;max-width:660px;margin:24px auto 0;padding:11px 20px;background:rgba(2,5,9,.66);
   border:1px solid rgba(159,198,212,.2);border-radius:2px;font-size:13px;line-height:1.8;color:var(--silver);
@@ -310,7 +312,7 @@ input[type=range]{accent-color:var(--steel)}
 .c1-map .gvR,.c1-map .gvCore,.c1-map .gvBtc,.c1-map .gvT{opacity:1;transition:none;transform:none}.c1-map .gvPulse{display:none}
 .mstone .ms-line{transition:none;transform:none}
 .dive{height:auto}.dive-pin{position:static;height:auto;overflow:visible}
-.dive-close,.dive-black{display:none}
+.dive-close,.dive-land{display:none}
 .dive .c1-map svg text,.dive .geoCap{opacity:1}
 .c1-map.on .geoR{opacity:.6}.c1-map.on .geoB{opacity:.5}}
 /* 第一章图录铭牌 */
@@ -609,7 +611,7 @@ footer{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
       <circle cx="200" cy="200" r="60" fill="rgba(217,138,60,.1)"/>
       <text x="200" y="262" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="180" fill="#C9853E">₿</text>
     </svg></div>
-    <div class="dive-black" aria-hidden="true"></div>
+    <div class="dive-land" aria-hidden="true"><b>到了。</b>金库，就建在这样的深处。</div>
     </div></div>
 
     <div class="c1-grid">
@@ -1085,7 +1087,7 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
 (function(){
   const st=$("diveStage");if(!st)return;
   if(reduced||!(window.CSS&&CSS.supports&&CSS.supports("overflow-x","clip"))){st.classList.add("dive-off");return;}
-  const map=st.querySelector(".c1-map"),close=st.querySelector(".dive-close"),blk=st.querySelector(".dive-black");
+  const map=st.querySelector(".c1-map"),close=st.querySelector(".dive-close"),land=st.querySelector(".dive-land");
   function upd(){
     const r=st.getBoundingClientRect(),total=r.height-innerHeight;
     if(total<=0)return;
@@ -1093,10 +1095,11 @@ setInterval(()=>{if(document.hidden)return;checkReveals();gauge();runTicks();},4
     if(p>.18)st.classList.add("dv-deep");else st.classList.remove("dv-deep");
     map.style.transform="translateZ(0) scale("+(1+Math.min(1,p/.6)*2.2).toFixed(3)+")";
     map.style.opacity=(1-Math.min(1,Math.max(0,(p-.55)/.17))).toFixed(3);
-    const q=Math.min(1,Math.max(0,(p-.42)/.42));
-    close.style.opacity=Math.min(1,q*1.1).toFixed(3);
+    const q=Math.min(1,Math.max(0,(p-.38)/.34));
+    const fade=1-.72*Math.min(1,Math.max(0,(p-.84)/.16));
+    close.style.opacity=(Math.min(1,q*1.1)*fade).toFixed(3);
     close.style.transform="translateZ(0) translateY("+((1-q)*4).toFixed(2)+"%) scale("+(0.94+q*0.18).toFixed(3)+")";
-    blk.style.opacity=Math.min(1,Math.max(0,(p-.8)/.16)).toFixed(3);
+    land.style.opacity=(Math.min(1,Math.max(0,(p-.66)/.12))*fade).toFixed(3);
   }
   TICKS.push(upd);
   addEventListener("resize",upd,{passive:true});
